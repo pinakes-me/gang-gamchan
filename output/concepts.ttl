@@ -1,0 +1,537 @@
+@prefix ggc: <https://pinakes-me.github.io/gang-gamchan/vocab#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ggc:archaeology a skos:Concept ;
+    skos:broader ggc:material_culture ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Archaeology"@en,
+        "고고학·분묘"@ko .
+
+ggc:astronomy a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Astronomy and calendrics"@en,
+        "천문·역법"@ko .
+
+ggc:biography_children a skos:Concept ;
+    skos:broader ggc:genre ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Children's biography"@en,
+        "어린이 위인전"@ko .
+
+ggc:boksik a skos:Concept ;
+    skos:broader ggc:material_culture ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Costume"@en,
+        "복식"@ko .
+
+ggc:buddhism a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Buddhism and ritual"@en,
+        "불교·의례"@ko ;
+    skos:scopeNote "연등회·팔관회 등"@ko .
+
+ggc:bulhwa a skos:Concept ;
+    skos:broader ggc:material_culture ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Buddhist painting"@en,
+        "불화"@ko ;
+    skos:scopeNote "고려불화 등"@ko .
+
+ggc:cheongja a skos:Concept ;
+    skos:broader ggc:material_culture ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Goryeo celadon"@en,
+        "고려청자"@ko .
+
+ggc:crafts a skos:Concept ;
+    skos:broader ggc:material_culture ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Crafts"@en,
+        "공예·기물"@ko ;
+    skos:scopeNote "동경(銅鏡) 등"@ko .
+
+ggc:daegan a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Daegan (censorate)"@en,
+        "대간제도"@ko .
+
+ggc:daejanggyeong a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Tripitaka Koreana"@en,
+        "고려대장경"@ko .
+
+ggc:economy a skos:Concept ;
+    skos:broader ggc:institution ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Economy"@en,
+        "경제·재정"@ko .
+
+ggc:education a skos:Concept ;
+    skos:broader ggc:institution ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Education"@en,
+        "교육"@ko ;
+    skos:scopeNote "과거제와 연관"@ko .
+
+ggc:epigraphy a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Epigraphy"@en,
+        "금석문·명문"@ko ;
+    skos:scopeNote "금속문 포함"@ko .
+
+ggc:eumseo a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Eumseo (protected appointment)"@en,
+        "음서제"@ko .
+
+ggc:fiction a skos:Concept ;
+    skos:broader ggc:genre ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Historical fiction"@en,
+        "역사소설"@ko ;
+    skos:scopeNote "성인 대상"@ko .
+
+ggc:fiction_children a skos:Concept ;
+    skos:broader ggc:genre ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Children's fiction"@en,
+        "어린이 창작동화"@ko .
+
+ggc:folk_religion a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Folk religion"@en,
+        "토속신앙"@ko .
+
+ggc:folktale a skos:Concept ;
+    skos:broader ggc:genre ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Folktale"@en,
+        "설화·전승"@ko ;
+    skos:scopeNote "강감찬 호랑이 설화 등"@ko .
+
+ggc:foreign_relations a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Foreign relations"@en,
+        "대외관계"@ko .
+
+ggc:frontier a skos:Concept ;
+    skos:broader ggc:place ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Frontier"@en,
+        "영토·국경"@ko ;
+    skos:scopeNote "북계·압록강 등"@ko .
+
+ggc:gaegyeong a skos:Concept ;
+    skos:broader ggc:place ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Gaegyeong"@en,
+        "개경"@ko ;
+    skos:scopeNote "고려 수도"@ko .
+
+ggc:gangamchan a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Gang Gamchan"@en,
+        "강감찬"@ko ;
+    skos:scopeNote "인헌공. 관악구 낙성대 출생 전승 영문 표기 전거: 향토문화전자대전(grandculture.net)"@ko .
+
+ggc:ganghwa a skos:Concept ;
+    skos:broader ggc:place ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Ganghwa"@en,
+        "강화"@ko ;
+    skos:scopeNote "천도기 도성"@ko .
+
+ggc:geography a skos:Concept ;
+    skos:broader ggc:place ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Geography"@en,
+        "지리·지리지"@ko .
+
+ggc:goguryeo a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Goguryeo"@en,
+        "고구려"@ko ;
+    skos:scopeNote "정치체"@ko .
+
+ggc:goryeo a skos:Concept ;
+    skos:broader ggc:period ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Goryeo"@en,
+        "고려"@ko ;
+    skos:scopeNote "918–1392"@ko .
+
+ggc:goryeodogyeong a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Goryeo dogyeong"@en,
+        "고려도경"@ko ;
+    skos:scopeNote "서긍의 사행록. 1차 사료"@ko .
+
+ggc:goryeosa a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Goryeosa"@en,
+        "고려사"@ko ;
+    skos:scopeNote "아직 태깅 안 됨(예상 개념)"@ko .
+
+ggc:goryeosajeolyo a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Goryeosa jeolyo"@en,
+        "고려사절요"@ko .
+
+ggc:gwageo a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Gwageo (civil examination)"@en,
+        "과거제"@ko .
+
+ggc:gwanak a skos:Concept ;
+    skos:broader ggc:place ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Gwanak-gu"@en,
+        "관악구"@ko .
+
+ggc:gwangjong a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Gwangjong"@en,
+        "광종"@ko ;
+    skos:scopeNote "고려 4대 국왕"@ko .
+
+ggc:gwiju_battle a skos:Concept ;
+    skos:broader ggc:goryeo_khitan_war ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Battle of Gwiju"@en,
+        "귀주대첩"@ko ;
+    skos:scopeNote "아직 태깅 안 됨(예상 개념)"@ko .
+
+ggc:historiography a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Historiography"@en,
+        "사학사·연구사"@ko .
+
+ggc:hyeonjong a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Hyeonjong of Goryeo"@en,
+        "고려 현종"@ko ;
+    skos:scopeNote "아직 태깅 안 됨(예상 개념)"@ko .
+
+ggc:joseon a skos:Concept ;
+    skos:broader ggc:period ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Joseon"@en,
+        "조선"@ko .
+
+ggc:jungchuwon a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Jungchuwon"@en,
+        "중추원"@ko .
+
+ggc:jungseomunhaseong a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Jungseomunhaseong"@en,
+        "중서문하성"@ko .
+
+ggc:jurchen a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Jurchen"@en,
+        "여진"@ko ;
+    skos:scopeNote "집단·정치체. 상위개념 재검토 대상"@ko .
+
+ggc:khitan a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Khitan (Liao)"@en,
+        "거란(요)"@ko ;
+    skos:scopeNote "집단·정치체. 상위개념 재검토 대상"@ko .
+
+ggc:komunseo a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Historical documents"@en,
+        "고문서"@ko ;
+    skos:scopeNote "왕명문서 등"@ko .
+
+ggc:literature a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Sino-Korean literature"@en,
+        "한문학·문집"@ko ;
+    skos:scopeNote "졸고천백 등 문집류"@ko .
+
+ggc:local_admin a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Local administration"@en,
+        "지방제도"@ko ;
+    skos:scopeNote "계수관 등"@ko .
+
+ggc:maritime a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Maritime history"@en,
+        "해양·교류"@ko .
+
+ggc:medicine a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "History of medicine"@en,
+        "질병·의료사"@ko ;
+    skos:scopeNote "전염병 등"@ko .
+
+ggc:military a skos:Concept ;
+    skos:broader ggc:event ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Military history"@en,
+        "군사·전쟁"@ko ;
+    skos:scopeNote "개별 전쟁 개념의 상위"@ko .
+
+ggc:mongol a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Mongol Empire"@en,
+        "몽골·원"@ko ;
+    skos:scopeNote "정치체"@ko .
+
+ggc:muin a skos:Concept ;
+    skos:broader ggc:institution ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Military regime"@en,
+        "무인정권"@ko .
+
+ggc:munbeol a skos:Concept ;
+    skos:broader ggc:institution ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Aristocratic lineages"@en,
+        "문벌귀족"@ko .
+
+ggc:nakseongdae a skos:Concept ;
+    skos:broader ggc:place ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Nakseongdae"@en,
+        "낙성대"@ko ;
+    skos:scopeNote "강감찬 탄생 전승지. 관악구"@ko .
+
+ggc:nokbong a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Nokbong (stipend system)"@en,
+        "녹봉제"@ko .
+
+ggc:printing a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Movable type printing"@en,
+        "금속활자·인쇄"@ko .
+
+ggc:pungsu a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Pungsu (geomancy)"@en,
+        "풍수지리"@ko .
+
+ggc:royalty a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Royalty"@en,
+        "왕실·군주"@ko .
+
+ggc:sambyeolcho a skos:Concept ;
+    skos:broader ggc:event ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Sambyeolcho"@en,
+        "삼별초"@ko ;
+    skos:scopeNote "대몽항쟁"@ko .
+
+ggc:samgukyusa a skos:Concept ;
+    skos:broader ggc:work ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Samguk yusa"@en,
+        "삼국유사"@ko .
+
+ggc:sangseoseong a skos:Concept ;
+    skos:broader ggc:gwanje ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Sangseoseong"@en,
+        "상서성"@ko .
+
+ggc:seohui a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Seo Hui"@en,
+        "서희"@ko ;
+    skos:scopeNote "아직 태깅 안 됨(예상 개념)"@ko .
+
+ggc:social_history a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Social history"@en,
+        "사회사·생활사"@ko .
+
+ggc:taebong a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Taebong"@en,
+        "태봉"@ko ;
+    skos:scopeNote "정치체. 후삼국"@ko .
+
+ggc:taoism a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Taoism"@en,
+        "도교"@ko .
+
+ggc:thought a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Intellectual history"@en,
+        "사상"@ko ;
+    skos:scopeNote "유·불 사상사"@ko .
+
+ggc:toji a skos:Concept ;
+    skos:broader ggc:institution ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Land system"@en,
+        "토지제도"@ko ;
+    skos:scopeNote "사패전 등"@ko .
+
+ggc:waegu a skos:Concept ;
+    skos:broader ggc:japan ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Waegu (Japanese pirates)"@en,
+        "왜구"@ko .
+
+ggc:wanggeon a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Taejo Wang Geon"@en,
+        "태조 왕건"@ko ;
+    skos:scopeNote "고려 건국자"@ko .
+
+ggc:women a skos:Concept ;
+    skos:broader ggc:scholarship ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Women's history"@en,
+        "여성사"@ko .
+
+ggc:yangban a skos:Concept ;
+    skos:broader ggc:institution ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Yangban"@en,
+        "양반"@ko .
+
+ggc:yasa a skos:Concept ;
+    skos:broader ggc:genre ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Unofficial histories"@en,
+        "야사·일화"@ko .
+
+ggc:yisaek a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Yi Saek"@en,
+        "이색"@ko ;
+    skos:scopeNote "고려 말 문신·학자"@ko .
+
+ggc:youth_nonfiction a skos:Concept ;
+    skos:broader ggc:genre ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Youth nonfiction"@en,
+        "청소년·아동 교양"@ko .
+
+ggc:goryeo_khitan_war a skos:Concept ;
+    skos:broader ggc:event ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Goryeo–Khitan War"@en,
+        "고려-거란 전쟁"@ko .
+
+ggc:japan a skos:Concept ;
+    skos:broader ggc:person ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Japan"@en,
+        "일본"@ko ;
+    skos:scopeNote "정치체·사료"@ko .
+
+ggc:period a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Period"@en,
+        "시대"@ko .
+
+ggc:event a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Event"@en,
+        "사건"@ko .
+
+ggc:material_culture a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Material Culture"@en,
+        "물질문화"@ko ;
+    skos:scopeNote "유물·복식·공예"@ko .
+
+ggc:genre a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Genre"@en,
+        "장르·형식"@ko .
+
+ggc:place a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Place"@en,
+        "장소"@ko .
+
+ggc:gwanje a skos:Concept ;
+    skos:broader ggc:institution ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Government system"@en,
+        "관제·정치제도"@ko ;
+    skos:scopeNote "고려 관직·정치제도 일반"@ko .
+
+ggc:institution a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Institution"@en,
+        "제도"@ko ;
+    skos:scopeNote "정치·사회 제도"@ko .
+
+ggc:work a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Work"@en,
+        "문헌"@ko ;
+    skos:scopeNote "저작·1차 사료"@ko .
+
+ggc:scholarship a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Scholarship"@en,
+        "학술 분야"@ko .
+
+ggc:person a skos:Concept ;
+    skos:inScheme ggc:scheme ;
+    skos:prefLabel "Person"@en,
+        "인물"@ko .
+
+ggc:scheme a skos:ConceptScheme ;
+    skos:hasTopConcept ggc:event,
+        ggc:genre,
+        ggc:institution,
+        ggc:material_culture,
+        ggc:period,
+        ggc:person,
+        ggc:place,
+        ggc:scholarship,
+        ggc:work ;
+    skos:prefLabel "강감찬자료실 주제어휘 초안"@ko .
+

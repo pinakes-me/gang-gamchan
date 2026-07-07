@@ -1,0 +1,3868 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>별이 떨어진 자리 — 강감찬 탐험 지도</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --ink:#0A1626;          /* 밤하늘 네이비 */
+  --panel:#101F35;
+  --panel-2:#152741;
+  --line:#22375A;
+  --text:#E9EEF6;
+  --text-dim:#8FA3BF;
+  --mustard:#E3B23C;      /* 별 · 인물 */
+  --mustard-soft:#F0CE7E;
+  --celadon:#7FB5A5;      /* 고려청자 · 장소 */
+  --dancheong:#C96856;    /* 단청 · 사건 */
+  --slate:#7E96C4;        /* 제도 */
+  --parchment:#D8C9A3;    /* 문헌 · 유물 */
+  --violet:#A493C9;       /* 학술 · 장르 */
+  --serif:'Noto Serif KR', 'Nanum Myeongjo', serif;
+  --sans:'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:var(--sans);line-height:1.6}
+a{color:var(--mustard-soft)}
+:focus-visible{outline:2px solid var(--mustard);outline-offset:2px;border-radius:2px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:62vh;display:flex;flex-direction:column;justify-content:center;
+  padding:72px 24px 56px;overflow:hidden;
+  background:
+    radial-gradient(1px 1px at 12% 22%, rgba(233,238,246,.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 64%, rgba(233,238,246,.4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 44% 18%, rgba(240,206,126,.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 61% 42%, rgba(233,238,246,.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 74% 12%, rgba(233,238,246,.35) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 86% 56%, rgba(240,206,126,.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 93% 30%, rgba(233,238,246,.5) 50%, transparent 51%),
+    radial-gradient(ellipse at 50% 120%, #14263F 0%, var(--ink) 60%);
+}
+.hero-inner{max-width:980px;margin:0 auto;width:100%;position:relative;z-index:2}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--celadon);
+  text-transform:uppercase;margin-bottom:22px}
+.hanja{font-family:var(--serif);font-weight:400;font-size:20px;color:var(--mustard);
+  letter-spacing:.5em;margin-bottom:10px}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(38px,6.2vw,72px);
+  line-height:1.15;letter-spacing:-0.01em}
+h1 .star-char{color:var(--mustard)}
+.hero-sub{margin-top:22px;max-width:620px;color:var(--text-dim);font-size:16.5px}
+.hero-sub strong{color:var(--text);font-weight:600}
+.stats{display:flex;gap:0;margin-top:40px;flex-wrap:wrap;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)}
+.stat{font-family:var(--mono);padding:14px 26px 14px 0;margin-right:26px;font-size:13px;color:var(--text-dim)}
+.stat b{display:block;font-size:24px;color:var(--mustard);font-weight:500;margin-bottom:2px}
+
+/* 떨어지는 별 */
+.falling-star{position:absolute;top:-8%;left:18%;z-index:1;pointer-events:none}
+.falling-star .body{width:7px;height:7px;border-radius:50%;background:var(--mustard-soft);
+  box-shadow:0 0 12px 3px rgba(227,178,60,.8), 0 0 34px 8px rgba(227,178,60,.3)}
+.falling-star .trail{position:absolute;top:3px;left:3px;width:180px;height:1.5px;
+  background:linear-gradient(90deg,rgba(240,206,126,.9),transparent);
+  transform:rotate(-215deg);transform-origin:left center}
+@keyframes fall{
+  0%{transform:translate(0,0);opacity:0}
+  8%{opacity:1}
+  78%{transform:translate(46vw,52vh);opacity:1}
+  86%{transform:translate(48vw,54vh) scale(2.6);opacity:.95}
+  100%{transform:translate(48vw,54vh) scale(.6);opacity:0}
+}
+.falling-star{animation:fall 3.4s cubic-bezier(.4,.1,.6,.9) 0.6s both}
+@media (prefers-reduced-motion: reduce){.falling-star{animation:none;opacity:0}}
+
+/* ---------- 발견 스트립 ---------- */
+.findings{max-width:1180px;margin:0 auto;padding:44px 24px 8px}
+.findings h2, .explorer-head h2, .cards-head h2{font-family:var(--serif);font-weight:600;
+  font-size:15px;color:var(--celadon);letter-spacing:.22em;margin-bottom:18px}
+.finding-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.finding{border:1px solid var(--line);background:var(--panel);padding:20px 22px;border-radius:6px}
+.finding .num{font-family:var(--mono);font-size:26px;color:var(--mustard);font-weight:500}
+.finding .num small{font-size:14px;color:var(--text-dim)}
+.finding p{font-size:13.5px;color:var(--text-dim);margin-top:6px}
+.finding p b{color:var(--text);font-weight:600}
+
+/* ---------- 탐험기 ---------- */
+.explorer{max-width:1180px;margin:0 auto;padding:52px 24px 0}
+.explorer-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.hint{font-family:var(--mono);font-size:12px;color:var(--text-dim)}
+.hint .dot{color:var(--mustard)}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:14px;margin-top:16px}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.pane{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel);position:relative}
+.pane-label{position:absolute;top:12px;left:12px;z-index:500;font-family:var(--mono);
+  font-size:11px;letter-spacing:.12em;color:var(--text);background:rgba(10,22,38,.85);
+  border:1px solid var(--line);padding:5px 10px;border-radius:4px;backdrop-filter:blur(4px)}
+#map{height:560px;background:var(--ink)}
+#graph-pane{height:560px}
+#graph{width:100%;height:100%;display:block;cursor:grab}
+#graph:active{cursor:grabbing}
+
+/* 범례 */
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{font-family:var(--mono);font-size:11.5px;padding:5px 12px;border-radius:99px;
+  border:1px solid var(--line);background:var(--panel);color:var(--text-dim);cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;transition:all .15s}
+.chip .sw{width:8px;height:8px;border-radius:50%}
+.chip:hover{border-color:var(--text-dim)}
+.chip.active{color:var(--ink);font-weight:500}
+
+/* 지도 마커 */
+.star-marker{filter:drop-shadow(0 0 6px rgba(227,178,60,.75))}
+.lib-marker{filter:drop-shadow(0 0 5px rgba(127,181,165,.7))}
+.leaflet-popup-content-wrapper{background:var(--panel-2);color:var(--text);border-radius:6px;
+  border:1px solid var(--line);font-family:var(--sans)}
+.leaflet-popup-tip{background:var(--panel-2)}
+.leaflet-popup-content{margin:14px 16px;font-size:13px;line-height:1.55}
+.popup-name{font-family:var(--serif);font-weight:600;font-size:15px;margin-bottom:4px}
+.popup-note{color:var(--text-dim);font-size:12.5px}
+.popup-btn{margin-top:10px;display:inline-block;font-family:var(--mono);font-size:11px;
+  color:var(--ink);background:var(--mustard);border:none;padding:6px 12px;border-radius:4px;cursor:pointer}
+.leaflet-container{font-family:var(--sans)}
+.leaflet-control-attribution{background:rgba(10,22,38,.7)!important;color:var(--text-dim)!important;font-size:9px!important}
+.leaflet-control-attribution a{color:var(--text-dim)!important}
+
+/* 그래프 */
+.g-label{font-family:var(--sans);font-size:11.5px;fill:var(--text);paint-order:stroke;
+  stroke:#0A1626;stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.g-label.hub{font-family:var(--serif);font-size:15px;font-weight:600}
+.g-label.book-label{font-size:10px;fill:var(--text-dim)}
+
+/* ---------- 자료 카드 ---------- */
+.cards-section{max-width:1180px;margin:0 auto;padding:48px 24px 20px}
+.cards-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+#selection-title{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--text)}
+#selection-title .ctx{color:var(--mustard)}
+#selection-sub{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-top:4px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:22px}
+.card{border:1px solid var(--line);background:var(--panel);border-radius:6px;padding:20px 22px;
+  transition:border-color .15s, transform .15s}
+.card:hover{border-color:var(--mustard);transform:translateY(-2px)}
+.card h3{font-family:var(--serif);font-weight:600;font-size:17px;line-height:1.4}
+.card .series{font-size:12px;color:var(--text-dim);margin-top:2px}
+.card .meta{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);margin-top:10px}
+.card .subjects{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tag{font-family:var(--mono);font-size:10.5px;padding:3px 9px;border-radius:99px;
+  border:1px solid var(--line);color:var(--text-dim);cursor:pointer}
+.tag:hover{color:var(--text);border-color:var(--text-dim)}
+.badge{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:4px 10px;
+  border-radius:4px;margin-top:14px}
+.badge.held{background:var(--mustard);color:var(--ink);font-weight:500}
+.badge.not-held{border:1px dashed var(--line);color:var(--text-dim)}
+.badge.review{border:1px solid var(--dancheong);color:var(--dancheong);margin-left:6px}
+.empty{color:var(--text-dim);font-size:14px;padding:34px 0;text-align:center;
+  border:1px dashed var(--line);border-radius:6px;margin-top:22px}
+
+/* ---------- 연도 스트립 ---------- */
+.years{max-width:1180px;margin:0 auto;padding:40px 24px 8px}
+.years h2{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--text-dim);margin-bottom:14px}
+.year-strip{display:flex;align-items:flex-end;gap:4px;height:74px;border-bottom:1px solid var(--line);padding-bottom:0}
+.yb{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;min-width:0}
+.yb .bar{width:100%;max-width:34px;background:var(--panel-2);border:1px solid var(--line);
+  border-bottom:none;border-radius:3px 3px 0 0;transition:background .15s}
+.yb:hover .bar{background:var(--mustard)}
+.yb .yl{font-family:var(--mono);font-size:9.5px;color:var(--text-dim);transform:rotate(-45deg);
+  transform-origin:center;white-space:nowrap;height:26px;display:flex;align-items:flex-start}
+
+/* ---------- 푸터 ---------- */
+footer{max-width:1180px;margin:48px auto 0;padding:30px 24px 44px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-family:var(--mono);font-size:11px;color:var(--text-dim);line-height:1.8;max-width:640px}
+footer .sig{text-align:right}
+footer .sig b{font-family:var(--serif);color:var(--text);font-size:13px;font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="falling-star" aria-hidden="true"><div class="trail"></div><div class="body"></div></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Public Library Local Collection × Linked Open Data</div>
+    <div class="hanja">落 星 垈</div>
+    <h1>별이 떨어진 자리,<br>지식이 이어진 자리<span class="star-char">.</span></h1>
+    <p class="hero-sub">관악구립도서관 강감찬자료실의 <strong>도서 목록</strong>이
+      개념과 장소로 연결된 <strong>지식 그래프</strong>가 됩니다.
+      큰 별이 떨어져 강감찬이 태어났다는 낙성대 — 그 실제 장소 위에서 탐험을 시작하세요.</p>
+    <p style="font-family:var(--mono);font-size:11.5px;color:var(--text-dim);margin-top:16px">
+      본 프로젝트는 공개된 서지정보를 활용하여 제작한 개인 연구 목적의 프로토타입입니다.</p>
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><b id="st-books">239</b>자료 <span style="opacity:.6">— 전수 완료</span></div>
+      <div class="stat" role="listitem"><b id="st-concepts">71</b>연결된 개념</div>
+      <div class="stat" role="listitem"><b id="st-triples">2586</b>RDF 트리플</div>
+      <div class="stat" role="listitem"><b id="st-places">21</b>관악의 장소</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 발견 ============ -->
+<section class="findings">
+  <h2>탐험을 시작하기 전에</h2>
+  <div class="finding-grid">
+    <div class="finding"><div class="num">落星垈<small> — 별이 떨어진 터</small></div>
+      <p>낙성대라는 동네 이름은 <b>큰 별이 떨어져 강감찬이 태어났다</b>는 천 년 전 이야기에서 왔습니다. 그 자리가 지도 위에 있어요 — 생가터, 사당, 삼층석탑까지.</p></div>
+    <div class="finding"><div class="num">18<small>곳의 동네 도서관</small></div>
+      <p>강감찬 어린이책 18권이 <b>관악의 도서관 18곳</b>에 흩어져 있습니다. 낙성대공원 안의 도서관에는 강감찬 호랑이 설화 그림책이 — 태어난 자리에서 읽는 탄생 설화.</p></div>
+    <div class="finding"><div class="num">7<small>권 · 그 전쟁</small></div>
+      <p>드라마 『고려거란전쟁』의 그 전쟁 — <b>귀주대첩과 거란전쟁을 다룬 자료 7권</b>이 목록에 있습니다. 드라마의 원작 소설도 그중 하나예요.</p></div>
+    <div class="finding"><div class="num">800<small>년 전의 목소리</small></div>
+      <p>고려 문인 최자가 기록한 <b>강감찬 설화 원전</b>을 지금 전자책으로 읽을 수 있습니다. 고려 사람이 쓴 강감찬 이야기가, 관악의 디지털서가에.</p></div>
+  </div>
+</section>
+
+<!-- ============ 탐험기 ============ -->
+<main class="explorer">
+  <div class="explorer-head">
+    <h2>탐험 지도</h2>
+    <span class="hint"><span class="dot">●</span> 지도의 별과 그래프의 개념은 서로 연결되어 있습니다 — 무엇이든 눌러보세요</span>
+  </div>
+  <div class="split">
+    <div class="pane"><div class="pane-label">관악, 지금의 장소</div><div id="map" role="application" aria-label="관악구 강감찬 관련 장소 지도"></div></div>
+    <div class="pane" id="graph-pane"><div class="pane-label">자료실, 지식의 연결</div><svg id="graph" aria-label="강감찬자료실 지식 그래프"></svg></div>
+  </div>
+  <p style="font-family:var(--mono);font-size:11.5px;color:var(--text-dim);margin-top:12px">
+    <span style="color:#E3B23C">┅</span> 점선 = 강감찬 10리길(관악구 도보관광 1코스 안내선)&nbsp;&nbsp;
+    <span style="color:#E3B23C">■</span> 채워진 네모 = 관악구 실제 소장 자료&nbsp;&nbsp;
+    <span style="color:#E9EEF6">□</span> 빈 네모 = 서지 안내만(관악구 미소장)&nbsp;&nbsp;
+    <span style="color:#7FB5A5">●</span> 원 = 개념
+  </p>
+  <div class="legend" id="legend" role="group" aria-label="개념 범주 필터" style="margin-top:12px"></div>
+</main>
+
+<!-- ============ 자료 카드 ============ -->
+<section class="cards-section">
+  <div class="cards-head">
+    <div>
+      <h2>연결된 자료</h2>
+      <div id="selection-title">전체 자료 <span class="ctx">19건</span></div>
+      <div id="selection-sub">개념이나 장소를 선택하면 관련 자료만 모아 보여줍니다</div>
+    </div>
+  </div>
+  <div class="card-grid" id="cards"></div>
+</section>
+
+<!-- ============ 연도 ============ -->
+<section class="years">
+  <h2>PUBLICATION YEARS · 1987 – 2004 (수집 진행 중)</h2>
+  <div class="year-strip" id="year-strip"></div>
+</section>
+
+<footer>
+  <p>원천 데이터: 관악구립도서관 강감찬자료실 도서목록 전수 239건 (lib.gwanak.go.kr) · 주제 태깅과 RDF 변환은 연구용 파일럿 ·
+     파이프라인: CSV → SKOS 통제어휘 → RDF/Turtle → 시각화 · 장소 좌표: Google Places·서울도서관 · 작은도서관 위치: 관악구 동주민센터 작은도서관 현황(꿈나무영유아도서관은 확인 중) · 10리길 점선은 경유지를 잇는 안내선으로 실제 보행로와 다를 수 있습니다 · 지도: © OpenStreetMap · © CARTO</p>
+  <p class="sig"><b>강감찬 탐험 지도</b><br>공공도서관 향토자료실 LOD 파일럿 · @pinakes_me · 2026</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+/* ================= 데이터 (books.ttl과 동일 원천) ================= */
+const CAT = {
+  person:    {label:'인물·세력', color:'#E3B23C'},
+  event:     {label:'사건',     color:'#C96856'},
+  place:     {label:'장소',     color:'#7FB5A5'},
+  inst:      {label:'제도',     color:'#7E96C4'},
+  work:      {label:'문헌·유물', color:'#D8C9A3'},
+  schol:     {label:'학술·장르', color:'#A493C9'},
+  period:    {label:'시대',     color:'#E9EEF6'}
+};
+const CONCEPTS = [
+ {
+  "id": "gangamchan",
+  "ko": "강감찬",
+  "cat": "person"
+ },
+ {
+  "id": "seohui",
+  "ko": "서희",
+  "cat": "person"
+ },
+ {
+  "id": "goryeo",
+  "ko": "고려",
+  "cat": "period",
+  "hub": true
+ },
+ {
+  "id": "khitan",
+  "ko": "거란(요)",
+  "cat": "person"
+ },
+ {
+  "id": "jurchen",
+  "ko": "여진",
+  "cat": "person"
+ },
+ {
+  "id": "goryeo_khitan_war",
+  "ko": "고려-거란 전쟁",
+  "cat": "event"
+ },
+ {
+  "id": "gwiju_battle",
+  "ko": "귀주대첩",
+  "cat": "event"
+ },
+ {
+  "id": "gaegyeong",
+  "ko": "개경",
+  "cat": "place"
+ },
+ {
+  "id": "nakseongdae",
+  "ko": "낙성대",
+  "cat": "place"
+ },
+ {
+  "id": "gwanje",
+  "ko": "관제·정치제도",
+  "cat": "inst"
+ },
+ {
+  "id": "daegan",
+  "ko": "대간제도",
+  "cat": "inst"
+ },
+ {
+  "id": "eumseo",
+  "ko": "음서제",
+  "cat": "inst"
+ },
+ {
+  "id": "gwageo",
+  "ko": "과거제",
+  "cat": "inst"
+ },
+ {
+  "id": "nokbong",
+  "ko": "녹봉제",
+  "cat": "inst"
+ },
+ {
+  "id": "jungchuwon",
+  "ko": "중추원",
+  "cat": "inst"
+ },
+ {
+  "id": "sangseoseong",
+  "ko": "상서성",
+  "cat": "inst"
+ },
+ {
+  "id": "jungseomunhaseong",
+  "ko": "중서문하성",
+  "cat": "inst"
+ },
+ {
+  "id": "munbeol",
+  "ko": "문벌귀족",
+  "cat": "inst"
+ },
+ {
+  "id": "cheongja",
+  "ko": "고려청자",
+  "cat": "work"
+ },
+ {
+  "id": "boksik",
+  "ko": "복식",
+  "cat": "work"
+ },
+ {
+  "id": "goryeosajeolyo",
+  "ko": "고려사절요",
+  "cat": "work"
+ },
+ {
+  "id": "goryeosa",
+  "ko": "고려사",
+  "cat": "work"
+ },
+ {
+  "id": "biography_children",
+  "ko": "어린이 위인전",
+  "cat": "schol"
+ },
+ {
+  "id": "historiography",
+  "ko": "사학사·연구사",
+  "cat": "schol"
+ },
+ {
+  "id": "social_history",
+  "ko": "사회사·생활사",
+  "cat": "schol"
+ },
+ {
+  "id": "royalty",
+  "ko": "왕실·군주",
+  "cat": "person"
+ },
+ {
+  "id": "goguryeo",
+  "ko": "고구려",
+  "cat": "person"
+ },
+ {
+  "id": "mongol",
+  "ko": "몽골·원",
+  "cat": "person"
+ },
+ {
+  "id": "japan",
+  "ko": "일본",
+  "cat": "person"
+ },
+ {
+  "id": "joseon",
+  "ko": "조선",
+  "cat": "period"
+ },
+ {
+  "id": "muin",
+  "ko": "무인정권",
+  "cat": "inst"
+ },
+ {
+  "id": "toji",
+  "ko": "토지제도",
+  "cat": "inst"
+ },
+ {
+  "id": "epigraphy",
+  "ko": "금석문·명문",
+  "cat": "work"
+ },
+ {
+  "id": "goryeodogyeong",
+  "ko": "고려도경",
+  "cat": "work"
+ },
+ {
+  "id": "daejanggyeong",
+  "ko": "고려대장경",
+  "cat": "work"
+ },
+ {
+  "id": "folktale",
+  "ko": "설화·전승",
+  "cat": "schol"
+ },
+ {
+  "id": "youth_nonfiction",
+  "ko": "청소년·아동 교양",
+  "cat": "schol"
+ },
+ {
+  "id": "medicine",
+  "ko": "질병·의료사",
+  "cat": "schol"
+ },
+ {
+  "id": "yangban",
+  "ko": "양반",
+  "cat": "inst"
+ },
+ {
+  "id": "crafts",
+  "ko": "공예·기물",
+  "cat": "work"
+ },
+ {
+  "id": "buddhism",
+  "ko": "불교·의례",
+  "cat": "schol"
+ },
+ {
+  "id": "economy",
+  "ko": "경제·재정",
+  "cat": "inst"
+ },
+ {
+  "id": "foreign_relations",
+  "ko": "대외관계",
+  "cat": "schol"
+ },
+ {
+  "id": "thought",
+  "ko": "사상",
+  "cat": "schol"
+ },
+ {
+  "id": "education",
+  "ko": "교육",
+  "cat": "inst"
+ },
+ {
+  "id": "yisaek",
+  "ko": "이색",
+  "cat": "person"
+ },
+ {
+  "id": "archaeology",
+  "ko": "고고학·분묘",
+  "cat": "work"
+ },
+ {
+  "id": "military",
+  "ko": "군사·전쟁",
+  "cat": "event"
+ },
+ {
+  "id": "fiction_children",
+  "ko": "어린이 창작동화",
+  "cat": "schol"
+ },
+ {
+  "id": "waegu",
+  "ko": "왜구",
+  "cat": "person"
+ },
+ {
+  "id": "maritime",
+  "ko": "해양·교류",
+  "cat": "schol"
+ },
+ {
+  "id": "taebong",
+  "ko": "태봉",
+  "cat": "person"
+ },
+ {
+  "id": "literature",
+  "ko": "한문학·문집",
+  "cat": "work"
+ },
+ {
+  "id": "frontier",
+  "ko": "영토·국경",
+  "cat": "place"
+ },
+ {
+  "id": "women",
+  "ko": "여성사",
+  "cat": "schol"
+ },
+ {
+  "id": "pungsu",
+  "ko": "풍수지리",
+  "cat": "schol"
+ },
+ {
+  "id": "fiction",
+  "ko": "역사소설",
+  "cat": "schol"
+ },
+ {
+  "id": "wanggeon",
+  "ko": "태조 왕건",
+  "cat": "person"
+ },
+ {
+  "id": "geography",
+  "ko": "지리·지리지",
+  "cat": "place"
+ },
+ {
+  "id": "ganghwa",
+  "ko": "강화",
+  "cat": "place"
+ },
+ {
+  "id": "yasa",
+  "ko": "야사·일화",
+  "cat": "schol"
+ },
+ {
+  "id": "sambyeolcho",
+  "ko": "삼별초",
+  "cat": "event"
+ },
+ {
+  "id": "folk_religion",
+  "ko": "토속신앙",
+  "cat": "schol"
+ },
+ {
+  "id": "taoism",
+  "ko": "도교",
+  "cat": "schol"
+ },
+ {
+  "id": "local_admin",
+  "ko": "지방제도",
+  "cat": "inst"
+ },
+ {
+  "id": "komunseo",
+  "ko": "고문서",
+  "cat": "work"
+ },
+ {
+  "id": "gwangjong",
+  "ko": "광종",
+  "cat": "person"
+ },
+ {
+  "id": "printing",
+  "ko": "금속활자·인쇄",
+  "cat": "work"
+ },
+ {
+  "id": "samgukyusa",
+  "ko": "삼국유사",
+  "cat": "work"
+ },
+ {
+  "id": "bulhwa",
+  "ko": "불화",
+  "cat": "work"
+ },
+ {
+  "id": "astronomy",
+  "ko": "천문·역법",
+  "cat": "schol"
+ }
+];
+const BROADER = [
+ [
+  "gwiju_battle",
+  "goryeo_khitan_war"
+ ],
+ [
+  "daegan",
+  "gwanje"
+ ],
+ [
+  "eumseo",
+  "gwanje"
+ ],
+ [
+  "gwageo",
+  "gwanje"
+ ],
+ [
+  "nokbong",
+  "gwanje"
+ ],
+ [
+  "jungchuwon",
+  "gwanje"
+ ],
+ [
+  "sangseoseong",
+  "gwanje"
+ ],
+ [
+  "jungseomunhaseong",
+  "gwanje"
+ ],
+ [
+  "waegu",
+  "japan"
+ ],
+ [
+  "local_admin",
+  "gwanje"
+ ],
+ [
+  "nakseongdae",
+  "gangamchan"
+ ]
+];
+const BOOKS = [
+ {
+  "id": 1,
+  "t": "고려시대 대간제도 연구",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 1987,
+  "s": [
+   "goryeo",
+   "daegan",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 2,
+  "t": "고려시대 음서제와 과거제연구",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 1990,
+  "s": [
+   "goryeo",
+   "eumseo",
+   "gwageo",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 3,
+  "t": "고려시대 개경연구",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 1996,
+  "s": [
+   "goryeo",
+   "gaegyeong"
+  ]
+ },
+ {
+  "id": 4,
+  "t": "고려시대 관계.관직연구",
+  "a": "박용운",
+  "p": "고려대학교출판부",
+  "y": 1997,
+  "s": [
+   "goryeo",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 5,
+  "t": "고려청자",
+  "a": "정양모",
+  "p": "대원사",
+  "y": 1998,
+  "s": [
+   "goryeo",
+   "cheongja"
+  ]
+ },
+ {
+  "id": 6,
+  "t": "고려시대사 연구의 성과와 과제",
+  "a": "박용운",
+  "p": "신서원",
+  "y": 1999,
+  "s": [
+   "goryeo",
+   "historiography"
+  ]
+ },
+ {
+  "id": 7,
+  "t": "고려시대중서문하성재신 연구",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 2000,
+  "s": [
+   "goryeo",
+   "jungseomunhaseong",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 8,
+  "t": "고려시대 상서성 연구",
+  "a": "박용운",
+  "p": "경인문화사",
+  "y": 2000,
+  "s": [
+   "goryeo",
+   "sangseoseong",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 9,
+  "t": "고려시대 중추원연구",
+  "a": "박용운",
+  "p": "고려대학교출판부",
+  "y": 2001,
+  "s": [
+   "goryeo",
+   "jungchuwon",
+   "gwanje"
+  ],
+  "sr": "민족문화연구총서 103"
+ },
+ {
+  "id": 10,
+  "t": "고려사회의 여러 역사상",
+  "a": "박용운",
+  "p": "신서원",
+  "y": 2002,
+  "s": [
+   "goryeo",
+   "social_history"
+  ]
+ },
+ {
+  "id": 11,
+  "t": "고려25년사",
+  "a": "고려역사편찬위원회",
+  "p": "고려역사편찬위원회",
+  "y": 2002,
+  "s": [],
+  "review": "왕조 고려가 아니라 기관·단체 연혁사일 가능성. 원자료 확인 필요"
+ },
+ {
+  "id": 12,
+  "t": "고려 정치제도와 녹봉제도",
+  "a": "최정한",
+  "p": "신서원",
+  "y": 2002,
+  "s": [
+   "goryeo",
+   "nokbong",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 13,
+  "t": "강감찬",
+  "a": "강태희",
+  "p": "뉴턴코리아",
+  "y": 2002,
+  "s": [
+   "gangamchan",
+   "biography_children"
+  ],
+  "sr": "글로리아 위인전기 ; 16",
+  "held": [
+   "관악중앙도서관"
+  ]
+ },
+ {
+  "id": 14,
+  "t": "고려시대 사람들이야기",
+  "a": "박용운",
+  "p": "신서원",
+  "y": 2003,
+  "s": [
+   "goryeo",
+   "social_history"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 15,
+  "t": "고려사의 문벌귀족 가문",
+  "a": "박용운",
+  "p": "신서원",
+  "y": 2003,
+  "s": [
+   "goryeo",
+   "munbeol"
+  ]
+ },
+ {
+  "id": 16,
+  "t": "고려거란전쟁",
+  "a": "안주섭",
+  "p": "경인문화사",
+  "y": 2003,
+  "s": [
+   "goryeo",
+   "khitan",
+   "goryeo_khitan_war"
+  ]
+ },
+ {
+  "id": 17,
+  "t": "고려사절요",
+  "a": "김종서 외",
+  "p": "민족문화추진위원회",
+  "y": 2004,
+  "s": [
+   "goryeo",
+   "goryeosajeolyo"
+  ],
+  "sr": "신편"
+ },
+ {
+  "id": 18,
+  "t": "한국복식도감",
+  "a": "KBS 아트비전",
+  "p": "KBS 아트비전",
+  "y": 2004,
+  "s": [
+   "boksik"
+  ],
+  "review": "한국 복식 일반. 고려 한정 아님 — 수집범위 검토 대상"
+ },
+ {
+  "id": 19,
+  "t": "전쟁과 역사 2",
+  "a": "임용한",
+  "p": "혜안",
+  "y": 2004,
+  "s": [
+   "goryeo",
+   "khitan",
+   "jurchen",
+   "goryeo_khitan_war"
+  ],
+  "sr": "거란 여진과의 전쟁"
+ },
+ {
+  "id": 20,
+  "t": "고려시대연구",
+  "a": "박용운",
+  "p": "한국정신문화연구원",
+  "y": 2004,
+  "s": [
+   "goryeo"
+  ],
+  "sr": "시리즈 2·7·9·11·13"
+ },
+ {
+  "id": 21,
+  "t": "고려 금속문 연구",
+  "a": "김용선",
+  "p": "일조각",
+  "y": 2004,
+  "s": [
+   "goryeo",
+   "epigraphy"
+  ]
+ },
+ {
+  "id": 22,
+  "t": "고려도경",
+  "a": "서긍",
+  "p": "서해문집",
+  "y": 2005,
+  "s": [
+   "goryeo",
+   "goryeodogyeong"
+  ]
+ },
+ {
+  "id": 23,
+  "t": "고려도경",
+  "a": "서긍",
+  "p": "황소자리",
+  "y": 2005,
+  "s": [
+   "goryeo",
+   "goryeodogyeong"
+  ]
+ },
+ {
+  "id": 24,
+  "t": "고려대장경의 연구",
+  "a": "장애순, 정승석, 구영달, 송영지해",
+  "p": "동국대학교출판부",
+  "y": 2006,
+  "s": [
+   "goryeo",
+   "daejanggyeong"
+  ],
+  "review": "저자 표기 확인 필요 — '송영지해'는 역할어가 붙은 오기일 가능성"
+ },
+ {
+  "id": 25,
+  "t": "한국중세 일본사료집성",
+  "a": "김덕원",
+  "p": "경인문화사",
+  "y": 2006,
+  "s": [
+   "goryeo",
+   "japan"
+  ]
+ },
+ {
+  "id": 26,
+  "t": "고려의 고구려계승에 대한 종합적 검토",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 2006,
+  "s": [
+   "goryeo",
+   "goguryeo"
+  ]
+ },
+ {
+  "id": 27,
+  "t": "고려에 시집온 칭기즈칸의 딸들",
+  "a": "이한수",
+  "p": "김영사",
+  "y": 2006,
+  "s": [
+   "goryeo",
+   "mongol",
+   "social_history"
+  ]
+ },
+ {
+  "id": 28,
+  "t": "강감찬",
+  "a": "우봉규",
+  "p": "어린이중앙",
+  "y": 2006,
+  "s": [
+   "gangamchan",
+   "biography_children"
+  ],
+  "sr": "새시대 큰인물 8",
+  "held": [
+   "성현동작은도서관",
+   "글빛정보도서관",
+   "보물섬작은도서관",
+   "관악중앙도서관"
+  ]
+ },
+ {
+  "id": 29,
+  "t": "고려시대사의 길잡이",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 2007,
+  "s": [
+   "goryeo",
+   "historiography"
+  ]
+ },
+ {
+  "id": 30,
+  "t": "고려말 조선초 사패전연구",
+  "a": "이숙경",
+  "p": "일조각",
+  "y": 2007,
+  "s": [
+   "goryeo",
+   "joseon",
+   "toji"
+  ]
+ },
+ {
+  "id": 31,
+  "t": "인왕산 호랑이와 강감찬",
+  "a": "선안나",
+  "p": "문원",
+  "y": 2007,
+  "s": [
+   "gangamchan",
+   "folktale"
+  ],
+  "sr": "이야기 쏙쏙 우리문화 서울·경기·인천 편 1",
+  "held": [
+   "낙성대공원도서관",
+   "성현동작은도서관",
+   "글빛정보도서관"
+  ]
+ },
+ {
+  "id": 32,
+  "t": "전쟁과 역사 3",
+  "a": "임용한",
+  "p": "혜안",
+  "y": 2008,
+  "s": [
+   "goryeo",
+   "mongol"
+  ],
+  "sr": "전란의 시대 고려 후기편 · 완결"
+ },
+ {
+  "id": 33,
+  "t": "고려왕실의 도자기",
+  "a": "국립중앙박물관",
+  "p": "국립중앙박물관",
+  "y": 2008,
+  "s": [
+   "goryeo",
+   "cheongja",
+   "royalty"
+  ]
+ },
+ {
+  "id": 34,
+  "t": "고려시대사",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 2008,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 35,
+  "t": "고려무인정권기 문사연구",
+  "a": "황병서",
+  "p": "경인문화사",
+  "y": 2008,
+  "s": [
+   "goryeo",
+   "muin"
+  ],
+  "sr": "경인한국학총서"
+ },
+ {
+  "id": 36,
+  "t": "강감찬",
+  "a": "양혜정",
+  "p": "기탄동화",
+  "y": 2008,
+  "s": [
+   "gangamchan",
+   "biography_children",
+   "gwiju_battle"
+  ],
+  "sr": "우리 위인 동화 24",
+  "held": [
+   "성현동작은도서관"
+  ]
+ },
+ {
+  "id": 37,
+  "t": "팍스몽골리카와 고려",
+  "a": "브르지기다이 에르데니 바타르",
+  "p": "혜안",
+  "y": 2009,
+  "s": [
+   "goryeo",
+   "mongol"
+  ]
+ },
+ {
+  "id": 38,
+  "t": "청소년을 위한 고려유사",
+  "a": "박영수",
+  "p": "살림프랜드스",
+  "y": 2009,
+  "s": [
+   "goryeo",
+   "youth_nonfiction"
+  ]
+ },
+ {
+  "id": 39,
+  "t": "읽기 쉬운 고려왕이야기",
+  "a": "한국인물사연구원",
+  "p": "타오름",
+  "y": 2009,
+  "s": [
+   "goryeo",
+   "royalty",
+   "youth_nonfiction"
+  ]
+ },
+ {
+  "id": 40,
+  "t": "국역 고려사열전편 세트",
+  "a": "편집부",
+  "p": "경인문화사",
+  "y": 2009,
+  "s": [
+   "goryeo",
+   "goryeosa"
+  ],
+  "sr": "전 12권"
+ },
+ {
+  "id": 41,
+  "t": "고려사 백관지 역주",
+  "a": "박용운",
+  "p": "신서원",
+  "y": 2009,
+  "s": [
+   "goryeo",
+   "goryeosa",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 42,
+  "t": "고려 조선의 친족용어와 혈연의식",
+  "a": "이종서",
+  "p": "신구문화사",
+  "y": 2009,
+  "s": [
+   "goryeo",
+   "joseon",
+   "social_history"
+  ],
+  "sr": "역사문화연구총서"
+ },
+ {
+  "id": 43,
+  "t": "강감찬 : 귀주대첩의 고려 명장",
+  "a": "김경희",
+  "p": "흙마당어린이",
+  "y": 2009,
+  "s": [
+   "gangamchan",
+   "biography_children",
+   "gwiju_battle"
+  ],
+  "sr": "포커스 한국위인동화",
+  "held": [
+   "꿈나무영유아도서관",
+   "은천동작은도서관"
+  ]
+ },
+ {
+  "id": 44,
+  "t": "강감찬",
+  "a": "한정기",
+  "p": "비룡소",
+  "y": 2009,
+  "s": [
+   "gangamchan",
+   "biography_children"
+  ],
+  "sr": "새싹 인물전 9",
+  "held": [
+   "관악중앙도서관",
+   "우리작은도서관",
+   "조원도서관",
+   "낙성대공원도서관",
+   "다사랑작은도서관"
+  ]
+ },
+ {
+  "id": 45,
+  "t": "강감찬",
+  "a": "프뢰벨미디어 편집부",
+  "p": "프뢰벨미디어",
+  "y": 2009,
+  "s": [
+   "gangamchan",
+   "biography_children"
+  ],
+  "sr": "프뢰벨 우리역사 파노라마 33 · 고려인물",
+  "held": [
+   "글빛정보도서관"
+  ]
+ },
+ {
+  "id": 46,
+  "t": "강감찬",
+  "a": "김경희",
+  "p": "흙마당어린이",
+  "y": 2009,
+  "s": [
+   "gangamchan",
+   "biography_children",
+   "gwiju_battle"
+  ],
+  "sr": "교과서에 나오는 논술 위인 시리즈 22",
+  "held": [
+   "은천동작은도서관"
+  ]
+ },
+ {
+  "id": 47,
+  "t": "강감찬",
+  "a": "김진섭",
+  "p": "지경사",
+  "y": 2009,
+  "s": [
+   "gangamchan",
+   "biography_children",
+   "gwiju_battle"
+  ],
+  "sr": "역사 인물 탐구 34",
+  "held": [
+   "조원도서관",
+   "낙성대공원도서관",
+   "성현동작은도서관"
+  ]
+ },
+ {
+  "id": 48,
+  "t": "전염병의 문화사: 고려시대를 보는 또 하나의 시선",
+  "a": "김영미, 이현숙, 김순자, 이정숙, 권복규",
+  "p": "혜안",
+  "y": 2010,
+  "s": [
+   "goryeo",
+   "medicine"
+  ]
+ },
+ {
+  "id": 49,
+  "t": "고려양반국가의 성립과 전개",
+  "a": "김당택",
+  "p": "전남대학교출판부",
+  "y": 2010,
+  "s": [
+   "goryeo",
+   "yangban"
+  ]
+ },
+ {
+  "id": 50,
+  "t": "고려시기 역사의 몇가지 문제",
+  "a": "박용운",
+  "p": "일지사",
+  "y": 2010,
+  "s": [
+   "goryeo",
+   "historiography"
+  ]
+ },
+ {
+  "id": 51,
+  "t": "고려동경: 거울에 담긴 고려사람들의 삶",
+  "a": "국립중앙박물관 미술부",
+  "p": "국립중앙박물관",
+  "y": 2010,
+  "s": [
+   "goryeo",
+   "crafts"
+  ]
+ },
+ {
+  "id": 52,
+  "t": "고려건국기의 사회동향연구",
+  "a": "이재범",
+  "p": "경인문화사",
+  "y": 2010,
+  "s": [
+   "goryeo",
+   "social_history"
+  ],
+  "sr": "경인한국학연구총서 87"
+ },
+ {
+  "id": 53,
+  "t": "푸른 숲 큰나무 [전자책]",
+  "a": "역사·인물편찬위원회",
+  "p": "역사디딤돌",
+  "y": 2010,
+  "s": [
+   "gangamchan",
+   "biography_children"
+  ],
+  "held": [
+   "관악중앙도서관"
+  ],
+  "review": "54번의 전자책 판본으로 추정(FRBR 관계) — 소장처 표기 '디지털자료실'"
+ },
+ {
+  "id": 54,
+  "t": "푸른 숲 큰 나무: 강감찬",
+  "a": "역사·인물편찬위원회",
+  "p": "역사디딤돌",
+  "y": 2010,
+  "s": [
+   "gangamchan",
+   "biography_children"
+  ],
+  "sr": "역사를 바꾼 인물·인물을 키운 역사 028",
+  "held": [
+   "낙성대공원도서관",
+   "은천동작은도서관",
+   "용꿈꾸는작은도서관"
+  ]
+ },
+ {
+  "id": 55,
+  "t": "한권으로 읽는 고려왕조실록",
+  "a": "백영규",
+  "p": "웅진닷컴",
+  "y": 2011,
+  "s": [
+   "goryeo",
+   "royalty"
+  ],
+  "sr": "개정증보판",
+  "review": "저자명 확인 필요 — '박영규'의 오기 가능성"
+ },
+ {
+  "id": 56,
+  "t": "한국중세 토지제도사: 고려",
+  "a": "이경식",
+  "p": "서울대학교출판문화원",
+  "y": 2011,
+  "s": [
+   "goryeo",
+   "toji"
+  ]
+ },
+ {
+  "id": 57,
+  "t": "한국금석문집성",
+  "a": "임세권",
+  "p": "한국국학진흥원",
+  "y": 2011,
+  "s": [
+   "goryeo",
+   "epigraphy"
+  ],
+  "sr": "19~32권"
+ },
+ {
+  "id": 58,
+  "t": "고려의 양반과 양반전 연구",
+  "a": "윤한택",
+  "p": "경인문화사",
+  "y": 2011,
+  "s": [
+   "goryeo",
+   "yangban",
+   "toji"
+  ],
+  "sr": "경인한국학연구총서 92"
+ },
+ {
+  "id": 59,
+  "t": "고려의 불교의례와 문화",
+  "a": "안지원",
+  "p": "서울대학교출판문화원",
+  "y": 2011,
+  "s": [
+   "goryeo",
+   "buddhism"
+  ],
+  "sr": "연등·팔관회와 제석도량을 중심으로"
+ },
+ {
+  "id": 60,
+  "t": "고려 개경의 편제와 궁궐",
+  "a": "고려사학연구회",
+  "p": "경인문화사",
+  "y": 2011,
+  "s": [
+   "goryeo",
+   "gaegyeong",
+   "royalty"
+  ],
+  "sr": "고려사학회연구총서 23"
+ },
+ {
+  "id": 61,
+  "t": "고려 초조대장경: 세상을 움직이는 다섯가지 힘",
+  "a": "대구MBC특집 다큐멘터리 2부작",
+  "p": "마더북스",
+  "y": 2012,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 62,
+  "t": "혼혈왕 충선왕: 그 경계인 삶과 시대",
+  "a": "이승한",
+  "p": "푸른역사",
+  "y": 2012,
+  "s": [
+   "goryeo",
+   "mongol",
+   "royalty"
+  ]
+ },
+ {
+  "id": 63,
+  "t": "이야기 고려왕조실록",
+  "a": "한국인문사연구원",
+  "p": "타오름",
+  "y": 2012,
+  "s": [
+   "goryeo",
+   "royalty"
+  ],
+  "sr": "",
+  "review": "저자 표기 불일치 — 39번 '한국인물사연구원'과 동일 기관 추정"
+ },
+ {
+  "id": 64,
+  "t": "역주 고려 묘지명 집성",
+  "a": "김용선",
+  "p": "한림대학교출판부",
+  "y": 2012,
+  "s": [
+   "goryeo",
+   "epigraphy"
+  ],
+  "sr": "중판"
+ },
+ {
+  "id": 65,
+  "t": "고려사 선거지 역주",
+  "a": "박용운",
+  "p": "경인문화사",
+  "y": 2012,
+  "s": [
+   "goryeo",
+   "goryeosa",
+   "gwageo",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 66,
+  "t": "고려보고의 비밀",
+  "a": "김일환",
+  "p": "책내음",
+  "y": 2012,
+  "s": [
+   "goryeo"
+  ],
+  "review": "표제만으로 장르·주제 판별 불가 — 원자료 확인 필요"
+ },
+ {
+  "id": 67,
+  "t": "고려대장경과 교장의 연구",
+  "a": "천혜봉",
+  "p": "범우",
+  "y": 2012,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 68,
+  "t": "고려 묘지명 집성",
+  "a": "김용선",
+  "p": "한림대학교출판부",
+  "y": 2012,
+  "s": [
+   "goryeo",
+   "epigraphy"
+  ]
+ },
+ {
+  "id": 69,
+  "t": "한국사 21: 고려 후기의 사상과 문화",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "thought"
+  ],
+  "sr": "한국사(국사편찬위원회) 21"
+ },
+ {
+  "id": 70,
+  "t": "한국사 20: 고려 후기의 사회와 대외관계",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "social_history",
+   "foreign_relations"
+  ],
+  "sr": "한국사(국사편찬위원회) 20"
+ },
+ {
+  "id": 71,
+  "t": "한국사 18: 고려 무신정권",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "muin"
+  ],
+  "sr": "한국사(국사편찬위원회) 18"
+ },
+ {
+  "id": 72,
+  "t": "한국사 17: 고려 전기의 교육과 문화",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "education"
+  ],
+  "sr": "한국사(국사편찬위원회) 17"
+ },
+ {
+  "id": 73,
+  "t": "한국사 16: 고려 전기의 종교와 사상",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "buddhism",
+   "thought"
+  ],
+  "sr": "한국사(국사편찬위원회) 16"
+ },
+ {
+  "id": 74,
+  "t": "한국사 15: 고려 전기의 사회와 대외관계",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "social_history",
+   "foreign_relations"
+  ],
+  "sr": "한국사(국사편찬위원회) 15"
+ },
+ {
+  "id": 75,
+  "t": "한국사 14: 고려 전기의 경제구조",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "economy"
+  ],
+  "sr": "한국사(국사편찬위원회) 14"
+ },
+ {
+  "id": 76,
+  "t": "한국사 13: 고려 전성기의 정치연구",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "gwanje"
+  ],
+  "sr": "한국사(국사편찬위원회) 13"
+ },
+ {
+  "id": 77,
+  "t": "한국사 12: 고려왕조의 성립과 발전",
+  "a": "국사편찬위원회",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [
+   "goryeo"
+  ],
+  "sr": "한국사(국사편찬위원회) 12"
+ },
+ {
+  "id": 78,
+  "t": "이색의 삶과 생각",
+  "a": "이익주",
+  "p": "일조각",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "yisaek",
+   "thought"
+  ]
+ },
+ {
+  "id": 79,
+  "t": "왕의 서커스: 고려와 조선왕들의 오락과 문화",
+  "a": "윤아영",
+  "p": "민속원",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "joseon",
+   "royalty",
+   "social_history"
+  ]
+ },
+ {
+  "id": 80,
+  "t": "꼬리에 꼬리를 무는 한국사 인물이야기",
+  "a": "김상훈",
+  "p": "탐구당",
+  "y": 2013,
+  "s": [],
+  "review": "한국사 전반 — 고려 한정 아님. 수집범위 검토 대상"
+ },
+ {
+  "id": 81,
+  "t": "그림으로 읽는 고려도경: 송나라 사신의 눈에 비친 고려의 모든 것",
+  "a": "김대식",
+  "p": "역사인",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "goryeodogyeong"
+  ]
+ },
+ {
+  "id": 82,
+  "t": "고려시대 지방분묘의 특징과 변화",
+  "a": "주영민",
+  "p": "혜안",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "archaeology"
+  ]
+ },
+ {
+  "id": 83,
+  "t": "고려사람들은 어떻게 싸웠을까: 중고생을 위한 이야기 고려사",
+  "a": "강건우, 강창우",
+  "p": "늘푸른소나무",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "military",
+   "youth_nonfiction"
+  ]
+ },
+ {
+  "id": 84,
+  "t": "고려사 여복지 역주",
+  "a": "박용운",
+  "p": "경인문화사",
+  "y": 2013,
+  "s": [
+   "goryeo",
+   "goryeosa",
+   "boksik"
+  ]
+ },
+ {
+  "id": 85,
+  "t": "강감찬과 납작코 오빛나",
+  "a": "안명옥",
+  "p": "주니어김영사",
+  "y": 2013,
+  "s": [
+   "gangamchan",
+   "fiction_children"
+  ],
+  "sr": "콤플렉스 극복 동화 2",
+  "held": [
+   "조원도서관",
+   "우리작은도서관"
+  ]
+ },
+ {
+  "id": 86,
+  "t": "심리학으로 본 고려왕조실록",
+  "a": "석산",
+  "p": "평단",
+  "y": 2014,
+  "s": [
+   "goryeo",
+   "royalty"
+  ]
+ },
+ {
+  "id": 87,
+  "t": "고려중앙정치제도사의 신연구",
+  "a": "김명진",
+  "p": "혜안",
+  "y": 2014,
+  "s": [
+   "goryeo",
+   "gwanje"
+  ],
+  "sr": "한국중세사학연구총서"
+ },
+ {
+  "id": 88,
+  "t": "고려전쟁 생중계",
+  "a": "정명섭",
+  "p": "북하우스",
+  "y": 2014,
+  "s": [
+   "goryeo",
+   "military"
+  ],
+  "sr": "고려의 역사를 뒤흔든 10번의 전투"
+ },
+ {
+  "id": 89,
+  "t": "고려전기 개간제도 연구",
+  "a": "박재우",
+  "p": "새문사",
+  "y": 2014,
+  "s": [
+   "goryeo",
+   "toji"
+  ]
+ },
+ {
+  "id": 90,
+  "t": "고려왕조 실록(고려후기): 고종에서 공양왕",
+  "a": "조병찬",
+  "p": "예벗",
+  "y": 2014,
+  "s": [
+   "goryeo",
+   "royalty"
+  ]
+ },
+ {
+  "id": 91,
+  "t": "고려사세가초기편 보유",
+  "a": "장동익",
+  "p": "경인문화사",
+  "y": 2014,
+  "s": [
+   "goryeo",
+   "goryeosa"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 92,
+  "t": "고려대장경의 구성과 저본 및 판각에 대한 연구",
+  "a": "유부현",
+  "p": "시간의 물레",
+  "y": 2014,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 93,
+  "t": "거란의 10만 대군을 물리친 고려의 명장: 강감찬",
+  "a": "이동렬",
+  "p": "효리원",
+  "y": 2014,
+  "s": [
+   "gangamchan",
+   "biography_children",
+   "khitan",
+   "goryeo_khitan_war"
+  ],
+  "sr": "저학년 교과서 위인전 23",
+  "held": [
+   "관악중앙도서관",
+   "조원도서관",
+   "용꿈꾸는작은도서관",
+   "굴렁쇠작은도서관"
+  ]
+ },
+ {
+  "id": 94,
+  "t": "황국사관과 고려말 왜구: 일본 근대정치의 학문개입과 역사인식",
+  "a": "이영",
+  "p": "에피스테메",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "waegu",
+   "historiography"
+  ]
+ },
+ {
+  "id": 95,
+  "t": "한국해양연구사: 백제에서 고려 1천년 바다 역사",
+  "a": "윤용혁",
+  "p": "주류성",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "maritime"
+  ]
+ },
+ {
+  "id": 96,
+  "t": "태봉과 고려: 석조미술로 보는 역사",
+  "a": "정성권",
+  "p": "학연문화사",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "taebong",
+   "crafts"
+  ]
+ },
+ {
+  "id": 97,
+  "t": "졸고천백 역주",
+  "a": "이진한",
+  "p": "경인문화사",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "literature"
+  ],
+  "sr": "고려사학회연구총서 25"
+ },
+ {
+  "id": 98,
+  "t": "이이화 한국사 이야기: 최초의 민족통일국가 고려",
+  "a": "이이화",
+  "p": "한길사",
+  "y": 2015,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 99,
+  "t": "위대한 한국상인: 7000년 한상의 뿌리를 찾아서",
+  "a": "공창석",
+  "p": "박영사",
+  "y": 2015,
+  "s": [
+   "economy"
+  ],
+  "review": "한국사 전반 — 고려 한정 아님. 수집범위 검토 대상"
+ },
+ {
+  "id": 100,
+  "t": "압록강과 고려의 북계",
+  "a": "윤한택, 복대기 외 5인",
+  "p": "주류성",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "frontier"
+  ]
+ },
+ {
+  "id": 101,
+  "t": "서산 부석사 관음상의 눈물: 약탈당한 고려문화재와 대마도 왜구 이야기",
+  "a": "김경임",
+  "p": "곰시",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "waegu",
+   "buddhism",
+   "crafts"
+  ]
+ },
+ {
+  "id": 102,
+  "t": "몽골은 왜 고려를 멸망시키지 않았나",
+  "a": "김운회",
+  "p": "위즈덤하우스",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "mongol"
+  ]
+ },
+ {
+  "id": 103,
+  "t": "고려의 왕비: 내조자와 국모로서의 삶",
+  "a": "김갑동, 김아네스, 김창현, 이숙경",
+  "p": "경인문화사",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "royalty",
+   "women"
+  ],
+  "sr": "한국인물사총서 8"
+ },
+ {
+  "id": 104,
+  "t": "고려의 국왕: 제왕으로 개인으로서의 삶",
+  "a": "김갑동, 김아네스, 김창현, 이숙경",
+  "p": "경인문화사",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "royalty"
+  ],
+  "sr": "한국인물사총서 8"
+ },
+ {
+  "id": 105,
+  "t": "고려왕조의 위기, 혹은 세계화 시대",
+  "a": "이승환",
+  "p": "푸른역사",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "mongol"
+  ],
+  "review": "저자 표기 확인 — 62번 '이승한'과 동일 저자 추정(전거 불일치)"
+ },
+ {
+  "id": 106,
+  "t": "고려왕조실록에서 배우는 리더의 자격",
+  "a": "석산",
+  "p": "북오션",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "royalty"
+  ]
+ },
+ {
+  "id": 107,
+  "t": "고려시대 역연대 자료집",
+  "a": "이남규, 도영아, 김정주, 정은미",
+  "p": "학연문화사",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "archaeology"
+  ]
+ },
+ {
+  "id": 108,
+  "t": "고려사의 재발견",
+  "a": "박종기",
+  "p": "휴머니스트",
+  "y": 2015,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 109,
+  "t": "고려 초조대장경과 동아시아의 대장경",
+  "a": "유부현, 팡광창, 리지닝, 박용진, 아카오 에이케이",
+  "p": "한국학중앙연구원",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 110,
+  "t": "고려 조선 국도풍수론과 정치이념",
+  "a": "장지연",
+  "p": "신구문화사",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "joseon",
+   "pungsu"
+  ]
+ },
+ {
+  "id": 111,
+  "t": "고려 재조대장경과 동아시아 대장경",
+  "a": "유부현, 팡광창, 리지닝, 박용진, 아카오 에이케이",
+  "p": "한국학중앙연구원",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ],
+  "sr": "문명과가치총서 3, 4"
+ },
+ {
+  "id": 112,
+  "t": "개성부원록",
+  "a": "김인호, 노혜경, 윤훈표, 임용한",
+  "p": "혜안",
+  "y": 2015,
+  "s": [
+   "goryeo",
+   "gaegyeong"
+  ],
+  "sr": "강화고려역사재단 학술총서 1"
+ },
+ {
+  "id": 113,
+  "t": "강감찬 [전자책]",
+  "a": "김선태",
+  "p": "디지털문학",
+  "y": 2015,
+  "s": [
+   "gangamchan",
+   "fiction"
+  ],
+  "sr": "",
+  "held": [
+   "관악중앙도서관"
+  ]
+ },
+ {
+  "id": 114,
+  "t": "강감찬 [전자책]",
+  "a": "김선태",
+  "p": "디지털문학",
+  "y": 2015,
+  "s": [
+   "gangamchan",
+   "fiction"
+  ],
+  "sr": "",
+  "held": [
+   "관악중앙도서관"
+  ]
+ },
+ {
+  "id": 115,
+  "t": "강감찬 [전자책]",
+  "a": "김선태",
+  "p": "디지털문학",
+  "y": 2015,
+  "s": [
+   "gangamchan",
+   "fiction"
+  ],
+  "sr": "",
+  "held": [
+   "관악중앙도서관"
+  ]
+ },
+ {
+  "id": 116,
+  "t": "강감찬 설화 [전자책]",
+  "a": "최자",
+  "p": "도디드",
+  "y": 2015,
+  "s": [
+   "gangamchan",
+   "folktale",
+   "literature"
+  ],
+  "sr": "한국문학전집 9",
+  "held": [
+   "관악중앙도서관"
+  ]
+ },
+ {
+  "id": 117,
+  "t": "주영편",
+  "a": "정동유 저, 안대회 외 1인 역",
+  "p": "휴머니스트",
+  "y": 2016,
+  "s": [
+   "joseon",
+   "literature"
+  ],
+  "review": "조선 후기 백과전서 — 강감찬 관련 기사 수록 여부 확인 필요(수집범위)"
+ },
+ {
+  "id": 118,
+  "t": "이야기 우리문화",
+  "a": "김진섭",
+  "p": "지성사",
+  "y": 2016,
+  "s": [],
+  "review": "한국문화 전반 — 고려 한정 아님. 수집범위 검토 대상"
+ },
+ {
+  "id": 119,
+  "t": "스토리텔링 한국사",
+  "a": "정현",
+  "p": "서림당",
+  "y": 2016,
+  "s": [],
+  "review": "한국사 전반 — 고려 한정 아님. 수집범위 검토 대상"
+ },
+ {
+  "id": 120,
+  "t": "글로벌 한국사, 그날 세계사",
+  "a": "인원복, 신병주 외 2명",
+  "p": "휴머니스트",
+  "y": 2016,
+  "s": [],
+  "review": "한국사 전반 — 수집범위 검토. 저자 '인원복'은 '이원복' 오기 추정"
+ },
+ {
+  "id": 121,
+  "t": "교감 고려사절요",
+  "a": "노명호 외",
+  "p": "집문당",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "goryeosajeolyo"
+  ]
+ },
+ {
+  "id": 122,
+  "t": "고려 태조왕건",
+  "a": "김성한",
+  "p": "산천재",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "wanggeon",
+   "fiction"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 123,
+  "t": "고려시대의 삶과 노래",
+  "a": "이정선",
+  "p": "보고사",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "literature",
+   "social_history"
+  ]
+ },
+ {
+  "id": 124,
+  "t": "고려시대 사람들의 의복식생활",
+  "a": "박용운",
+  "p": "경인문화사",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "boksik",
+   "social_history"
+  ]
+ },
+ {
+  "id": 125,
+  "t": "고려시대 공공성",
+  "a": "이희주, 신복룡, 이남희, 정선용, 윤대식, 노병호, 나가하라 준코, 아오 아스카",
+  "p": "한국학중앙연구원",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "thought"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 126,
+  "t": "고려사지와 건축고고",
+  "a": "조원창",
+  "p": "서경문화사",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "buddhism",
+   "archaeology"
+  ]
+ },
+ {
+  "id": 127,
+  "t": "고려사 지리지 역주",
+  "a": "박종기",
+  "p": "한국학중앙연구원",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "goryeosa",
+   "geography"
+  ]
+ },
+ {
+  "id": 128,
+  "t": "고려사 연구의 기초",
+  "a": "장동익",
+  "p": "경인문화사",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "goryeosa",
+   "historiography"
+  ]
+ },
+ {
+  "id": 129,
+  "t": "고려 강화도성",
+  "a": "이희인",
+  "p": "혜안",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "ganghwa",
+   "archaeology"
+  ],
+  "sr": "한국중세사학회연구총서 8"
+ },
+ {
+  "id": 130,
+  "t": "13~14세기 고려몽골관계연구: 정동행성승상 부마 고려국왕 그 복합적 위상에 대한 탐구",
+  "a": "이명미",
+  "p": "혜안",
+  "y": 2016,
+  "s": [
+   "goryeo",
+   "mongol",
+   "foreign_relations",
+   "royalty"
+  ]
+ },
+ {
+  "id": 131,
+  "t": "강감찬",
+  "a": "권태문",
+  "p": "한국셰익스피어",
+  "y": 2016,
+  "s": [
+   "gangamchan",
+   "biography_children",
+   "khitan"
+  ],
+  "sr": "How so? 필독도서 세계 큰인물 14",
+  "held": [
+   "낙성대공원도서관",
+   "울타리작은도서관"
+  ]
+ },
+ {
+  "id": 132,
+  "t": "거란의 10만 대군을 물리친 고려의 명장: 강감찬",
+  "a": "이동렬",
+  "p": "효리원",
+  "y": 2016,
+  "s": [
+   "gangamchan",
+   "biography_children",
+   "khitan",
+   "goryeo_khitan_war"
+  ],
+  "sr": "저학년 교과서 위인전 23",
+  "held": [
+   "용꿈꾸는작은도서관",
+   "글사랑작은도서관",
+   "어울작은도서관",
+   "보물섬작은도서관"
+  ],
+  "review": "93번과 서지 동일·발행년만 상이(2014/2016) — 중쇄의 중복 등재 또는 발행년 오기"
+ },
+ {
+  "id": 133,
+  "t": "아시아의 역사를 바꾼 강감찬: 술술 읽히는 우리 아이 역사 이야기",
+  "a": "에픽켄",
+  "p": "에픽캔",
+  "y": 2016,
+  "s": [
+   "gangamchan",
+   "biography_children"
+  ],
+  "held": [
+   "관악중앙도서관",
+   "용꿈꾸는작은도서관",
+   "낙성대공원도서관"
+  ]
+ },
+ {
+  "id": 134,
+  "t": "한중연사: 한중의 인연 역사로 만나다",
+  "a": "한중문화우호협회",
+  "p": "부민문화사",
+  "y": 2017,
+  "s": [
+   "foreign_relations"
+  ],
+  "review": "한중관계사 전반 — 고려 한정 아님. 수집범위 검토"
+ },
+ {
+  "id": 135,
+  "t": "한권으로 읽는 한국의 야사",
+  "a": "김형광",
+  "p": "시아",
+  "y": 2017,
+  "s": [
+   "yasa"
+  ],
+  "review": "한국 야사 전반 — 수집범위 검토. 137번과 판본 관계 확인 필요"
+ },
+ {
+  "id": 136,
+  "t": "한권으로 읽는 이야기 한국사",
+  "a": "김도훈",
+  "p": "아이템북스",
+  "y": 2017,
+  "s": [],
+  "review": "한국사 전반 — 수집범위 검토"
+ },
+ {
+  "id": 137,
+  "t": "한국의 야사",
+  "a": "김형광",
+  "p": "시아",
+  "y": 2017,
+  "s": [
+   "yasa"
+  ],
+  "review": "한국 야사 전반 — 수집범위 검토. 135번과 판본 관계 확인 필요"
+ },
+ {
+  "id": 138,
+  "t": "하룻밤에 읽는 고려야사: 고려 500년 야사를 하룻밤에 읽는다",
+  "a": "김형광",
+  "p": "시아",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "yasa"
+  ]
+ },
+ {
+  "id": 139,
+  "t": "풀뿌리 한국사",
+  "a": "고성윤",
+  "p": "나는나다",
+  "y": 2017,
+  "s": [],
+  "review": "한국사 전반 — 수집범위 검토"
+ },
+ {
+  "id": 140,
+  "t": "장콩 선생님과 함께 묻고 답하는 한국사카페 2: 고려시대부터 조선후기까지",
+  "a": "장용준",
+  "p": "북멘토",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "joseon",
+   "youth_nonfiction"
+  ],
+  "sr": "개정증보판"
+ },
+ {
+  "id": 141,
+  "t": "삼별초와 동아시아",
+  "a": "제주국립박물관",
+  "p": "그라픽네트",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "sambyeolcho",
+   "mongol"
+  ],
+  "sr": "고려건국 1100주년 기념"
+ },
+ {
+  "id": 142,
+  "t": "불화의 비밀",
+  "a": "자현",
+  "p": "조계종출판사",
+  "y": 2017,
+  "s": [
+   "buddhism",
+   "bulhwa"
+  ],
+  "review": "불화 전반 — 고려불화 수록 추정이나 범위 확인 필요"
+ },
+ {
+  "id": 143,
+  "t": "돌도끼에서 4차산업을 보다: 선사부터 고려창업까지",
+  "a": "석산",
+  "p": "평단",
+  "y": 2017,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 144,
+  "t": "다시찾는 우리역사 1: 고려시대",
+  "a": "한영우",
+  "p": "경세원",
+  "y": 2017,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 145,
+  "t": "교양으로 읽는 고려사: 고려 500년 역사 인물로 읽는다",
+  "a": "송은명",
+  "p": "시아컨텐츠",
+  "y": 2017,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 146,
+  "t": "고려의 토속 신앙",
+  "a": "김갑동",
+  "p": "혜안",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "folk_religion"
+  ]
+ },
+ {
+  "id": 147,
+  "t": "고려의 성물, 불복장",
+  "a": "정은우, 신은제",
+  "p": "경인문화사",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "buddhism",
+   "crafts"
+  ]
+ },
+ {
+  "id": 148,
+  "t": "고려 역사상의 탐색: 국가체계에서 가족과 삶의 문제까지",
+  "a": "노명호, 서성호, 이익주, 박재우, 윤경진 외",
+  "p": "집문당",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "social_history",
+   "thought"
+  ]
+ },
+ {
+  "id": 149,
+  "t": "고려시대사 1: 정치와 경제",
+  "a": "김인호, 박재우 외 2인",
+  "p": "푸른역사",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "gwanje",
+   "economy"
+  ]
+ },
+ {
+  "id": 150,
+  "t": "고려시대 상주계수관 연구",
+  "a": "한기문",
+  "p": "경인문화사",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "local_admin"
+  ]
+ },
+ {
+  "id": 151,
+  "t": "고려시대 사람들의 사유와 집단심성",
+  "a": "김인호",
+  "p": "혜안",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "thought",
+   "social_history"
+  ]
+ },
+ {
+  "id": 152,
+  "t": "고려시대 도교",
+  "a": "김철웅",
+  "p": "경인문화사",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "taoism"
+  ]
+ },
+ {
+  "id": 153,
+  "t": "고려시기 지방제도 연구",
+  "a": "박종진",
+  "p": "서울대학교출판문화원",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "local_admin"
+  ]
+ },
+ {
+  "id": 154,
+  "t": "고려사회의 이모저모",
+  "a": "김호동",
+  "p": "경인문화사",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "social_history"
+  ]
+ },
+ {
+  "id": 155,
+  "t": "고려사람들: 까레이스키 — 유라시아대륙 한민족통사",
+  "a": "이창주",
+  "p": "국제한민족재단",
+  "y": 2017,
+  "s": [],
+  "review": "'고려사람'은 중앙아시아 고려인(까레이스키) — 왕조 고려와 동음이의. 키워드 수집의 함정 사례"
+ },
+ {
+  "id": 156,
+  "t": "고려말 조선초 왕명문서연구",
+  "a": "박성호",
+  "p": "한국학술정보",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "joseon",
+   "komunseo"
+  ]
+ },
+ {
+  "id": 157,
+  "t": "고려도읍과 동아시아 도읍의 비교연구",
+  "a": "김창현",
+  "p": "새문사",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "gaegyeong"
+  ]
+ },
+ {
+  "id": 158,
+  "t": "고려 역사상의 탐색: 국가체계에서 가족과 삶의 문제까지",
+  "a": "노명호, 서성호, 이익주 외",
+  "p": "집문당",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "social_history",
+   "thought"
+  ],
+  "review": "148번과 완전 동일 서지(저자 표기만 축약) — 중복 등재"
+ },
+ {
+  "id": 159,
+  "t": "고려 대몽항쟁과 축성",
+  "a": "김호준",
+  "p": "서경문화사",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "mongol",
+   "military"
+  ]
+ },
+ {
+  "id": 160,
+  "t": "개혁군주 광종: 500년 고려제국 설계자",
+  "a": "우재훈",
+  "p": "북랩",
+  "y": 2017,
+  "s": [
+   "goryeo",
+   "gwangjong",
+   "royalty"
+  ]
+ },
+ {
+  "id": 161,
+  "t": "훈요십조의 진실과 호남 황해인들이 개국한 코리아",
+  "a": "문경주",
+  "p": "밥북",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "wanggeon"
+  ]
+ },
+ {
+  "id": 162,
+  "t": "통제와 저항, 인류역사의 변주",
+  "a": "한영화, 권순홍 외 9명",
+  "p": "선인",
+  "y": 2018,
+  "s": [],
+  "review": "인류사 일반 — 고려 관련 수록 여부 확인 필요(수집범위)"
+ },
+ {
+  "id": 163,
+  "t": "통일과 전쟁, 고려태조 왕건",
+  "a": "김명진",
+  "p": "혜안",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "wanggeon",
+   "military"
+  ],
+  "sr": "한국중세사학회연구총서"
+ },
+ {
+  "id": 164,
+  "t": "태평한 변방: 고려의 대거란 외교와 그 소산",
+  "a": "이미지",
+  "p": "경인문화사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "khitan",
+   "foreign_relations"
+  ]
+ },
+ {
+  "id": 165,
+  "t": "지식정보의 소통과 한국금속활자 발달사: 고려시대",
+  "a": "남권희",
+  "p": "경북대학교출판부",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "printing"
+  ]
+ },
+ {
+  "id": 166,
+  "t": "재미있는 한국사",
+  "a": "김제방",
+  "p": "문학공원",
+  "y": 2018,
+  "s": [],
+  "review": "한국사 전반 — 수집범위 검토"
+ },
+ {
+  "id": 167,
+  "t": "원간섭기 고려의 측근정치와 개혁정치",
+  "a": "김광철",
+  "p": "경인문화사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "mongol",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 168,
+  "t": "아름다운 우리 찻그릇",
+  "a": "윤용이",
+  "p": "이른아침",
+  "y": 2018,
+  "s": [
+   "crafts"
+  ],
+  "review": "한국 도자 전반 — 고려 한정 아님(고려청자 포함 추정). 수집범위 검토"
+ },
+ {
+  "id": 169,
+  "t": "심리학으로 풀어낸 고려 왕 34인의 이야기",
+  "a": "석산",
+  "p": "평단",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "royalty"
+  ]
+ },
+ {
+  "id": 170,
+  "t": "세상에서 가장 짧은 한국사",
+  "a": "박경남",
+  "p": "북씽크",
+  "y": 2018,
+  "s": [],
+  "review": "한국사 전반 — 수집범위 검토"
+ },
+ {
+  "id": 171,
+  "t": "서울의 6000년",
+  "a": "정순태",
+  "p": "조갑제닷컴",
+  "y": 2018,
+  "s": [
+   "geography"
+  ],
+  "review": "서울 통사 — 고려 한정 아님. 수집범위 검토"
+ },
+ {
+  "id": 172,
+  "t": "새빨간 선조들",
+  "a": "이선학",
+  "p": "스타북스",
+  "y": 2018,
+  "s": [],
+  "review": "표제만으로 주제·범위 판별 불가"
+ },
+ {
+  "id": 173,
+  "t": "몽골제국의 쇠퇴와 공민왕시대",
+  "a": "이승한 외",
+  "p": "푸른역사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "mongol",
+   "royalty"
+  ]
+ },
+ {
+  "id": 174,
+  "t": "몽골제국과 고려 세트",
+  "a": "이승환 외",
+  "p": "푸른역사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "mongol",
+   "royalty"
+  ],
+  "sr": "",
+  "review": "62·105·173번 낱권과 세트 중복 등재. 저자 '이승환'은 '이승한' 오기 — 인접 항목(173)과 표기 불일치"
+ },
+ {
+  "id": 175,
+  "t": "귀호곡",
+  "a": "최문경",
+  "p": "예문바다",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "fiction"
+  ],
+  "review": "고려가요 '귀호곡(가시리)' 소재 창작물 추정 — 장르 확인 필요"
+ },
+ {
+  "id": 176,
+  "t": "고려후기 신분변동 연구",
+  "a": "김현라",
+  "p": "혜안",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "social_history"
+  ]
+ },
+ {
+  "id": 177,
+  "t": "고려왕조 정사·야사",
+  "a": "이강래",
+  "p": "문지사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "yasa",
+   "royalty"
+  ]
+ },
+ {
+  "id": 178,
+  "t": "고려시대사 2: 사회와 문화",
+  "a": "이종서, 박진훈 외 2명",
+  "p": "푸른역사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "social_history"
+  ]
+ },
+ {
+  "id": 179,
+  "t": "고려시대 역사서의 신이성과 삼국유사",
+  "a": "차광호",
+  "p": "역사산청",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "samgukyusa",
+   "historiography"
+  ]
+ },
+ {
+  "id": 180,
+  "t": "고려대장경의 교감학적 연구",
+  "a": "유부현",
+  "p": "시간의 물레",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 181,
+  "t": "고려거란전기",
+  "a": "길승수",
+  "p": "지식과감성",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "khitan",
+   "goryeo_khitan_war",
+   "fiction"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 182,
+  "t": "고려 사회 사람들",
+  "a": "김용선",
+  "p": "일조각",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "social_history"
+  ]
+ },
+ {
+  "id": 183,
+  "t": "고려 개경·경기 연구",
+  "a": "정은정",
+  "p": "혜안",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "gaegyeong",
+   "geography"
+  ],
+  "sr": "민족문화 학술총서 64"
+ },
+ {
+  "id": 184,
+  "t": "경기천년의 문화사: 고려후기~조선전기",
+  "a": "경기문화재단",
+  "p": "경인문화사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "joseon",
+   "geography"
+  ]
+ },
+ {
+  "id": 185,
+  "t": "경기천년의 문화사: 고려전기",
+  "a": "경기문화재단",
+  "p": "경인문화사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "geography"
+  ]
+ },
+ {
+  "id": 186,
+  "t": "경기천년의 문화사",
+  "a": "경기문화재단",
+  "p": "경인문화사",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "geography"
+  ],
+  "review": "184·185 분권과 세트(또는 총론) 관계 — 등재 단위 확인 필요"
+ },
+ {
+  "id": 187,
+  "t": "21세기에 다시 보는 고려시대의 역사",
+  "a": "한국중세사학회",
+  "p": "혜안",
+  "y": 2018,
+  "s": [
+   "goryeo",
+   "historiography"
+  ]
+ },
+ {
+  "id": 188,
+  "t": "구국의 별 강감찬",
+  "a": "관악구 문화체육과",
+  "p": "관악구",
+  "y": 2018,
+  "s": [
+   "gangamchan"
+  ],
+  "held": [
+   "용꿈꾸는작은도서관"
+  ]
+ },
+ {
+  "id": 189,
+  "t": "Who? 서희·강감찬",
+  "a": "최재훈",
+  "p": "다산어린이",
+  "y": 2018,
+  "s": [
+   "gangamchan",
+   "seohui",
+   "biography_children"
+  ],
+  "sr": "Who? 인물 한국사 15",
+  "held": [
+   "관악중앙도서관",
+   "용꿈꾸는작은도서관",
+   "새싹작은도서관",
+   "뜰안에작은도서관"
+  ]
+ },
+ {
+  "id": 190,
+  "t": "회상, 고려불화전",
+  "a": "홍윤식",
+  "p": "집옥재",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "buddhism",
+   "bulhwa"
+  ]
+ },
+ {
+  "id": 191,
+  "t": "한국가구의 역사",
+  "a": "조숙경",
+  "p": "미진사",
+  "y": 2019,
+  "s": [
+   "crafts"
+  ],
+  "review": "한국 가구 전반 — 고려 한정 아님. 수집범위 검토"
+ },
+ {
+  "id": 192,
+  "t": "천년을 잇는 고려대장경 사경",
+  "a": "편집부",
+  "p": "어의운하",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 193,
+  "t": "질문하는 한국사 2: 고려",
+  "a": "김인호",
+  "p": "나무를심는사람들",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "youth_nonfiction"
+  ]
+ },
+ {
+  "id": 194,
+  "t": "왕실, 권력, 그리고 불화: 고려와 조선의 왕실불화",
+  "a": "김정희",
+  "p": "세창출판사",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "joseon",
+   "royalty",
+   "bulhwa",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 195,
+  "t": "역사저널 그날 고려편",
+  "a": "KBS역사저널",
+  "p": "민음사",
+  "y": 2019,
+  "s": [
+   "goryeo"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 196,
+  "t": "시간의 역사, 고려시대 달력을 복원하다",
+  "a": "서금석",
+  "p": "혜안",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "astronomy"
+  ]
+ },
+ {
+  "id": 197,
+  "t": "새로 읽는 한국고전문학사 - 고려편",
+  "a": "최강현",
+  "p": "명문당",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "literature"
+  ]
+ },
+ {
+  "id": 198,
+  "t": "삼별초의 항쟁",
+  "a": "정진술",
+  "p": "글터",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "sambyeolcho",
+   "mongol",
+   "military"
+  ]
+ },
+ {
+  "id": 199,
+  "t": "사료로 본 고려와 동북아",
+  "a": "동북아역사재단 한국고중세사연구회",
+  "p": "동북아역사재단",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "foreign_relations"
+  ],
+  "sr": "동북아역사 자료총서 54"
+ },
+ {
+  "id": 200,
+  "t": "밝혀진 고려역사",
+  "a": "한창건",
+  "p": "홍익출판기획",
+  "y": 2019,
+  "s": [
+   "goryeo"
+  ],
+  "review": "학술적 성격 확인 필요 — 재야사학 계열 가능성"
+ },
+ {
+  "id": 201,
+  "t": "문충공 안우: 고려말 국난극복의 영웅",
+  "a": "이재범",
+  "p": "명지대학교국제한국학연구소",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "military"
+  ]
+ },
+ {
+  "id": 202,
+  "t": "몽골-고려 관계연구",
+  "a": "고명수",
+  "p": "혜안",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "mongol",
+   "foreign_relations"
+  ]
+ },
+ {
+  "id": 203,
+  "t": "목은 이색선생 약전",
+  "a": "이훈구",
+  "p": "심당",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "yisaek"
+  ]
+ },
+ {
+  "id": 204,
+  "t": "고려의 중앙과 지방의 네트워크",
+  "a": "채웅석, 홍영의 외 3명",
+  "p": "혜안",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "local_admin",
+   "gwanje"
+  ]
+ },
+ {
+  "id": 205,
+  "t": "고려의 다양한 삶의 양식과 통합조절",
+  "a": "채웅석, 박종기 외 3명",
+  "p": "혜안",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "social_history"
+  ]
+ },
+ {
+  "id": 206,
+  "t": "고려의 국제적 개방성과 자기인식의 토대",
+  "a": "채웅석, 최봉준 외 3명",
+  "p": "혜안",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "foreign_relations",
+   "thought"
+  ]
+ },
+ {
+  "id": 207,
+  "t": "고려의 국가제사와 왕실의례",
+  "a": "김아네스",
+  "p": "경인문화사",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "royalty",
+   "thought"
+  ]
+ },
+ {
+  "id": 208,
+  "t": "고려의 국가의식과 동아시아",
+  "a": "동북아역사재단 한국고중세사연구회",
+  "p": "동북아역사재단",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "foreign_relations",
+   "thought"
+  ]
+ },
+ {
+  "id": 209,
+  "t": "고려열전: 영웅부터 경계인까지 인물로 읽는 고려사",
+  "a": "박종기",
+  "p": "휴머니스트",
+  "y": 2019,
+  "s": [
+   "goryeo"
+  ],
+  "review": "218번과 동일 서지(부제 유무만 상이) — 중복 등재. 원목록 출판사 '휴머니스터'는 오기"
+ },
+ {
+  "id": 210,
+  "t": "고려에서 조선으로",
+  "a": "정요근",
+  "p": "역사비평",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "joseon"
+  ]
+ },
+ {
+  "id": 211,
+  "t": "고려시대 사람들의 식음생활",
+  "a": "박용운",
+  "p": "경인문화사",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "social_history"
+  ]
+ },
+ {
+  "id": 212,
+  "t": "고려시대 군사제도 연구",
+  "a": "권영국",
+  "p": "경인문화사",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "military",
+   "gwanje"
+  ],
+  "sr": "경인한국학연구총서 172"
+ },
+ {
+  "id": 213,
+  "t": "고려상인과 동아시아 무역사",
+  "a": "김영제",
+  "p": "푸른역사",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "economy",
+   "maritime"
+  ]
+ },
+ {
+  "id": 214,
+  "t": "고려사와 고려사절요의 사료적 특성: 해석방향의 정립에 관련하여",
+  "a": "노명호",
+  "p": "지식산업사",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "goryeosa",
+   "goryeosajeolyo",
+   "historiography"
+  ]
+ },
+ {
+  "id": 215,
+  "t": "고려무인 이야기",
+  "a": "이승한",
+  "p": "푸른역사",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "muin"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 216,
+  "t": "고려도기연구",
+  "a": "한혜선",
+  "p": "역락",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "crafts"
+  ],
+  "sr": "이화연구총서 28"
+ },
+ {
+  "id": 217,
+  "t": "고려 태조 건국이야기",
+  "a": "차상찬",
+  "p": "온이퍼브",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "wanggeon",
+   "yasa"
+  ]
+ },
+ {
+  "id": 218,
+  "t": "고려 열전",
+  "a": "박종기",
+  "p": "휴머니스트",
+  "y": 2019,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 219,
+  "t": "고려 불교사의 탐색",
+  "a": "변동명",
+  "p": "전남대학교출판문화원",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 220,
+  "t": "고려 16공신 도원수 안우 장군",
+  "a": "안기순",
+  "p": "지식과감성",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "military"
+  ]
+ },
+ {
+  "id": 221,
+  "t": "EBS 고려역사기행 [DVD]",
+  "a": "EBS교육방송",
+  "p": "EBS",
+  "y": 2019,
+  "s": [
+   "goryeo"
+  ],
+  "review": "DVD 영상자료가 도서목록에 등재 — 미디어목록 대상(매체 오배치). 방송 기반 자료 3건째"
+ },
+ {
+  "id": 222,
+  "t": "사진으로 보는 역사여행: 고려왕실의 마지막 안식처 숭의전 vs 경기도에 묻힌 고려의 충신들",
+  "a": "하이스토리텔링",
+  "p": "아이원이즈",
+  "y": 2019,
+  "s": [
+   "goryeo",
+   "royalty",
+   "geography"
+  ]
+ },
+ {
+  "id": 223,
+  "t": "하늘에서 떨어진 별터, 낙성대",
+  "a": "하이스토리텔링",
+  "p": "아이즈원이즈",
+  "y": 2019,
+  "s": [
+   "gangamchan",
+   "nakseongdae"
+  ],
+  "sr": "사진으로 보는 역사여행",
+  "held": [
+   "관악중앙도서관"
+  ]
+ },
+ {
+  "id": 224,
+  "t": "한국기마전 연구",
+  "a": "이홍두",
+  "p": "혜안",
+  "y": 2020,
+  "s": [
+   "military"
+  ],
+  "review": "한국 전쟁사 전반 — 고려 한정 아님. 수집범위 검토"
+ },
+ {
+  "id": 225,
+  "t": "직지 복원연구: 고려시대 밀랍주조법 금속활자 인쇄술",
+  "a": "조형진",
+  "p": "한국학술정보",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "printing"
+  ]
+ },
+ {
+  "id": 226,
+  "t": "왜구, 고려로 번진 일본의 내란: 남북조내란과 고려말 왜구",
+  "a": "이영",
+  "p": "보고사",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "waegu",
+   "japan"
+  ]
+ },
+ {
+  "id": 227,
+  "t": "오백년 고려사",
+  "a": "박종기",
+  "p": "휴머니스트",
+  "y": 2020,
+  "s": [
+   "goryeo"
+  ]
+ },
+ {
+  "id": 228,
+  "t": "새로 쓴 오백년사 고려사: 역사학자 박종기의 정통 고려역사",
+  "a": "박종기",
+  "p": "휴머니스트",
+  "y": 2020,
+  "s": [
+   "goryeo"
+  ],
+  "review": "227번과 판본 계열(개정판) — 등재 단위 확인 필요"
+ },
+ {
+  "id": 229,
+  "t": "마흔, 역사와 만날 시간",
+  "a": "김준태",
+  "p": "한겨레출판사",
+  "y": 2020,
+  "s": [],
+  "review": "한국사 에세이 전반 — 수집범위 검토"
+ },
+ {
+  "id": 230,
+  "t": "고려와 조선의 문학",
+  "a": "씨익북스 편집부",
+  "p": "씨익북스",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "joseon",
+   "literature"
+  ]
+ },
+ {
+  "id": 231,
+  "t": "고려와 조선시대의 가요",
+  "a": "안자산",
+  "p": "온이퍼브",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "joseon",
+   "literature"
+  ]
+ },
+ {
+  "id": 232,
+  "t": "고려시대 천문현상 기록집",
+  "a": "안영숙",
+  "p": "한국학술정보",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "astronomy"
+  ]
+ },
+ {
+  "id": 233,
+  "t": "고려시대 외교문서와 사행시문",
+  "a": "김건곤, 이종문 외 3인",
+  "p": "한국학중앙연구원",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "foreign_relations",
+   "komunseo",
+   "literature"
+  ],
+  "sr": "AKS 인문총서 26"
+ },
+ {
+  "id": 234,
+  "t": "고려시대 문화이야기",
+  "a": "씨익북스",
+  "p": "씨익북스",
+  "y": 2020,
+  "s": [
+   "goryeo"
+  ],
+  "sr": ""
+ },
+ {
+  "id": 235,
+  "t": "고려도경 역주 (상)",
+  "a": "이진한",
+  "p": "경인문화사",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "goryeodogyeong"
+  ],
+  "sr": "고려대한국사연구총서"
+ },
+ {
+  "id": 236,
+  "t": "고려대장경",
+  "a": "한국학자료원",
+  "p": "한국학자료원",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "daejanggyeong",
+   "buddhism"
+  ]
+ },
+ {
+  "id": 237,
+  "t": "고려, 조선의 성곽에서 역사를 만나다",
+  "a": "성순택",
+  "p": "퍼플",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "joseon",
+   "archaeology"
+  ]
+ },
+ {
+  "id": 238,
+  "t": "고려 옹기와 청자에 음식을 담다",
+  "a": "태경(이선이)",
+  "p": "양사재",
+  "y": 2020,
+  "s": [
+   "goryeo",
+   "cheongja",
+   "social_history"
+  ],
+  "sr": "개경 승려와 사대부의 음식"
+ },
+ {
+  "id": 239,
+  "t": "별빛 영웅, 강감찬!",
+  "a": "숨쉬는책공장",
+  "p": "관악구",
+  "y": 2020,
+  "s": [
+   "gangamchan"
+  ],
+  "held": [
+   "관악중앙도서관",
+   "용꿈꾸는작은도서관",
+   "책사랑작은도서관",
+   "뜰안에작은도서관"
+  ]
+ }
+];
+const PLACES = [
+  {id:'p-park', name:'낙성대공원', lat:37.4711007, lng:126.95999, kind:'star',
+   note:'강감찬 장군의 영정을 모신 사당 안국사가 있는 공원 — 강감찬 10리길의 종점. 매년 10월 강감찬축제가 열리는 곳. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','nakseongdae']},
+  {id:'p-birth', name:'강감찬 생가터', lat:37.474902, lng:126.9608737, kind:'star',
+   note:'서울특별시 기념물. 큰 별이 떨어져 강감찬이 태어났다는 전승의 자리. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','nakseongdae']},
+  {id:'p-statue', name:'강감찬 장군 동상', lat:37.4713017, lng:126.9588365, kind:'star',
+   note:'귀주에서 거란 대군을 물리친 장군을 기리는 동상. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','goryeo_khitan_war']},
+  {id:'p-exhibit', name:'강감찬전시관', lat:37.4729903, lng:126.9611085, kind:'star',
+   note:'강감찬 장군의 생애를 만나는 전시관 — 10리길 스탬프투어의 거점. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','gwiju_battle']},
+  {id:'p-pagoda', name:'낙성대 삼층석탑', lat:37.471158, lng:126.9604853, kind:'star',
+   note:'고려시대 석탑. 강감찬의 출생지를 기념해 세워진 것으로 전한다. 사진: 직접 찍어 올릴 예정.', concepts:['nakseongdae','goryeo']},
+  {id:'p-lib', name:'관악중앙도서관', lat:37.4675185, lng:126.9448533, kind:'lib', lib:'관악중앙도서관',
+   note:'강감찬자료실 운영 주체. 위인전부터 전자책 소설·설화 원전까지 가장 많은 강감찬 자료가 이곳에.', concepts:['gangamchan','biography_children']},
+  {id:'p-lib-npark', name:'낙성대공원도서관', lat:37.4711594, lng:126.9601859, kind:'lib', lib:'낙성대공원도서관',
+   note:'낙성대공원 안의 도서관. 강감찬 탄생 전승지에서 강감찬 호랑이 설화 그림책을 소장하고 있다.', concepts:['gangamchan','folktale']},
+  {id:'p-lib-bomulseom', name:'보물섬작은도서관', lat:37.4751167, lng:126.965293, kind:'lib', lib:'보물섬작은도서관',
+   note:'인헌동 소재 — 인헌(仁憲)은 강감찬의 시호다. 동 이름부터가 이미 강감찬의 기억이다.', concepts:['gangamchan','biography_children']},
+  {id:'p-lib-seonghyeon', name:'성현동작은도서관', lat:37.4872411, lng:126.9561249, kind:'lib', lib:'성현동작은도서관',
+   note:'어린이 강감찬 자료 소장처 — 위인전과 설화 그림책까지.', concepts:['gangamchan','biography_children','gwiju_battle']},
+  {id:'p-lib-geulbit', name:'글빛정보도서관', lat:37.4862626, lng:126.9596694, kind:'lib', lib:'글빛정보도서관',
+   note:'행운동의 공공도서관. 어린이 강감찬 자료 소장.', concepts:['gangamchan','biography_children']},
+  {id:'p-lib-jowon', name:'조원도서관', lat:37.4825716, lng:126.9077843, kind:'lib', lib:'조원도서관',
+   note:'신림동 서쪽 끝. 낙성대에서 가장 먼 소장처 — 강감찬의 기억이 구 전역으로 퍼진 증거.', concepts:['gangamchan','biography_children']},
+  {id:'p-lib-eunchen', name:'은천동작은도서관', lat:37.4852453, lng:126.9423969, kind:'lib', lib:'은천동작은도서관',
+   note:'은천동 복합청사 안의 도서관. 어린이 강감찬 자료 소장.', concepts:['gangamchan','biography_children']},
+  {id:'p-lib-yongkkum', name:'용꿈꾸는작은도서관', lat:37.4786026, lng:126.9517566, kind:'lib', lib:'용꿈꾸는작은도서관',
+   note:'관악구청 안의 작은도서관. 어린이 강감찬 자료 6권 — 작은도서관 중 최다 소장처.', concepts:['gangamchan','biography_children']},
+  {id:'p-lib-chaeksarang', name:'책사랑작은도서관', lat:37.4708819, lng:126.9216452, kind:'lib', lib:'책사랑작은도서관',
+   note:'난곡동주민센터 3층의 작은도서관.', concepts:['gangamchan']},
+  {id:'p-lib-woori', name:'우리작은도서관', lat:37.4744952, lng:126.9778489, kind:'lib', lib:'우리작은도서관',
+   note:'남현동주민센터 3층 — 관악 동쪽 끝의 소장처.', concepts:['gangamchan']},
+  {id:'p-lib-dasarang', name:'다사랑작은도서관', lat:37.4881547, lng:126.9327817, kind:'lib', lib:'다사랑작은도서관',
+   note:'보라매동주민센터 2층의 작은도서관.', concepts:['gangamchan']},
+  {id:'p-lib-gulleongsoe', name:'굴렁쇠작은도서관', lat:37.487206, lng:126.931126, kind:'lib', lib:'굴렁쇠작은도서관',
+   note:'신림로70길 임시운영소의 작은도서관.', concepts:['gangamchan']},
+  {id:'p-lib-geulsarang', name:'글사랑작은도서관', lat:37.4749555, lng:126.9349897, kind:'lib', lib:'글사랑작은도서관',
+   note:'서림동주민센터 2층의 작은도서관.', concepts:['gangamchan']},
+  {id:'p-lib-eoul', name:'어울작은도서관', lat:37.4797317, lng:126.9313649, kind:'lib', lib:'어울작은도서관',
+   note:'서원동주민센터 2층의 작은도서관.', concepts:['gangamchan']},
+  {id:'p-lib-ultari', name:'울타리작은도서관', lat:37.4815721, lng:126.927338, kind:'lib', lib:'울타리작은도서관',
+   note:'신원동복합청사 2층의 작은도서관.', concepts:['gangamchan']},
+  {id:'p-lib-saessak', name:'새싹작은도서관', lat:37.4841833, lng:126.9497246, kind:'lib', lib:'새싹작은도서관',
+   note:'중앙동주민센터 지하 1층의 작은도서관.', concepts:['gangamchan']}
+];
+
+/* ================= 지도 ================= */
+const map = L.map('map', {scrollWheelZoom:false, zoomControl:false})
+  .setView([37.478, 126.949], 14);
+L.control.zoom({position:'bottomright'}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution:'© OpenStreetMap © CARTO', maxZoom:19
+}).addTo(map);
+
+const starIcon = L.divIcon({className:'', iconSize:[26,26], iconAnchor:[13,13], html:
+  `<svg class="star-marker" width="26" height="26" viewBox="0 0 26 26">
+    <path d="M13 1 L15.8 9.3 L24.5 9.6 L17.6 14.9 L20 23.3 L13 18.4 L6 23.3 L8.4 14.9 L1.5 9.6 L10.2 9.3 Z"
+      fill="#E3B23C" stroke="#0A1626" stroke-width="1"/></svg>`});
+const libIcon = L.divIcon({className:'', iconSize:[24,24], iconAnchor:[12,12], html:
+  `<svg class="lib-marker" width="24" height="24" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="3" fill="#7FB5A5" stroke="#0A1626" stroke-width="1"/>
+    <path d="M8 7 v10 M12 7 v10 M16 9 l1.5 8" stroke="#0A1626" stroke-width="1.8" stroke-linecap="round"/></svg>`});
+
+const trail = [[37.477117,126.963418],[37.474902,126.9608737],[37.4750784,126.9610777],[37.4729903,126.9611085],[37.4711007,126.95999]];
+L.polyline(trail, {color:'#E3B23C', weight:4, dashArray:'6 6', opacity:.85})
+  .addTo(map)
+  .bindTooltip('강감찬 10리길 — 눌러서 걷기 전에 읽을 책 보기', {sticky:true})
+  .on('click', () => selectTrail());
+
+window.selectTrail = function(){
+  const list = BOOKS.filter(b => b.s.includes('gangamchan'));
+  const nb = neighborsOf('gangamchan');
+  highlight(n => nb.has(n.id));
+  renderCards(list, `걷기 코스 <span class="ctx">강감찬 10리길</span>`,
+    `낙성대역 → 생가터 → 벽화거리 → 강감찬전시관 → 낙성대공원·안국사 — 걷기 전에 읽어볼 책 ${list.length}권`);
+  document.querySelector('.cards-section').scrollIntoView({behavior:'smooth', block:'start'});
+};
+
+PLACES.forEach(pl => {
+  const m = L.marker([pl.lat, pl.lng], {icon: pl.kind==='star'? starIcon: libIcon, title: pl.name}).addTo(map);
+  m.bindPopup(
+    `<div class="popup-name">${pl.name}</div>${pl.photo? `<img src="${pl.photo}" alt="${pl.name}" style="width:100%;border-radius:5px;margin:8px 0 2px">`:''}<div class="popup-note">${pl.note}</div>
+     <button class="popup-btn" onclick="selectPlace('${pl.id}')">${pl.kind==='lib'? '이 도서관의 강감찬 책 보기 →':'연결된 자료 보기 →'}</button>`);
+});
+
+/* ================= 지식 그래프 ================= */
+const bookCount = {};
+BOOKS.forEach(b => b.s.forEach(s => bookCount[s]=(bookCount[s]||0)+1));
+
+const nodes = [
+  ...CONCEPTS.map(c => ({...c, type:'concept', n:bookCount[c.id]||0})),
+  ...BOOKS.map(b => ({id:'b'+b.id, type:'book', book:b}))
+];
+const links = [
+  ...BROADER.map(([a,b]) => ({source:a, target:b, kind:'broader'})),
+  ...BOOKS.flatMap(b => b.s.map(s => ({source:'b'+b.id, target:s, kind:'subject'})))
+];
+
+const svg = d3.select('#graph');
+const gPane = document.getElementById('graph-pane');
+let W = gPane.clientWidth, H = gPane.clientHeight;
+svg.attr('viewBox', [0,0,W,H]);
+const root = svg.append('g');
+const zoomBehavior = d3.zoom().scaleExtent([0.4,3]).on('zoom', e => root.attr('transform', e.transform));
+svg.call(zoomBehavior);
+
+const sim = d3.forceSimulation(nodes)
+  .force('link', d3.forceLink(links).id(d=>d.id)
+    .distance(l => l.kind==='broader'? 55: 42).strength(l => l.kind==='broader'? .5: .35))
+  .force('charge', d3.forceManyBody().strength(d => d.type==='concept'? (d.hub? -420: -160): -30))
+  .force('center', d3.forceCenter(W/2, H/2))
+  .force('x', d3.forceX(W/2).strength(0.07))
+  .force('y', d3.forceY(H/2).strength(0.09))
+  .force('collide', d3.forceCollide(d => rOf(d)+4));
+
+function rOf(d){
+  if(d.type==='book') return d.book.held? 6.5: 4.5;
+  if(d.hub) return 22;
+  return 8 + Math.min(d.n,8)*1.6;
+}
+function colorOf(d){
+  if(d.type==='book') return '#E9EEF6';
+  return CAT[d.cat].color;
+}
+
+const link = root.append('g').selectAll('line').data(links).join('line')
+  .attr('stroke', l => l.kind==='broader'? '#7E96C4':'#22375A')
+  .attr('stroke-dasharray', l => l.kind==='broader'? '4 3': null)
+  .attr('stroke-width', l => l.kind==='broader'? 1.2: 1)
+  .attr('stroke-opacity', .75);
+
+const shape = d3.symbol()
+  .type(d => d.type==='book'? d3.symbolSquare : d3.symbolCircle)
+  .size(d => d.type==='book' ? (d.book.held? 135: 70) : Math.PI*rOf(d)*rOf(d));
+const node = root.append('g').selectAll('path').data(nodes).join('path')
+  .attr('d', shape)
+  .attr('fill', d => d.type==='book'
+      ? (d.book.held? '#E3B23C': '#0A1626')
+      : (d.hub? '#0A1626': colorOf(d)))
+  .attr('stroke', colorOf)
+  .attr('stroke-width', d => d.type==='book'? (d.book.held? 1: 1.4): (d.hub? 2.5: 1.5))
+  .style('cursor','pointer')
+  .call(d3.drag()
+    .on('start', (e,d)=>{if(!e.active) sim.alphaTarget(.25).restart(); d.fx=d.x; d.fy=d.y;})
+    .on('drag', (e,d)=>{d.fx=e.x; d.fy=e.y;})
+    .on('end', (e,d)=>{if(!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null;}))
+  .on('click', (e,d)=>{ d.type==='concept'? selectConcept(d.id): showBook(d.book); });
+
+node.append('title').text(d => d.type==='book'? d.book.t : d.ko);
+
+const label = root.append('g').selectAll('text')
+  .data(nodes.filter(d=>d.type==='concept')).join('text')
+  .attr('class', d => 'g-label'+(d.hub?' hub':''))
+  .attr('text-anchor','middle')
+  .text(d => d.ko);
+
+function fitGraph(){
+  const pad = 46;
+  const xs = nodes.map(d=>d.x), ys = nodes.map(d=>d.y);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs);
+  const y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const bw = Math.max(x1-x0, 1), bh = Math.max(y1-y0, 1);
+  const k = Math.max(0.4, Math.min(3, Math.min((W-pad*2)/bw, (H-pad*2)/bh)));
+  const tx = W/2 - k*(x0+x1)/2, ty = H/2 - k*(y0+y1)/2;
+  svg.transition().duration(650)
+     .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx,ty).scale(k));
+}
+sim.on('end', fitGraph);
+setTimeout(fitGraph, 2600);
+
+sim.on('tick', () => {
+  link.attr('x1',l=>l.source.x).attr('y1',l=>l.source.y)
+      .attr('x2',l=>l.target.x).attr('y2',l=>l.target.y);
+  node.attr('transform', d=>`translate(${d.x},${d.y})`);
+  label.attr('x',d=>d.x).attr('y',d=>d.y - rOf(d) - 6);
+});
+
+/* ================= 범례 ================= */
+const legendEl = document.getElementById('legend');
+Object.entries(CAT).forEach(([key,c]) => {
+  const btn = document.createElement('button');
+  btn.className='chip'; btn.dataset.cat=key;
+  btn.innerHTML = `<span class="sw" style="background:${c.color}"></span>${c.label}`;
+  btn.onclick = () => toggleCat(key, btn, c.color);
+  legendEl.appendChild(btn);
+});
+let activeCat = null;
+function toggleCat(key, btn, color){
+  document.querySelectorAll('.chip').forEach(b=>{b.classList.remove('active'); b.style.background=''; b.style.borderColor='';});
+  if(activeCat===key){ activeCat=null; clearHighlight(); showAll(); return; }
+  activeCat = key;
+  btn.classList.add('active'); btn.style.background=color; btn.style.borderColor=color;
+  const ids = new Set(CONCEPTS.filter(c=>c.cat===key).map(c=>c.id));
+  highlight(n => (n.type==='concept'&&ids.has(n.id)) || (n.type==='book'&&n.book.s.some(s=>ids.has(s))));
+  const list = BOOKS.filter(b=>b.s.some(s=>ids.has(s)));
+  renderCards(list, `범주 <span class="ctx">${CAT[key].label}</span>`, `${list.length}건 · 그래프에서 해당 범주만 밝게 표시됩니다`);
+}
+
+/* ================= 하이라이트 & 선택 ================= */
+function highlight(pred){
+  node.attr('opacity', d => pred(d)? 1: .12);
+  label.attr('opacity', d => pred(d)? 1: .15);
+  link.attr('stroke-opacity', l => (pred(l.source)&&pred(l.target))? .9: .05);
+}
+function clearHighlight(){
+  node.attr('opacity',1); label.attr('opacity',1); link.attr('stroke-opacity',.75);
+}
+function neighborsOf(cid){
+  const nb = new Set([cid]);
+  links.forEach(l=>{
+    const s = l.source.id||l.source, t = l.target.id||l.target;
+    if(s===cid) nb.add(t); if(t===cid) nb.add(s);
+  });
+  return nb;
+}
+window.selectConcept = function(cid){
+  activeCat=null;
+  document.querySelectorAll('.chip').forEach(b=>{b.classList.remove('active'); b.style.background=''; b.style.borderColor='';});
+  const nb = neighborsOf(cid);
+  highlight(n => nb.has(n.id));
+  const c = CONCEPTS.find(x=>x.id===cid);
+  const list = BOOKS.filter(b=>b.s.includes(cid));
+  renderCards(list, `개념 <span class="ctx">${c.ko}</span>`,
+    `${list.length}건 연결 · dcterms:subject`);
+  document.querySelector('.cards-section').scrollIntoView({behavior:'smooth', block:'start'});
+};
+window.selectPlace = function(pid){
+  const pl = PLACES.find(p=>p.id===pid);
+  if(pl.lib){
+    const list = BOOKS.filter(b => b.held && b.held.includes(pl.lib));
+    const ids = new Set(list.map(b=>'b'+b.id));
+    list.forEach(b=>b.s.forEach(s=>ids.add(s)));
+    highlight(n => ids.has(n.id));
+    renderCards(list, `소장처 <span class="ctx">${pl.name}</span>`,
+      `이 도서관이 소장한 강감찬 자료 ${list.length}권 — 지금 빌릴 수 있는 책들`);
+    document.querySelector('.cards-section').scrollIntoView({behavior:'smooth', block:'start'});
+    return;
+  }
+  const rel = new Set(pl.concepts);
+  const nb = new Set(pl.concepts);
+  pl.concepts.forEach(c => neighborsOf(c).forEach(x=>nb.add(x)));
+  highlight(n => nb.has(n.id));
+  const list = BOOKS.filter(b => b.s.some(s=>rel.has(s)) || (pl.id==='p-lib' && b.held));
+  renderCards(list, `장소 <span class="ctx">${pl.name}</span>`,
+    `${list.length}건 연결 · ${pl.concepts.map(c=>CONCEPTS.find(x=>x.id===c).ko).join(' · ')}`);
+  document.querySelector('.cards-section').scrollIntoView({behavior:'smooth', block:'start'});
+};
+function showBook(b){
+  const nb = new Set(['b'+b.id, ...b.s]);
+  highlight(n => nb.has(n.id));
+  renderCards([b], `자료 <span class="ctx">${b.t}</span>`, `${b.y} · ${b.a}`);
+}
+function showAll(){
+  renderCards(BOOKS, `전체 자료 <span class="ctx">${BOOKS.length}건</span>`,
+    '개념이나 장소를 선택하면 관련 자료만 모아 보여줍니다');
+}
+
+/* ================= 카드 ================= */
+function renderCards(list, title, sub){
+  document.getElementById('selection-title').innerHTML = title;
+  document.getElementById('selection-sub').textContent = sub;
+  const grid = document.getElementById('cards');
+  if(!list.length){ grid.innerHTML = `<div class="empty" style="grid-column:1/-1">이 선택에 연결된 자료가 아직 없습니다 — 어휘에는 있으나 태깅된 자료가 없는 개념입니다.</div>`; return; }
+  grid.innerHTML = list.map(b => `
+    <article class="card">
+      <h3>${b.t}</h3>
+      ${b.sr? `<div class="series">${b.sr}</div>`:''}
+      <div class="meta">${b.a} · ${b.p} · ${b.y}</div>
+      <div class="subjects">${b.s.map(s=>{
+        const c = CONCEPTS.find(x=>x.id===s);
+        return `<button class="tag" onclick="selectConcept('${s}')">${c.ko}</button>`;
+      }).join('')}</div>
+      ${b.held
+        ? `<span class="badge held">★ ${b.held.join(' · ')} 소장</span>`
+        : `<span class="badge not-held">관악구 미소장 — 서지로만 안내</span>`}
+      ${b.review? `<span class="badge review">검수 필요</span>`:''}
+    </article>`).join('');
+}
+showAll();
+
+/* ================= 연도 스트립 ================= */
+const yearsEl = document.getElementById('year-strip');
+const yCount = {};
+BOOKS.forEach(b => yCount[b.y]=(yCount[b.y]||0)+1);
+const maxY = Math.max(...Object.values(yCount));
+const yMin = Math.min(...BOOKS.map(b=>b.y)), yMax = Math.max(...BOOKS.map(b=>b.y));
+document.querySelector('.years h2').textContent =
+  `PUBLICATION YEARS · ${yMin} – ${yMax} (수집 진행 중)`;
+for(let y=yMin; y<=yMax; y++){
+  const c = yCount[y]||0;
+  const d = document.createElement('div');
+  d.className='yb';
+  d.innerHTML = `<div class="bar" style="height:${c? 10+ (c/maxY)*46: 2}px" title="${y}: ${c}건"></div><span class="yl">${y}</span>`;
+  yearsEl.appendChild(d);
+}
+
+/* 리사이즈 */
+addEventListener('resize', () => {
+  W = gPane.clientWidth; H = gPane.clientHeight;
+  svg.attr('viewBox',[0,0,W,H]);
+  sim.force('center', d3.forceCenter(W/2,H/2)).alpha(.3).restart();
+});
+</script>
+</body>
+</html>

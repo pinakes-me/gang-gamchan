@@ -1,0 +1,110 @@
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix schema:  <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix ggo:     <https://pinakes-me.github.io/gang-gamchan/ontology#> .
+
+##############################################################
+# 강감찬자료실 LOD 파일럿 — 데이터 모델 스케치 v0.1
+#
+# 설계 원칙
+# 1. 바퀴를 재발명하지 않는다: 서지는 schema.org + DC Terms,
+#    주제어는 SKOS, 외부 연결은 owl:sameAs → Wikidata.
+# 2. 커스텀 어휘(ggo:)는 표준으로 표현 못 하는 것만 최소한으로.
+# 3. 도서관 목록은 그래프의 "뼈대"가 아니라, Wikidata 등
+#    외부 지식그래프의 노드에 매달리는 "지역의 살"이다.
+##############################################################
+
+ggo: a owl:Ontology ;
+    rdfs:label "강감찬자료실 LOD 파일럿 온톨로지"@ko ;
+    dcterms:creator "Hailey (@pinakes_me)" .
+
+# --- 클래스 -------------------------------------------------
+# 자료:      schema:Book / schema:ScholarlyArticle / schema:VideoObject
+# 주제어:    skos:Concept  (vocab/concepts.csv 에서 생성)
+# 도서관:    schema:Library (위치 좌표 포함 → 자전거 접근성 데이터와 연결점)
+# 장소:      schema:Place   (낙성대 등, 지도 레이어용)
+
+# --- 커스텀 속성 (최소한) ------------------------------------
+ggo:heldBy a owl:ObjectProperty ;
+    rdfs:label "소장처"@ko ;
+    rdfs:comment "관악구통합도서관 내 소장 분관. 목록의 '소장도서관' 컬럼. 이 속성이 국중도·Wikidata에는 없는 이 데이터셋 고유의 가치."@ko ;
+    rdfs:domain schema:CreativeWork ;
+    rdfs:range  schema:Library .
+
+ggo:sourceList a owl:ObjectProperty ;
+    rdfs:label "출처 목록"@ko ;
+    rdfs:comment "자료가 등재된 원천 큐레이션 목록(도서목록/논문목록/미디어목록)"@ko .
+
+# --- 소장도서관 인스턴스 (좌표는 추후 자전거 프로젝트 데이터에서) ---
+ggo:lib-gwanak-central a schema:Library ;
+    schema:name "관악중앙도서관"@ko .
+ggo:lib-yongkkum a schema:Library ;
+    schema:name "용꿈꾸는작은도서관"@ko ;
+    rdfs:comment "관악구청 내 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4786026 ; schema:longitude 126.9517566 .
+ggo:lib-chaeksarang a schema:Library ;
+    schema:name "책사랑작은도서관"@ko ;
+    rdfs:comment "난곡동주민센터 3층 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4708819 ; schema:longitude 126.9216452 .
+ggo:lib-tteuran a schema:Library ;
+    schema:name "뜰안에작은도서관"@ko ;
+    schema:latitude 37.461481 ; schema:longitude 126.918785 .
+ggo:lib-seonghyeon a schema:Library ;
+    schema:name "성현동작은도서관"@ko ;
+    schema:latitude 37.4872411 ; schema:longitude 126.9561249 .
+ggo:lib-geulbit a schema:Library ;
+    schema:name "글빛정보도서관"@ko ;
+    schema:latitude 37.4862626 ; schema:longitude 126.9596694 .
+ggo:lib-bomulseom a schema:Library ;
+    schema:name "보물섬작은도서관"@ko ;
+    rdfs:comment "인헌동 소재 — '인헌(仁憲)'은 강감찬의 시호"@ko ;
+    schema:latitude 37.4751167 ; schema:longitude 126.965293 .
+ggo:lib-nakseongdae-park a schema:Library ;
+    schema:name "낙성대공원도서관"@ko ;
+    rdfs:comment "낙성대공원 안에 위치 — 강감찬 탄생 전승지의 도서관"@ko ;
+    schema:latitude 37.4711594 ; schema:longitude 126.9601859 .
+ggo:lib-jowon a schema:Library ;
+    schema:name "조원도서관"@ko ;
+    schema:latitude 37.4825716 ; schema:longitude 126.9077843 .
+ggo:lib-eunchen a schema:Library ;
+    schema:name "은천동작은도서관"@ko ;
+    rdfs:comment "은천동 복합청사(봉천로33나길 30) 내 — 서울도서관 디렉토리로 확인"@ko ;
+    schema:latitude 37.4852453 ; schema:longitude 126.9423969 .
+ggo:lib-woori a schema:Library ;
+    schema:name "우리작은도서관"@ko ;
+    rdfs:comment "남현동주민센터 3층 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4744952 ; schema:longitude 126.9778489 .
+ggo:lib-dasarang a schema:Library ;
+    schema:name "다사랑작은도서관"@ko ;
+    rdfs:comment "보라매동주민센터 2층 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4881547 ; schema:longitude 126.9327817 .
+ggo:lib-kkumnamu a schema:Library ;
+    schema:name "꿈나무영유아도서관"@ko ;
+    rdfs:comment "영유아 전문 도서관. 좌표 미확인"@ko .
+ggo:lib-gulleongsoe a schema:Library ;
+    schema:name "굴렁쇠작은도서관"@ko ;
+    rdfs:comment "신림로70길 46 임시운영소 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.487206 ; schema:longitude 126.931126 .
+ggo:lib-geulsarang a schema:Library ;
+    schema:name "글사랑작은도서관"@ko ;
+    rdfs:comment "서림동주민센터 2층 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4749555 ; schema:longitude 126.9349897 .
+ggo:lib-eoul a schema:Library ;
+    schema:name "어울작은도서관"@ko ;
+    rdfs:comment "서원동주민센터 2층 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4797317 ; schema:longitude 126.9313649 .
+ggo:lib-ultari a schema:Library ;
+    schema:name "울타리작은도서관"@ko ;
+    rdfs:comment "신원동복합청사 2층 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4815721 ; schema:longitude 126.927338 .
+ggo:lib-saessak a schema:Library ;
+    schema:name "새싹작은도서관"@ko ;
+    rdfs:comment "중앙동주민센터 지하1층 — 관악구 동주민센터 작은도서관 현황 근거"@ko ;
+    schema:latitude 37.4841833 ; schema:longitude 126.9497246 .
+
+# --- 원천 목록 인스턴스 --------------------------------------
+ggo:list-books a schema:Collection ;
+    schema:name "강감찬자료실 도서목록"@ko ;
+    schema:url <https://lib.gwanak.go.kr/galib/menu/10071/program/30018/referenceBookList.do> .

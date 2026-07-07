@@ -1,0 +1,83 @@
+concept_id,pref_label_ko,pref_label_en,broader,category,wikidata,scope_note
+person,인물,Person,,top,,
+event,사건,Event,,top,,
+place,장소,Place,,top,,
+institution,제도,Institution,,top,,정치·사회 제도
+work,문헌,Work,,top,,저작·1차 사료
+material_culture,물질문화,Material Culture,,top,,유물·복식·공예
+period,시대,Period,,top,,
+genre,장르·형식,Genre,,top,,
+scholarship,학술 분야,Scholarship,,top,,
+gangamchan,강감찬,Gang Gamchan,person,person,,인헌공. 관악구 낙성대 출생 전승 영문 표기 전거: 향토문화전자대전(grandculture.net)
+hyeonjong,고려 현종,Hyeonjong of Goryeo,person,person,,아직 태깅 안 됨(예상 개념)
+seohui,서희,Seo Hui,person,person,,아직 태깅 안 됨(예상 개념)
+goryeo,고려,Goryeo,period,period,,918–1392
+khitan,거란(요),Khitan (Liao),person,person,,집단·정치체. 상위개념 재검토 대상
+jurchen,여진,Jurchen,person,person,,집단·정치체. 상위개념 재검토 대상
+goryeo_khitan_war,고려-거란 전쟁,Goryeo–Khitan War,event,event,,
+gwiju_battle,귀주대첩,Battle of Gwiju,goryeo_khitan_war,event,,아직 태깅 안 됨(예상 개념)
+gaegyeong,개경,Gaegyeong,place,place,,고려 수도
+nakseongdae,낙성대,Nakseongdae,place,place,,강감찬 탄생 전승지. 관악구
+gwanak,관악구,Gwanak-gu,place,place,,
+gwanje,관제·정치제도,Government system,institution,institution,,고려 관직·정치제도 일반
+daegan,대간제도,Daegan (censorate),gwanje,institution,,
+eumseo,음서제,Eumseo (protected appointment),gwanje,institution,,
+gwageo,과거제,Gwageo (civil examination),gwanje,institution,,
+nokbong,녹봉제,Nokbong (stipend system),gwanje,institution,,
+jungchuwon,중추원,Jungchuwon,gwanje,institution,,
+sangseoseong,상서성,Sangseoseong,gwanje,institution,,
+jungseomunhaseong,중서문하성,Jungseomunhaseong,gwanje,institution,,
+munbeol,문벌귀족,Aristocratic lineages,institution,institution,,
+cheongja,고려청자,Goryeo celadon,material_culture,material_culture,,
+boksik,복식,Costume,material_culture,material_culture,,
+goryeosajeolyo,고려사절요,Goryeosa jeolyo,work,work,,
+goryeosa,고려사,Goryeosa,work,work,,아직 태깅 안 됨(예상 개념)
+biography_children,어린이 위인전,Children's biography,genre,genre,,
+historiography,사학사·연구사,Historiography,scholarship,scholarship,,
+social_history,사회사·생활사,Social history,scholarship,scholarship,,
+royalty,왕실·군주,Royalty,person,person,,
+goguryeo,고구려,Goguryeo,person,person,,정치체
+mongol,몽골·원,Mongol Empire,person,person,,정치체
+japan,일본,Japan,person,person,,정치체·사료
+joseon,조선,Joseon,period,period,,
+muin,무인정권,Military regime,institution,institution,,
+toji,토지제도,Land system,institution,institution,,사패전 등
+epigraphy,금석문·명문,Epigraphy,work,work,,금속문 포함
+goryeodogyeong,고려도경,Goryeo dogyeong,work,work,,서긍의 사행록. 1차 사료
+daejanggyeong,고려대장경,Tripitaka Koreana,work,work,,
+folktale,설화·전승,Folktale,genre,genre,,강감찬 호랑이 설화 등
+youth_nonfiction,청소년·아동 교양,Youth nonfiction,genre,genre,,
+medicine,질병·의료사,History of medicine,scholarship,scholarship,,전염병 등
+yangban,양반,Yangban,institution,institution,,
+crafts,공예·기물,Crafts,material_culture,material_culture,,동경(銅鏡) 등
+buddhism,불교·의례,Buddhism and ritual,scholarship,scholarship,,연등회·팔관회 등
+economy,경제·재정,Economy,institution,institution,,
+foreign_relations,대외관계,Foreign relations,scholarship,scholarship,,
+thought,사상,Intellectual history,scholarship,scholarship,,유·불 사상사
+education,교육,Education,institution,institution,,과거제와 연관
+yisaek,이색,Yi Saek,person,person,,고려 말 문신·학자
+archaeology,고고학·분묘,Archaeology,material_culture,material_culture,,
+military,군사·전쟁,Military history,event,event,,개별 전쟁 개념의 상위
+fiction_children,어린이 창작동화,Children's fiction,genre,genre,,
+waegu,왜구,Waegu (Japanese pirates),japan,person,,
+maritime,해양·교류,Maritime history,scholarship,scholarship,,
+taebong,태봉,Taebong,person,person,,정치체. 후삼국
+literature,한문학·문집,Sino-Korean literature,work,work,,졸고천백 등 문집류
+frontier,영토·국경,Frontier,place,place,,북계·압록강 등
+women,여성사,Women's history,scholarship,scholarship,,
+pungsu,풍수지리,Pungsu (geomancy),scholarship,scholarship,,
+fiction,역사소설,Historical fiction,genre,genre,,성인 대상
+wanggeon,태조 왕건,Taejo Wang Geon,person,person,,고려 건국자
+geography,지리·지리지,Geography,place,place,,
+ganghwa,강화,Ganghwa,place,place,,천도기 도성
+yasa,야사·일화,Unofficial histories,genre,genre,,
+sambyeolcho,삼별초,Sambyeolcho,event,event,,대몽항쟁
+folk_religion,토속신앙,Folk religion,scholarship,scholarship,,
+taoism,도교,Taoism,scholarship,scholarship,,
+local_admin,지방제도,Local administration,gwanje,institution,,계수관 등
+komunseo,고문서,Historical documents,work,work,,왕명문서 등
+gwangjong,광종,Gwangjong,person,person,,고려 4대 국왕
+printing,금속활자·인쇄,Movable type printing,work,work,,
+samgukyusa,삼국유사,Samguk yusa,work,work,,
+bulhwa,불화,Buddhist painting,material_culture,material_culture,,고려불화 등
+astronomy,천문·역법,Astronomy and calendrics,scholarship,scholarship,,

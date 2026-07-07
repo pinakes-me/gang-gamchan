@@ -1,0 +1,2381 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ggc: <https://pinakes-me.github.io/gang-gamchan/vocab#> .
+@prefix ggo: <https://pinakes-me.github.io/gang-gamchan/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/1> a schema:Book ;
+    dcterms:subject ggc:daegan,
+        ggc:goryeo,
+        ggc:gwanje ;
+    dcterms:title "고려시대 대간제도 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "1987"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/10> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려사회의 여러 역사상"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2002"^^xsd:gYear ;
+    schema:publisher "신서원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/100> a schema:Book ;
+    dcterms:subject ggc:frontier,
+        ggc:goryeo ;
+    dcterms:title "압록강과 고려의 북계"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "윤한택, 복대기 외 5인" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "주류성" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/101> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:crafts,
+        ggc:goryeo,
+        ggc:waegu ;
+    dcterms:title "서산 부석사 관음상의 눈물: 약탈당한 고려문화재와 대마도 왜구 이야기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김경임" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "곰시" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/102> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol ;
+    dcterms:title "몽골은 왜 고려를 멸망시키지 않았나"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김운회" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "위즈덤하우스" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/103> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty,
+        ggc:women ;
+    dcterms:title "고려의 왕비: 내조자와 국모로서의 삶"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김갑동, 김아네스, 김창현, 이숙경" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:isPartOf "한국인물사총서 8" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/104> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "고려의 국왕: 제왕으로 개인으로서의 삶"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김갑동, 김아네스, 김창현, 이숙경" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:isPartOf "한국인물사총서 8" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/105> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol ;
+    dcterms:title "고려왕조의 위기, 혹은 세계화 시대"@ko ;
+    rdfs:comment "검수 필요: 저자 표기 확인 — 62번 '이승한'과 동일 저자 추정(전거 불일치)"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이승환" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "푸른역사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/106> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "고려왕조실록에서 배우는 리더의 자격"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "석산" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "북오션" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/107> a schema:Book ;
+    dcterms:subject ggc:archaeology,
+        ggc:goryeo ;
+    dcterms:title "고려시대 역연대 자료집"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이남규, 도영아, 김정주, 정은미" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "학연문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/108> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "고려사의 재발견"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박종기" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "휴머니스트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/109> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려 초조대장경과 동아시아의 대장경"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "유부현, 팡광창, 리지닝, 박용진, 아카오 에이케이" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "한국학중앙연구원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/11> a schema:Book ;
+    dcterms:title "고려25년사"@ko ;
+    rdfs:comment "검수 필요: 왕조 고려가 아니라 기관·단체 연혁사일 가능성. 원자료 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "고려역사편찬위원회" ;
+    schema:datePublished "2002"^^xsd:gYear ;
+    schema:publisher "고려역사편찬위원회" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/110> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:pungsu ;
+    dcterms:title "고려 조선 국도풍수론과 정치이념"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "장지연" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "신구문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/111> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려 재조대장경과 동아시아 대장경"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "유부현, 팡광창, 리지닝, 박용진, 아카오 에이케이" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:isPartOf "문명과가치총서 3, 4" ;
+    schema:publisher "한국학중앙연구원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/112> a schema:Book ;
+    dcterms:subject ggc:gaegyeong,
+        ggc:goryeo ;
+    dcterms:title "개성부원록"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김인호, 노혜경, 윤훈표, 임용한" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:isPartOf "강화고려역사재단 학술총서 1" ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/113> a schema:Book ;
+    dcterms:subject ggc:fiction,
+        ggc:gangamchan ;
+    dcterms:title "강감찬 [전자책]"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김선태" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "디지털문학" ;
+    schema:volumeNumber "3" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/114> a schema:Book ;
+    dcterms:subject ggc:fiction,
+        ggc:gangamchan ;
+    dcterms:title "강감찬 [전자책]"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김선태" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "디지털문학" ;
+    schema:volumeNumber "2" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/115> a schema:Book ;
+    dcterms:subject ggc:fiction,
+        ggc:gangamchan ;
+    dcterms:title "강감찬 [전자책]"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김선태" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "디지털문학" ;
+    schema:volumeNumber "1" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/116> a schema:Book ;
+    dcterms:subject ggc:folktale,
+        ggc:gangamchan,
+        ggc:literature ;
+    dcterms:title "강감찬 설화 [전자책]"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "최자" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:isPartOf "한국문학전집 9" ;
+    schema:publisher "도디드" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/117> a schema:Book ;
+    dcterms:subject ggc:joseon,
+        ggc:literature ;
+    dcterms:title "주영편"@ko ;
+    rdfs:comment "검수 필요: 조선 후기 백과전서 — 강감찬 관련 기사 수록 여부 확인 필요(수집범위)"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정동유 저, 안대회 외 1인 역" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "휴머니스트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/118> a schema:Book ;
+    dcterms:title "이야기 우리문화"@ko ;
+    rdfs:comment "검수 필요: 한국문화 전반 — 고려 한정 아님. 수집범위 검토 대상"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김진섭" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "지성사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/119> a schema:Book ;
+    dcterms:title "스토리텔링 한국사"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 고려 한정 아님. 수집범위 검토 대상"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정현" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "서림당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/12> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje,
+        ggc:nokbong ;
+    dcterms:title "고려 정치제도와 녹봉제도"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "최정한" ;
+    schema:datePublished "2002"^^xsd:gYear ;
+    schema:publisher "신서원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/120> a schema:Book ;
+    dcterms:title "글로벌 한국사, 그날 세계사"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 수집범위 검토. 저자 '인원복'은 '이원복' 오기 추정"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "인원복, 신병주 외 2명" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "휴머니스트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/121> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosajeolyo ;
+    dcterms:title "교감 고려사절요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "노명호 외" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "집문당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/122> a schema:Book ;
+    dcterms:subject ggc:fiction,
+        ggc:goryeo,
+        ggc:wanggeon ;
+    dcterms:title "고려 태조왕건"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김성한" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "산천재" ;
+    schema:volumeNumber "1~5" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/123> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:literature,
+        ggc:social_history ;
+    dcterms:title "고려시대의 삶과 노래"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이정선" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "보고사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/124> a schema:Book ;
+    dcterms:subject ggc:boksik,
+        ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려시대 사람들의 의복식생활"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/125> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:thought ;
+    dcterms:title "고려시대 공공성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이희주, 신복룡, 이남희, 정선용, 윤대식, 노병호, 나가하라 준코, 아오 아스카" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "한국학중앙연구원" ;
+    schema:volumeNumber "1, 2" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/126> a schema:Book ;
+    dcterms:subject ggc:archaeology,
+        ggc:buddhism,
+        ggc:goryeo ;
+    dcterms:title "고려사지와 건축고고"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "조원창" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "서경문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/127> a schema:Book ;
+    dcterms:subject ggc:geography,
+        ggc:goryeo,
+        ggc:goryeosa ;
+    dcterms:title "고려사 지리지 역주"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박종기" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "한국학중앙연구원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/128> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosa,
+        ggc:historiography ;
+    dcterms:title "고려사 연구의 기초"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "장동익" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/129> a schema:Book ;
+    dcterms:subject ggc:archaeology,
+        ggc:ganghwa,
+        ggc:goryeo ;
+    dcterms:title "고려 강화도성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이희인" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:isPartOf "한국중세사학회연구총서 8" ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/13> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "강태희" ;
+    schema:datePublished "2002"^^xsd:gYear ;
+    schema:isPartOf "글로리아 위인전기 ; 16" ;
+    schema:publisher "뉴턴코리아" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/130> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:mongol,
+        ggc:royalty ;
+    dcterms:title "13~14세기 고려몽골관계연구: 정동행성승상 부마 고려국왕 그 복합적 위상에 대한 탐구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이명미" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/131> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:khitan ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-nakseongdae-park,
+        ggo:lib-ultari ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "권태문" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:isPartOf "How so? 필독도서 세계 큰인물 14" ;
+    schema:publisher "한국셰익스피어" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/132> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:goryeo_khitan_war,
+        ggc:khitan ;
+    dcterms:title "거란의 10만 대군을 물리친 고려의 명장: 강감찬"@ko ;
+    rdfs:comment "검수 필요: 93번과 서지 동일·발행년만 상이(2014/2016) — 중쇄의 중복 등재 또는 발행년 오기"@ko ;
+    ggo:heldBy ggo:lib-bomulseom,
+        ggo:lib-eoul,
+        ggo:lib-geulsarang,
+        ggo:lib-yongkkum ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이동렬" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:isPartOf "저학년 교과서 위인전 23" ;
+    schema:publisher "효리원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/133> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan ;
+    dcterms:title "아시아의 역사를 바꾼 강감찬: 술술 읽히는 우리 아이 역사 이야기"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central,
+        ggo:lib-nakseongdae-park,
+        ggo:lib-yongkkum ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "에픽켄" ;
+    schema:datePublished "2016"^^xsd:gYear ;
+    schema:publisher "에픽캔" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/134> a schema:Book ;
+    dcterms:subject ggc:foreign_relations ;
+    dcterms:title "한중연사: 한중의 인연 역사로 만나다"@ko ;
+    rdfs:comment "검수 필요: 한중관계사 전반 — 고려 한정 아님. 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한중문화우호협회" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "부민문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/135> a schema:Book ;
+    dcterms:subject ggc:yasa ;
+    dcterms:title "한권으로 읽는 한국의 야사"@ko ;
+    rdfs:comment "검수 필요: 한국 야사 전반 — 수집범위 검토. 137번과 판본 관계 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김형광" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "시아" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/136> a schema:Book ;
+    dcterms:title "한권으로 읽는 이야기 한국사"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김도훈" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "아이템북스" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/137> a schema:Book ;
+    dcterms:subject ggc:yasa ;
+    dcterms:title "한국의 야사"@ko ;
+    rdfs:comment "검수 필요: 한국 야사 전반 — 수집범위 검토. 135번과 판본 관계 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김형광" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "시아" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/138> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:yasa ;
+    dcterms:title "하룻밤에 읽는 고려야사: 고려 500년 야사를 하룻밤에 읽는다"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김형광" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "시아" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/139> a schema:Book ;
+    dcterms:title "풀뿌리 한국사"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "고성윤" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "나는나다" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/14> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려시대 사람들이야기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2003"^^xsd:gYear ;
+    schema:publisher "신서원" ;
+    schema:volumeNumber "1~3" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/140> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:youth_nonfiction ;
+    dcterms:title "장콩 선생님과 함께 묻고 답하는 한국사카페 2: 고려시대부터 조선후기까지"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "장용준" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:isPartOf "개정증보판" ;
+    schema:publisher "북멘토" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/141> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol,
+        ggc:sambyeolcho ;
+    dcterms:title "삼별초와 동아시아"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "제주국립박물관" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:isPartOf "고려건국 1100주년 기념" ;
+    schema:publisher "그라픽네트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/142> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:bulhwa ;
+    dcterms:title "불화의 비밀"@ko ;
+    rdfs:comment "검수 필요: 불화 전반 — 고려불화 수록 추정이나 범위 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "자현" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "조계종출판사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/143> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "돌도끼에서 4차산업을 보다: 선사부터 고려창업까지"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "석산" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "평단" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/144> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "다시찾는 우리역사 1: 고려시대"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한영우" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "경세원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/145> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "교양으로 읽는 고려사: 고려 500년 역사 인물로 읽는다"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "송은명" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "시아컨텐츠" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/146> a schema:Book ;
+    dcterms:subject ggc:folk_religion,
+        ggc:goryeo ;
+    dcterms:title "고려의 토속 신앙"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김갑동" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/147> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:crafts,
+        ggc:goryeo ;
+    dcterms:title "고려의 성물, 불복장"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정은우, 신은제" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/148> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history,
+        ggc:thought ;
+    dcterms:title "고려 역사상의 탐색: 국가체계에서 가족과 삶의 문제까지"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "노명호, 서성호, 이익주, 박재우, 윤경진 외" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "집문당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/149> a schema:Book ;
+    dcterms:subject ggc:economy,
+        ggc:goryeo,
+        ggc:gwanje ;
+    dcterms:title "고려시대사 1: 정치와 경제"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김인호, 박재우 외 2인" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "푸른역사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/15> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:munbeol ;
+    dcterms:title "고려사의 문벌귀족 가문"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2003"^^xsd:gYear ;
+    schema:publisher "신서원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/150> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:local_admin ;
+    dcterms:title "고려시대 상주계수관 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한기문" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/151> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history,
+        ggc:thought ;
+    dcterms:title "고려시대 사람들의 사유와 집단심성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김인호" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/152> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:taoism ;
+    dcterms:title "고려시대 도교"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김철웅" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/153> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:local_admin ;
+    dcterms:title "고려시기 지방제도 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박종진" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "서울대학교출판문화원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/154> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려사회의 이모저모"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김호동" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/155> a schema:Book ;
+    dcterms:title "고려사람들: 까레이스키 — 유라시아대륙 한민족통사"@ko ;
+    rdfs:comment "검수 필요: '고려사람'은 중앙아시아 고려인(까레이스키) — 왕조 고려와 동음이의. 키워드 수집의 함정 사례"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이창주" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "국제한민족재단" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/156> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:komunseo ;
+    dcterms:title "고려말 조선초 왕명문서연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박성호" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "한국학술정보" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/157> a schema:Book ;
+    dcterms:subject ggc:gaegyeong,
+        ggc:goryeo ;
+    dcterms:title "고려도읍과 동아시아 도읍의 비교연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김창현" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "새문사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/158> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history,
+        ggc:thought ;
+    dcterms:title "고려 역사상의 탐색: 국가체계에서 가족과 삶의 문제까지"@ko ;
+    rdfs:comment "검수 필요: 148번과 완전 동일 서지(저자 표기만 축약) — 중복 등재"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "노명호, 서성호, 이익주 외" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "집문당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/159> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:military,
+        ggc:mongol ;
+    dcterms:title "고려 대몽항쟁과 축성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김호준" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "서경문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/16> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeo_khitan_war,
+        ggc:khitan ;
+    dcterms:title "고려거란전쟁"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "안주섭" ;
+    schema:datePublished "2003"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/160> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwangjong,
+        ggc:royalty ;
+    dcterms:title "개혁군주 광종: 500년 고려제국 설계자"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "우재훈" ;
+    schema:datePublished "2017"^^xsd:gYear ;
+    schema:publisher "북랩" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/161> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:wanggeon ;
+    dcterms:title "훈요십조의 진실과 호남 황해인들이 개국한 코리아"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "문경주" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "밥북" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/162> a schema:Book ;
+    dcterms:title "통제와 저항, 인류역사의 변주"@ko ;
+    rdfs:comment "검수 필요: 인류사 일반 — 고려 관련 수록 여부 확인 필요(수집범위)"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한영화, 권순홍 외 9명" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "선인" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/163> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:military,
+        ggc:wanggeon ;
+    dcterms:title "통일과 전쟁, 고려태조 왕건"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김명진" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:isPartOf "한국중세사학회연구총서" ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/164> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:khitan ;
+    dcterms:title "태평한 변방: 고려의 대거란 외교와 그 소산"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이미지" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/165> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:printing ;
+    dcterms:title "지식정보의 소통과 한국금속활자 발달사: 고려시대"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "남권희" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "경북대학교출판부" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/166> a schema:Book ;
+    dcterms:title "재미있는 한국사"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김제방" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "문학공원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/167> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje,
+        ggc:mongol ;
+    dcterms:title "원간섭기 고려의 측근정치와 개혁정치"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김광철" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/168> a schema:Book ;
+    dcterms:subject ggc:crafts ;
+    dcterms:title "아름다운 우리 찻그릇"@ko ;
+    rdfs:comment "검수 필요: 한국 도자 전반 — 고려 한정 아님(고려청자 포함 추정). 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "윤용이" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "이른아침" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/169> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "심리학으로 풀어낸 고려 왕 34인의 이야기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "석산" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "평단" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/17> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosajeolyo ;
+    dcterms:title "고려사절요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김종서 외" ;
+    schema:datePublished "2004"^^xsd:gYear ;
+    schema:isPartOf "신편" ;
+    schema:publisher "민족문화추진위원회" ;
+    schema:volumeNumber "상,중,하" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/170> a schema:Book ;
+    dcterms:title "세상에서 가장 짧은 한국사"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박경남" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "북씽크" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/171> a schema:Book ;
+    dcterms:subject ggc:geography ;
+    dcterms:title "서울의 6000년"@ko ;
+    rdfs:comment "검수 필요: 서울 통사 — 고려 한정 아님. 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정순태" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "조갑제닷컴" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/172> a schema:Book ;
+    dcterms:title "새빨간 선조들"@ko ;
+    rdfs:comment "검수 필요: 표제만으로 주제·범위 판별 불가"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이선학" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "스타북스" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/173> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol,
+        ggc:royalty ;
+    dcterms:title "몽골제국의 쇠퇴와 공민왕시대"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이승한 외" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "푸른역사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/174> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol,
+        ggc:royalty ;
+    dcterms:title "몽골제국과 고려 세트"@ko ;
+    rdfs:comment "검수 필요: 62·105·173번 낱권과 세트 중복 등재. 저자 '이승환'은 '이승한' 오기 — 인접 항목(173)과 표기 불일치"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이승환 외" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "푸른역사" ;
+    schema:volumeNumber "1~4" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/175> a schema:Book ;
+    dcterms:subject ggc:fiction,
+        ggc:goryeo ;
+    dcterms:title "귀호곡"@ko ;
+    rdfs:comment "검수 필요: 고려가요 '귀호곡(가시리)' 소재 창작물 추정 — 장르 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "최문경" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "예문바다" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/176> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려후기 신분변동 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김현라" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/177> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty,
+        ggc:yasa ;
+    dcterms:title "고려왕조 정사·야사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이강래" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "문지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/178> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려시대사 2: 사회와 문화"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이종서, 박진훈 외 2명" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "푸른역사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/179> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:historiography,
+        ggc:samgukyusa ;
+    dcterms:title "고려시대 역사서의 신이성과 삼국유사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "차광호" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "역사산청" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/18> a schema:Book ;
+    dcterms:subject ggc:boksik ;
+    dcterms:title "한국복식도감"@ko ;
+    rdfs:comment "검수 필요: 한국 복식 일반. 고려 한정 아님 — 수집범위 검토 대상"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "KBS 아트비전" ;
+    schema:datePublished "2004"^^xsd:gYear ;
+    schema:publisher "KBS 아트비전" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/180> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려대장경의 교감학적 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "유부현" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "시간의 물레" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/181> a schema:Book ;
+    dcterms:subject ggc:fiction,
+        ggc:goryeo,
+        ggc:goryeo_khitan_war,
+        ggc:khitan ;
+    dcterms:title "고려거란전기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "길승수" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "지식과감성" ;
+    schema:volumeNumber "1, 2" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/182> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려 사회 사람들"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김용선" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "일조각" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/183> a schema:Book ;
+    dcterms:subject ggc:gaegyeong,
+        ggc:geography,
+        ggc:goryeo ;
+    dcterms:title "고려 개경·경기 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정은정" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:isPartOf "민족문화 학술총서 64" ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/184> a schema:Book ;
+    dcterms:subject ggc:geography,
+        ggc:goryeo,
+        ggc:joseon ;
+    dcterms:title "경기천년의 문화사: 고려후기~조선전기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "경기문화재단" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/185> a schema:Book ;
+    dcterms:subject ggc:geography,
+        ggc:goryeo ;
+    dcterms:title "경기천년의 문화사: 고려전기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "경기문화재단" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/186> a schema:Book ;
+    dcterms:subject ggc:geography,
+        ggc:goryeo ;
+    dcterms:title "경기천년의 문화사"@ko ;
+    rdfs:comment "검수 필요: 184·185 분권과 세트(또는 총론) 관계 — 등재 단위 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "경기문화재단" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/187> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:historiography ;
+    dcterms:title "21세기에 다시 보는 고려시대의 역사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한국중세사학회" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/188> a schema:Book ;
+    dcterms:subject ggc:gangamchan ;
+    dcterms:title "구국의 별 강감찬"@ko ;
+    ggo:heldBy ggo:lib-yongkkum ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "관악구 문화체육과" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:publisher "관악구" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/189> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:seohui ;
+    dcterms:title "Who? 서희·강감찬"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central,
+        ggo:lib-saessak,
+        ggo:lib-tteuran,
+        ggo:lib-yongkkum ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "최재훈" ;
+    schema:datePublished "2018"^^xsd:gYear ;
+    schema:isPartOf "Who? 인물 한국사 15" ;
+    schema:publisher "다산어린이" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/19> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeo_khitan_war,
+        ggc:jurchen,
+        ggc:khitan ;
+    dcterms:title "전쟁과 역사 2"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "임용한" ;
+    schema:datePublished "2004"^^xsd:gYear ;
+    schema:isPartOf "거란 여진과의 전쟁" ;
+    schema:publisher "혜안" ;
+    schema:volumeNumber "2" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/190> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:bulhwa,
+        ggc:goryeo ;
+    dcterms:title "회상, 고려불화전"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "홍윤식" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "집옥재" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/191> a schema:Book ;
+    dcterms:subject ggc:crafts ;
+    dcterms:title "한국가구의 역사"@ko ;
+    rdfs:comment "검수 필요: 한국 가구 전반 — 고려 한정 아님. 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "조숙경" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "미진사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/192> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "천년을 잇는 고려대장경 사경"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "편집부" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "어의운하" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/193> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:youth_nonfiction ;
+    dcterms:title "질문하는 한국사 2: 고려"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김인호" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "나무를심는사람들" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/194> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:bulhwa,
+        ggc:goryeo,
+        ggc:joseon,
+        ggc:royalty ;
+    dcterms:title "왕실, 권력, 그리고 불화: 고려와 조선의 왕실불화"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김정희" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "세창출판사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/195> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "역사저널 그날 고려편"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "KBS역사저널" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "민음사" ;
+    schema:volumeNumber "1~4 세트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/196> a schema:Book ;
+    dcterms:subject ggc:astronomy,
+        ggc:goryeo ;
+    dcterms:title "시간의 역사, 고려시대 달력을 복원하다"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "서금석" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/197> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:literature ;
+    dcterms:title "새로 읽는 한국고전문학사 - 고려편"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "최강현" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "명문당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/198> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:military,
+        ggc:mongol,
+        ggc:sambyeolcho ;
+    dcterms:title "삼별초의 항쟁"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정진술" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "글터" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/199> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo ;
+    dcterms:title "사료로 본 고려와 동북아"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "동북아역사재단 한국고중세사연구회" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:isPartOf "동북아역사 자료총서 54" ;
+    schema:publisher "동북아역사재단" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/2> a schema:Book ;
+    dcterms:subject ggc:eumseo,
+        ggc:goryeo,
+        ggc:gwageo,
+        ggc:gwanje ;
+    dcterms:title "고려시대 음서제와 과거제연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "1990"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/20> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "고려시대연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2004"^^xsd:gYear ;
+    schema:isPartOf "시리즈 2·7·9·11·13" ;
+    schema:publisher "한국정신문화연구원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/200> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "밝혀진 고려역사"@ko ;
+    rdfs:comment "검수 필요: 학술적 성격 확인 필요 — 재야사학 계열 가능성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한창건" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "홍익출판기획" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/201> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:military ;
+    dcterms:title "문충공 안우: 고려말 국난극복의 영웅"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이재범" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "명지대학교국제한국학연구소" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/202> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:mongol ;
+    dcterms:title "몽골-고려 관계연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "고명수" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/203> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:yisaek ;
+    dcterms:title "목은 이색선생 약전"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이훈구" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "심당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/204> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje,
+        ggc:local_admin ;
+    dcterms:title "고려의 중앙과 지방의 네트워크"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "채웅석, 홍영의 외 3명" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/205> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려의 다양한 삶의 양식과 통합조절"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "채웅석, 박종기 외 3명" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/206> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:thought ;
+    dcterms:title "고려의 국제적 개방성과 자기인식의 토대"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "채웅석, 최봉준 외 3명" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/207> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty,
+        ggc:thought ;
+    dcterms:title "고려의 국가제사와 왕실의례"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김아네스" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/208> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:thought ;
+    dcterms:title "고려의 국가의식과 동아시아"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "동북아역사재단 한국고중세사연구회" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "동북아역사재단" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/209> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "고려열전: 영웅부터 경계인까지 인물로 읽는 고려사"@ko ;
+    rdfs:comment "검수 필요: 218번과 동일 서지(부제 유무만 상이) — 중복 등재. 원목록 출판사 '휴머니스터'는 오기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박종기" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "휴머니스트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/21> a schema:Book ;
+    dcterms:subject ggc:epigraphy,
+        ggc:goryeo ;
+    dcterms:title "고려 금속문 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김용선" ;
+    schema:datePublished "2004"^^xsd:gYear ;
+    schema:publisher "일조각" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/210> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon ;
+    dcterms:title "고려에서 조선으로"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정요근" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "역사비평" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/211> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려시대 사람들의 식음생활"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/212> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje,
+        ggc:military ;
+    dcterms:title "고려시대 군사제도 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "권영국" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:isPartOf "경인한국학연구총서 172" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/213> a schema:Book ;
+    dcterms:subject ggc:economy,
+        ggc:goryeo,
+        ggc:maritime ;
+    dcterms:title "고려상인과 동아시아 무역사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김영제" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "푸른역사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/214> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosa,
+        ggc:goryeosajeolyo,
+        ggc:historiography ;
+    dcterms:title "고려사와 고려사절요의 사료적 특성: 해석방향의 정립에 관련하여"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "노명호" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "지식산업사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/215> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:muin ;
+    dcterms:title "고려무인 이야기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이승한" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "푸른역사" ;
+    schema:volumeNumber "1~4" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/216> a schema:Book ;
+    dcterms:subject ggc:crafts,
+        ggc:goryeo ;
+    dcterms:title "고려도기연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한혜선" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:isPartOf "이화연구총서 28" ;
+    schema:publisher "역락" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/217> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:wanggeon,
+        ggc:yasa ;
+    dcterms:title "고려 태조 건국이야기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "차상찬" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "온이퍼브" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/218> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "고려 열전"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박종기" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "휴머니스트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/219> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:goryeo ;
+    dcterms:title "고려 불교사의 탐색"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "변동명" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "전남대학교출판문화원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/22> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeodogyeong ;
+    dcterms:title "고려도경"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "서긍" ;
+    schema:datePublished "2005"^^xsd:gYear ;
+    schema:publisher "서해문집" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/220> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:military ;
+    dcterms:title "고려 16공신 도원수 안우 장군"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "안기순" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "지식과감성" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/221> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "EBS 고려역사기행 [DVD]"@ko ;
+    rdfs:comment "검수 필요: DVD 영상자료가 도서목록에 등재 — 미디어목록 대상(매체 오배치). 방송 기반 자료 3건째"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "EBS교육방송" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "EBS" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/222> a schema:Book ;
+    dcterms:subject ggc:geography,
+        ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "사진으로 보는 역사여행: 고려왕실의 마지막 안식처 숭의전 vs 경기도에 묻힌 고려의 충신들"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "하이스토리텔링" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:publisher "아이원이즈" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/223> a schema:Book ;
+    dcterms:subject ggc:gangamchan,
+        ggc:nakseongdae ;
+    dcterms:title "하늘에서 떨어진 별터, 낙성대"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "하이스토리텔링" ;
+    schema:datePublished "2019"^^xsd:gYear ;
+    schema:isPartOf "사진으로 보는 역사여행" ;
+    schema:publisher "아이즈원이즈" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/224> a schema:Book ;
+    dcterms:subject ggc:military ;
+    dcterms:title "한국기마전 연구"@ko ;
+    rdfs:comment "검수 필요: 한국 전쟁사 전반 — 고려 한정 아님. 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이홍두" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/225> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:printing ;
+    dcterms:title "직지 복원연구: 고려시대 밀랍주조법 금속활자 인쇄술"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "조형진" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "한국학술정보" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/226> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:japan,
+        ggc:waegu ;
+    dcterms:title "왜구, 고려로 번진 일본의 내란: 남북조내란과 고려말 왜구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이영" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "보고사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/227> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "오백년 고려사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박종기" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "휴머니스트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/228> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "새로 쓴 오백년사 고려사: 역사학자 박종기의 정통 고려역사"@ko ;
+    rdfs:comment "검수 필요: 227번과 판본 계열(개정판) — 등재 단위 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박종기" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "휴머니스트" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/229> a schema:Book ;
+    dcterms:title "마흔, 역사와 만날 시간"@ko ;
+    rdfs:comment "검수 필요: 한국사 에세이 전반 — 수집범위 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김준태" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "한겨레출판사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/23> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeodogyeong ;
+    dcterms:title "고려도경"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "서긍" ;
+    schema:datePublished "2005"^^xsd:gYear ;
+    schema:publisher "황소자리" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/230> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:literature ;
+    dcterms:title "고려와 조선의 문학"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "씨익북스 편집부" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "씨익북스" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/231> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:literature ;
+    dcterms:title "고려와 조선시대의 가요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "안자산" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "온이퍼브" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/232> a schema:Book ;
+    dcterms:subject ggc:astronomy,
+        ggc:goryeo ;
+    dcterms:title "고려시대 천문현상 기록집"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "안영숙" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "한국학술정보" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/233> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:komunseo,
+        ggc:literature ;
+    dcterms:title "고려시대 외교문서와 사행시문"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김건곤, 이종문 외 3인" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:isPartOf "AKS 인문총서 26" ;
+    schema:publisher "한국학중앙연구원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/234> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "고려시대 문화이야기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "씨익북스" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "씨익북스" ;
+    schema:volumeNumber "1~4" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/235> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeodogyeong ;
+    dcterms:title "고려도경 역주 (상)"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이진한" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:isPartOf "고려대한국사연구총서" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/236> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려대장경"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한국학자료원" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "한국학자료원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/237> a schema:Book ;
+    dcterms:subject ggc:archaeology,
+        ggc:goryeo,
+        ggc:joseon ;
+    dcterms:title "고려, 조선의 성곽에서 역사를 만나다"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "성순택" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "퍼플" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/238> a schema:Book ;
+    dcterms:subject ggc:cheongja,
+        ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려 옹기와 청자에 음식을 담다"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "태경(이선이)" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:isPartOf "개경 승려와 사대부의 음식" ;
+    schema:publisher "양사재" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/239> a schema:Book ;
+    dcterms:subject ggc:gangamchan ;
+    dcterms:title "별빛 영웅, 강감찬!"@ko ;
+    ggo:heldBy ggo:lib-chaeksarang,
+        ggo:lib-gwanak-central,
+        ggo:lib-tteuran,
+        ggo:lib-yongkkum ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "숨쉬는책공장" ;
+    schema:datePublished "2020"^^xsd:gYear ;
+    schema:publisher "관악구" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/24> a schema:Book ;
+    dcterms:subject ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려대장경의 연구"@ko ;
+    rdfs:comment "검수 필요: 저자 표기 확인 필요 — '송영지해'는 역할어가 붙은 오기일 가능성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "장애순, 정승석, 구영달, 송영지해" ;
+    schema:datePublished "2006"^^xsd:gYear ;
+    schema:publisher "동국대학교출판부" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/25> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:japan ;
+    dcterms:title "한국중세 일본사료집성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김덕원" ;
+    schema:datePublished "2006"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/26> a schema:Book ;
+    dcterms:subject ggc:goguryeo,
+        ggc:goryeo ;
+    dcterms:title "고려의 고구려계승에 대한 종합적 검토"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2006"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/27> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol,
+        ggc:social_history ;
+    dcterms:title "고려에 시집온 칭기즈칸의 딸들"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이한수" ;
+    schema:datePublished "2006"^^xsd:gYear ;
+    schema:publisher "김영사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/28> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-bomulseom,
+        ggo:lib-geulbit,
+        ggo:lib-gwanak-central,
+        ggo:lib-seonghyeon ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "우봉규" ;
+    schema:datePublished "2006"^^xsd:gYear ;
+    schema:isPartOf "새시대 큰인물 8" ;
+    schema:publisher "어린이중앙" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/29> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:historiography ;
+    dcterms:title "고려시대사의 길잡이"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2007"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/3> a schema:Book ;
+    dcterms:subject ggc:gaegyeong,
+        ggc:goryeo ;
+    dcterms:title "고려시대 개경연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "1996"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/30> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:toji ;
+    dcterms:title "고려말 조선초 사패전연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이숙경" ;
+    schema:datePublished "2007"^^xsd:gYear ;
+    schema:publisher "일조각" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/31> a schema:Book ;
+    dcterms:subject ggc:folktale,
+        ggc:gangamchan ;
+    dcterms:title "인왕산 호랑이와 강감찬"@ko ;
+    ggo:heldBy ggo:lib-geulbit,
+        ggo:lib-nakseongdae-park,
+        ggo:lib-seonghyeon ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "선안나" ;
+    schema:datePublished "2007"^^xsd:gYear ;
+    schema:isPartOf "이야기 쏙쏙 우리문화 서울·경기·인천 편 1" ;
+    schema:publisher "문원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/32> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol ;
+    dcterms:title "전쟁과 역사 3"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "임용한" ;
+    schema:datePublished "2008"^^xsd:gYear ;
+    schema:isPartOf "전란의 시대 고려 후기편 · 완결" ;
+    schema:publisher "혜안" ;
+    schema:volumeNumber "3" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/33> a schema:Book ;
+    dcterms:subject ggc:cheongja,
+        ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "고려왕실의 도자기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국립중앙박물관" ;
+    schema:datePublished "2008"^^xsd:gYear ;
+    schema:publisher "국립중앙박물관" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/34> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "고려시대사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2008"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/35> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:muin ;
+    dcterms:title "고려무인정권기 문사연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "황병서" ;
+    schema:datePublished "2008"^^xsd:gYear ;
+    schema:isPartOf "경인한국학총서" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/36> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:gwiju_battle ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-seonghyeon ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "양혜정" ;
+    schema:datePublished "2008"^^xsd:gYear ;
+    schema:isPartOf "우리 위인 동화 24" ;
+    schema:publisher "기탄동화" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/37> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol ;
+    dcterms:title "팍스몽골리카와 고려"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "브르지기다이 에르데니 바타르" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/38> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:youth_nonfiction ;
+    dcterms:title "청소년을 위한 고려유사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박영수" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:publisher "살림프랜드스" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/39> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty,
+        ggc:youth_nonfiction ;
+    dcterms:title "읽기 쉬운 고려왕이야기"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한국인물사연구원" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:publisher "타오름" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/4> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje ;
+    dcterms:title "고려시대 관계.관직연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "1997"^^xsd:gYear ;
+    schema:publisher "고려대학교출판부" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/40> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosa ;
+    dcterms:title "국역 고려사열전편 세트"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "편집부" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:isPartOf "전 12권" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/41> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosa,
+        ggc:gwanje ;
+    dcterms:title "고려사 백관지 역주"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:publisher "신서원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/42> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:social_history ;
+    dcterms:title "고려 조선의 친족용어와 혈연의식"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이종서" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:isPartOf "역사문화연구총서" ;
+    schema:publisher "신구문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/43> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:gwiju_battle ;
+    dcterms:title "강감찬 : 귀주대첩의 고려 명장"@ko ;
+    ggo:heldBy ggo:lib-eunchen,
+        ggo:lib-kkumnamu ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김경희" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:isPartOf "포커스 한국위인동화" ;
+    schema:publisher "흙마당어린이" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/44> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-dasarang,
+        ggo:lib-gwanak-central,
+        ggo:lib-jowon,
+        ggo:lib-nakseongdae-park,
+        ggo:lib-woori ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한정기" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:isPartOf "새싹 인물전 9" ;
+    schema:publisher "비룡소" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/45> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-geulbit ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "프뢰벨미디어 편집부" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:isPartOf "프뢰벨 우리역사 파노라마 33 · 고려인물" ;
+    schema:publisher "프뢰벨미디어" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/46> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:gwiju_battle ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-eunchen ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김경희" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:isPartOf "교과서에 나오는 논술 위인 시리즈 22" ;
+    schema:publisher "흙마당어린이" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/47> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:gwiju_battle ;
+    dcterms:title "강감찬"@ko ;
+    ggo:heldBy ggo:lib-jowon,
+        ggo:lib-nakseongdae-park,
+        ggo:lib-seonghyeon ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김진섭" ;
+    schema:datePublished "2009"^^xsd:gYear ;
+    schema:isPartOf "역사 인물 탐구 34" ;
+    schema:publisher "지경사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/48> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:medicine ;
+    dcterms:title "전염병의 문화사: 고려시대를 보는 또 하나의 시선"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김영미, 이현숙, 김순자, 이정숙, 권복규" ;
+    schema:datePublished "2010"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/49> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:yangban ;
+    dcterms:title "고려양반국가의 성립과 전개"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김당택" ;
+    schema:datePublished "2010"^^xsd:gYear ;
+    schema:publisher "전남대학교출판부" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/5> a schema:Book ;
+    dcterms:subject ggc:cheongja,
+        ggc:goryeo ;
+    dcterms:title "고려청자"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정양모" ;
+    schema:datePublished "1998"^^xsd:gYear ;
+    schema:publisher "대원사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/50> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:historiography ;
+    dcterms:title "고려시기 역사의 몇가지 문제"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2010"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/51> a schema:Book ;
+    dcterms:subject ggc:crafts,
+        ggc:goryeo ;
+    dcterms:title "고려동경: 거울에 담긴 고려사람들의 삶"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국립중앙박물관 미술부" ;
+    schema:datePublished "2010"^^xsd:gYear ;
+    schema:publisher "국립중앙박물관" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/52> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "고려건국기의 사회동향연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이재범" ;
+    schema:datePublished "2010"^^xsd:gYear ;
+    schema:isPartOf "경인한국학연구총서 87" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/53> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan ;
+    dcterms:title "푸른 숲 큰나무 [전자책]"@ko ;
+    rdfs:comment "검수 필요: 54번의 전자책 판본으로 추정(FRBR 관계) — 소장처 표기 '디지털자료실'"@ko ;
+    ggo:heldBy ggo:lib-gwanak-central ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "역사·인물편찬위원회" ;
+    schema:datePublished "2010"^^xsd:gYear ;
+    schema:publisher "역사디딤돌" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/54> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan ;
+    dcterms:title "푸른 숲 큰 나무: 강감찬"@ko ;
+    ggo:heldBy ggo:lib-eunchen,
+        ggo:lib-nakseongdae-park,
+        ggo:lib-yongkkum ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "역사·인물편찬위원회" ;
+    schema:datePublished "2010"^^xsd:gYear ;
+    schema:isPartOf "역사를 바꾼 인물·인물을 키운 역사 028" ;
+    schema:publisher "역사디딤돌" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/55> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "한권으로 읽는 고려왕조실록"@ko ;
+    rdfs:comment "검수 필요: 저자명 확인 필요 — '박영규'의 오기 가능성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "백영규" ;
+    schema:datePublished "2011"^^xsd:gYear ;
+    schema:isPartOf "개정증보판" ;
+    schema:publisher "웅진닷컴" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/56> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:toji ;
+    dcterms:title "한국중세 토지제도사: 고려"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이경식" ;
+    schema:datePublished "2011"^^xsd:gYear ;
+    schema:publisher "서울대학교출판문화원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/57> a schema:Book ;
+    dcterms:subject ggc:epigraphy,
+        ggc:goryeo ;
+    dcterms:title "한국금석문집성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "임세권" ;
+    schema:datePublished "2011"^^xsd:gYear ;
+    schema:isPartOf "19~32권" ;
+    schema:publisher "한국국학진흥원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/58> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:toji,
+        ggc:yangban ;
+    dcterms:title "고려의 양반과 양반전 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "윤한택" ;
+    schema:datePublished "2011"^^xsd:gYear ;
+    schema:isPartOf "경인한국학연구총서 92" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/59> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:goryeo ;
+    dcterms:title "고려의 불교의례와 문화"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "안지원" ;
+    schema:datePublished "2011"^^xsd:gYear ;
+    schema:isPartOf "연등·팔관회와 제석도량을 중심으로" ;
+    schema:publisher "서울대학교출판문화원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/6> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:historiography ;
+    dcterms:title "고려시대사 연구의 성과와 과제"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "1999"^^xsd:gYear ;
+    schema:publisher "신서원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/60> a schema:Book ;
+    dcterms:subject ggc:gaegyeong,
+        ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "고려 개경의 편제와 궁궐"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "고려사학연구회" ;
+    schema:datePublished "2011"^^xsd:gYear ;
+    schema:isPartOf "고려사학회연구총서 23" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/61> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려 초조대장경: 세상을 움직이는 다섯가지 힘"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "대구MBC특집 다큐멘터리 2부작" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:publisher "마더북스" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/62> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:mongol,
+        ggc:royalty ;
+    dcterms:title "혼혈왕 충선왕: 그 경계인 삶과 시대"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이승한" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:publisher "푸른역사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/63> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "이야기 고려왕조실록"@ko ;
+    rdfs:comment "검수 필요: 저자 표기 불일치 — 39번 '한국인물사연구원'과 동일 기관 추정"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "한국인문사연구원" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:publisher "타오름" ;
+    schema:volumeNumber "상, 하" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/64> a schema:Book ;
+    dcterms:subject ggc:epigraphy,
+        ggc:goryeo ;
+    dcterms:title "역주 고려 묘지명 집성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김용선" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:isPartOf "중판" ;
+    schema:publisher "한림대학교출판부" ;
+    schema:volumeNumber "상, 하" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/65> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosa,
+        ggc:gwageo,
+        ggc:gwanje ;
+    dcterms:title "고려사 선거지 역주"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/66> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "고려보고의 비밀"@ko ;
+    rdfs:comment "검수 필요: 표제만으로 장르·주제 판별 불가 — 원자료 확인 필요"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김일환" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:publisher "책내음" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/67> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려대장경과 교장의 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "천혜봉" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:publisher "범우" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/68> a schema:Book ;
+    dcterms:subject ggc:epigraphy,
+        ggc:goryeo ;
+    dcterms:title "고려 묘지명 집성"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김용선" ;
+    schema:datePublished "2012"^^xsd:gYear ;
+    schema:publisher "한림대학교출판부" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/69> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:thought ;
+    dcterms:title "한국사 21: 고려 후기의 사상과 문화"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 21" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/7> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje,
+        ggc:jungseomunhaseong ;
+    dcterms:title "고려시대중서문하성재신 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2000"^^xsd:gYear ;
+    schema:publisher "일지사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/70> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "한국사 20: 고려 후기의 사회와 대외관계"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 20" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/71> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:muin ;
+    dcterms:title "한국사 18: 고려 무신정권"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 18" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/72> a schema:Book ;
+    dcterms:subject ggc:education,
+        ggc:goryeo ;
+    dcterms:title "한국사 17: 고려 전기의 교육과 문화"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 17" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/73> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:goryeo,
+        ggc:thought ;
+    dcterms:title "한국사 16: 고려 전기의 종교와 사상"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 16" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/74> a schema:Book ;
+    dcterms:subject ggc:foreign_relations,
+        ggc:goryeo,
+        ggc:social_history ;
+    dcterms:title "한국사 15: 고려 전기의 사회와 대외관계"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 15" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/75> a schema:Book ;
+    dcterms:subject ggc:economy,
+        ggc:goryeo ;
+    dcterms:title "한국사 14: 고려 전기의 경제구조"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 14" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/76> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje ;
+    dcterms:title "한국사 13: 고려 전성기의 정치연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 13" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/77> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "한국사 12: 고려왕조의 성립과 발전"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "국사편찬위원회" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "한국사(국사편찬위원회) 12" ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/78> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:thought,
+        ggc:yisaek ;
+    dcterms:title "이색의 삶과 생각"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이익주" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:publisher "일조각" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/79> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:joseon,
+        ggc:royalty,
+        ggc:social_history ;
+    dcterms:title "왕의 서커스: 고려와 조선왕들의 오락과 문화"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "윤아영" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:publisher "민속원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/8> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje,
+        ggc:sangseoseong ;
+    dcterms:title "고려시대 상서성 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2000"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/80> a schema:Book ;
+    dcterms:title "꼬리에 꼬리를 무는 한국사 인물이야기"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 고려 한정 아님. 수집범위 검토 대상"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김상훈" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:publisher "탐구당" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/81> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeodogyeong ;
+    dcterms:title "그림으로 읽는 고려도경: 송나라 사신의 눈에 비친 고려의 모든 것"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김대식" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:publisher "역사인" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/82> a schema:Book ;
+    dcterms:subject ggc:archaeology,
+        ggc:goryeo ;
+    dcterms:title "고려시대 지방분묘의 특징과 변화"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "주영민" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/83> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:military,
+        ggc:youth_nonfiction ;
+    dcterms:title "고려사람들은 어떻게 싸웠을까: 중고생을 위한 이야기 고려사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "강건우, 강창우" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:publisher "늘푸른소나무" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/84> a schema:Book ;
+    dcterms:subject ggc:boksik,
+        ggc:goryeo,
+        ggc:goryeosa ;
+    dcterms:title "고려사 여복지 역주"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/85> a schema:Book ;
+    dcterms:subject ggc:fiction_children,
+        ggc:gangamchan ;
+    dcterms:title "강감찬과 납작코 오빛나"@ko ;
+    ggo:heldBy ggo:lib-jowon,
+        ggo:lib-woori ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "안명옥" ;
+    schema:datePublished "2013"^^xsd:gYear ;
+    schema:isPartOf "콤플렉스 극복 동화 2" ;
+    schema:publisher "주니어김영사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/86> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "심리학으로 본 고려왕조실록"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "석산" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:publisher "평단" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/87> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje ;
+    dcterms:title "고려중앙정치제도사의 신연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "김명진" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:isPartOf "한국중세사학연구총서" ;
+    schema:publisher "혜안" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/88> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:military ;
+    dcterms:title "고려전쟁 생중계"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정명섭" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:isPartOf "고려의 역사를 뒤흔든 10번의 전투" ;
+    schema:publisher "북하우스" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/89> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:toji ;
+    dcterms:title "고려전기 개간제도 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박재우" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:publisher "새문사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/9> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:gwanje,
+        ggc:jungchuwon ;
+    dcterms:title "고려시대 중추원연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "박용운" ;
+    schema:datePublished "2001"^^xsd:gYear ;
+    schema:isPartOf "민족문화연구총서 103" ;
+    schema:publisher "고려대학교출판부" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/90> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:royalty ;
+    dcterms:title "고려왕조 실록(고려후기): 고종에서 공양왕"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "조병찬" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:publisher "예벗" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/91> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:goryeosa ;
+    dcterms:title "고려사세가초기편 보유"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "장동익" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:publisher "경인문화사" ;
+    schema:volumeNumber "1, 2" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/92> a schema:Book ;
+    dcterms:subject ggc:buddhism,
+        ggc:daejanggyeong,
+        ggc:goryeo ;
+    dcterms:title "고려대장경의 구성과 저본 및 판각에 대한 연구"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "유부현" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:publisher "시간의 물레" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/93> a schema:Book ;
+    dcterms:subject ggc:biography_children,
+        ggc:gangamchan,
+        ggc:goryeo_khitan_war,
+        ggc:khitan ;
+    dcterms:title "거란의 10만 대군을 물리친 고려의 명장: 강감찬"@ko ;
+    ggo:heldBy ggo:lib-gulleongsoe,
+        ggo:lib-gwanak-central,
+        ggo:lib-jowon,
+        ggo:lib-yongkkum ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이동렬" ;
+    schema:datePublished "2014"^^xsd:gYear ;
+    schema:isPartOf "저학년 교과서 위인전 23" ;
+    schema:publisher "효리원" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/94> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:historiography,
+        ggc:waegu ;
+    dcterms:title "황국사관과 고려말 왜구: 일본 근대정치의 학문개입과 역사인식"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이영" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "에피스테메" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/95> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:maritime ;
+    dcterms:title "한국해양연구사: 백제에서 고려 1천년 바다 역사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "윤용혁" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "주류성" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/96> a schema:Book ;
+    dcterms:subject ggc:crafts,
+        ggc:goryeo,
+        ggc:taebong ;
+    dcterms:title "태봉과 고려: 석조미술로 보는 역사"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "정성권" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "학연문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/97> a schema:Book ;
+    dcterms:subject ggc:goryeo,
+        ggc:literature ;
+    dcterms:title "졸고천백 역주"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이진한" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:isPartOf "고려사학회연구총서 25" ;
+    schema:publisher "경인문화사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/98> a schema:Book ;
+    dcterms:subject ggc:goryeo ;
+    dcterms:title "이이화 한국사 이야기: 최초의 민족통일국가 고려"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "이이화" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "한길사" .
+
+<https://pinakes-me.github.io/gang-gamchan/resource/book/99> a schema:Book ;
+    dcterms:subject ggc:economy ;
+    dcterms:title "위대한 한국상인: 7000년 한상의 뿌리를 찾아서"@ko ;
+    rdfs:comment "검수 필요: 한국사 전반 — 고려 한정 아님. 수집범위 검토 대상"@ko ;
+    ggo:sourceList ggo:list-books ;
+    schema:author "공창석" ;
+    schema:datePublished "2015"^^xsd:gYear ;
+    schema:publisher "박영사" .
+
