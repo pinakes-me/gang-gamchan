@@ -1,4 +1,4 @@
-# 별이 떨어진 자리 : 강감찬 탐험 지도
+# 별이 떨어진 자리 — 강감찬 탐험 지도
 
 **🔗 살펴보기: https://pinakes-me.github.io/gang-gamchan/**
 
