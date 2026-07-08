@@ -23,12 +23,20 @@ python3 scripts/reconcile_wikidata.py
   vocab/concepts.csv에 URI를 수기 입력해도 됨
 
 ## 2단계 — ISBN (도서 239권, 약 3분 소요)
-1. **data4library.kr** (도서관 정보나루) 회원가입 → 인증키 발급 (무료)
-2. `scripts/reconcile_nlk.py` 를 열어 `AUTH_KEY = "..."` 에 키 붙여넣기
-3. ```bash
+
+**인증키 발급** (5분, 최초 1회):
+1. **data4library.kr** 접속 → 우상단 **회원가입** → **로그인**
+2. **마이페이지 → 인증키 관리** → **인증키 신청** (즉시 발급, 무료)
+3. 기본 호출 한도는 하루 500회 — 우리는 239건이라 충분함(서버IP 등록 불필요)
+
+**실행**:
+1. `scripts/reconcile_nlk.py` 를 열어 `AUTH_KEY = "..."` 에 발급받은 키 붙여넣기
+2. ```bash
    python3 scripts/reconcile_nlk.py
    ```
 → `output/isbn_candidates.csv` 생성.
+(API는 XML로 응답함 — 공식 문서 data4library.kr/apiUtilization 2026-07-09 확인,
+스크립트에 이미 반영되어 있음)
 
 **검수 방법**: 저자·출판사·연도가 원목록과 일치하는 후보에만 `Y`.
 - 지역 출판물·오래된 책은 매칭이 안 될 수 있음 — 정상이며,

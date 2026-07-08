@@ -1,30 +1,40 @@
 """국내 서지 reconciliation: 도서관 정보나루 API로 ISBN 후보 수집.
 
 사용법:
-  1. data4library.kr 회원가입 → 마이페이지에서 인증키(authKey) 발급 (무료, 즉시)
+  1. data4library.kr 회원가입 → 로그인 → 마이페이지 → 인증키 관리에서
+     인증키 신청 (즉시 발급, 무료, 기본 호출 한도 500회/일)
   2. 아래 AUTH_KEY에 붙여넣기
   3. python scripts/reconcile_nlk.py
 
 입력:  data/books.csv
 출력:  output/isbn_candidates.csv — 사람이 검수할 후보 목록
 
-⚠️ API 파라미터는 data4library.kr 공식 문서 기준으로 확인할 것 (변경 가능).
+⚠️ 이 API는 XML로 응답한다 (2026-07-09 공식 문서 확인: data4library.kr/apiUtilization).
 ⚠️ 후보 '제안'만 한다 — 검수 후 accept=Y 표기 → apply_reconciliation.py 실행.
 """
-import csv, json, time, urllib.parse, urllib.request
+import csv, time, urllib.parse, urllib.request
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 AUTH_KEY = "여기에_발급받은_인증키를_붙여넣기"
-API = "http://data4library.kr/api/srchBooks?authKey={key}&keyword={q}&pageSize=5&format=json"
+API = "http://data4library.kr/api/srchBooks?authKey={key}&keyword={q}&pageSize=5"
+
+
+def text(doc, tag):
+    el = doc.find(tag)
+    return el.text.strip() if el is not None and el.text else ""
 
 
 def search(title):
     url = API.format(key=AUTH_KEY, q=urllib.parse.quote(title))
     with urllib.request.urlopen(url, timeout=15) as r:
-        data = json.load(r)
-    docs = data.get("response", {}).get("docs", [])
-    return [d.get("doc", d) for d in docs]
+        xml_bytes = r.read()
+    root = ET.fromstring(xml_bytes)
+    err = root.find(".//error")
+    if err is not None:
+        raise RuntimeError(f"API 오류: {ET.tostring(err, encoding='unicode')}")
+    return root.findall(".//docs/doc")
 
 
 def main():
@@ -50,9 +60,9 @@ def main():
         for rank, d in enumerate(docs, 1):
             out_rows.append({
                 "book_id": b["id"], "title": b["title"], "creator": b["creator"], "rank": rank,
-                "isbn13": d.get("isbn13", ""), "c_title": d.get("bookname", ""),
-                "c_author": d.get("authors", ""), "c_publisher": d.get("publisher", ""),
-                "c_year": d.get("publication_year", ""), "accept": ""})
+                "isbn13": text(d, "isbn13"), "c_title": text(d, "bookname"),
+                "c_author": text(d, "authors"), "c_publisher": text(d, "publisher"),
+                "c_year": text(d, "publication_year"), "accept": ""})
         if i % 20 == 0:
             print(f"  진행 {i}/{len(books)}")
         time.sleep(0.6)

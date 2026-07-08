@@ -1,58 +1,83 @@
-# CLAUDE.md — 강감찬자료실 LOD 파일럿
+# CLAUDE.md — 강감찬 탐험 지도 (gang-gamchan-lod)
 
-## 이 프로젝트가 뭔지
-관악구립도서관 강감찬자료실(도서목록 239건, 논문목록 1,126건)을 SKOS 통제어휘 +
-RDF/Turtle로 변환하고, Leaflet+D3 단일 파일로 시각화하는 연구 파일럿.
-연구 프레임: "공공도서관 향토자료실의 LOD 적용 가능성 연구 — 관악구 강감찬자료실 사례"
+> Claude Code가 이 폴더를 열면 가장 먼저 읽는 파일.
+> 프로젝트의 맥락, 원칙, 현재 상태를 담고 있다. (최종 갱신: 2026-07-07)
 
-## 원천 데이터 수집 방식 — 중요
-lib.gwanak.go.kr 은 robots.txt로 자동 접근을 막아둠. **스크래핑 시도 금지.**
-Hailey가 브라우저에서 페이지별 표를 직접 복사해 붙여넣으면, 그걸 `data/books.csv`에
-정제해 append하는 것까지만 자동화 대상.
+## 프로젝트 정체
+관악구립도서관 강감찬자료실 도서목록 **전수 239건**을 SKOS 통제어휘(71개 개념) +
+RDF/Turtle(2,586 트리플)로 변환하고, Leaflet+D3 단일 파일(index.html)로 시각화한
+개인 연구 프로토타입.
+
+- **공개 사이트**: https://pinakes-me.github.io/gang-gamchan/ (GitHub Pages, 배포 완료)
+- **연구 프레임**: 공공도서관 향토자료실의 LOD 적용 가능성 연구 — 관악구 강감찬자료실 사례
+- **작성자**: Hailey (@pinakes_me) — 사서, 한림대 디지털인문학 석사과정(2026.9~) 예정
+- **청중 구분**: 사이트·README = 구민/방문자용(도서관 평가 표현 금지),
+  NOTES.md = 연구자용(품질 발견·방법론 기록)
+
+## 폴더 구조
+```
+index.html            공개 사이트 (단일 파일, GitHub Pages 진입점)
+data/books.csv        도서 239건 (정제 + 주제 태깅 + 검수 플래그 + note)
+vocab/concepts.csv    SKOS 통제어휘 71개 (wikidata 컬럼은 대조 후 채움)
+schema/ontology.ttl   데이터 모델 + 도서관/장소 인스턴스(좌표·출처 주석)
+scripts/              파이프라인 (아래 '명령' 참조)
+output/               생성물: books.ttl, concepts.ttl, *_candidates.csv
+images/               답사 사진 (예정 — DEPLOY.md 3절 참조)
+README.md(방문자용) · NOTES.md(연구노트) · DEPLOY.md · RECONCILIATION.md
+```
 
 ## 명령
 ```bash
-python scripts/csv_to_ttl.py   # data/books.csv, vocab/concepts.csv → output/*.ttl 재생성
+# 데이터/어휘 수정 후 항상:
+python3 scripts/csv_to_ttl.py && python3 scripts/build_site.py
+
+# Reconciliation (후보 수집 → Hailey 검수 → 반영):
+python3 scripts/reconcile_wikidata.py      # 개념 → Q번호 후보
+python3 scripts/reconcile_nlk.py           # 도서 → ISBN 후보 (정보나루 인증키 필요)
+python3 scripts/apply_reconciliation.py    # accept=Y 만 원본 반영
 ```
-CSV나 어휘를 고칠 때마다 두 스크립트를 순서대로 실행:
-```bash
-python scripts/csv_to_ttl.py && python scripts/build_site.py
-```
-build_site.py가 index.html의 CONCEPTS/BROADER/BOOKS 상수와 히어로 통계를 자동 갱신함.
-어휘에 없는 개념을 태깅하면 빌드가 실패하도록 되어 있음 (전거제어 강제).
+- build_site.py는 index.html의 CONCEPTS/BROADER/BOOKS 상수와 히어로 통계를 자동 주입
+- **어휘에 없는 개념을 태깅하면 빌드가 의도적으로 실패함** (전거제어 강제)
+- ⚠️ index.html을 손으로 고친 뒤에도 반드시 빌드를 다시 돌려 통계 동기화할 것
+  (2026-07-06에 이걸 빼먹어 장소 카운트가 어긋난 전례 있음)
 
-## 통제어휘(vocab/concepts.csv) 규칙
-- 새 개념은 **어휘에 먼저 추가**한 뒤 books.csv의 subjects 컬럼에서 참조 (전거제어 원칙)
-- `wikidata` 컬럼은 절대 추정해서 채우지 말 것. Wikidata API(wbsearchentities)로
-  대조한 결과만 채운다. 확신 없으면 비워둔다.
-- broader 관계는 `vocab/concepts.csv`의 `broader` 컬럼과 `scripts/csv_to_ttl.py`의
-  BROADER 로직 두 군데 다 반영되어야 함 (지금은 index.html에도 별도 BROADER 배열 있음 — 3중 동기화 지점, 주의)
+## 절대 원칙 — 어기지 말 것
+1. **원천 목록 범위 준수**: 이 데이터셋의 연구 대상은 '목록이 특정 시점에 등재한 것'
+   자체다. 실제 소장 현황이 다르다는 걸 알아도 CSV를 고치지 않는다 → NOTES.md에 기록만.
+   (예: 181번 고려거란전기는 실제로는 소장돼 있으나 목록엔 '-' — 그대로 둠)
+2. **검수 없는 확정 금지**: LLM 태깅·API 대조 결과는 전부 '후보'다. Hailey의 accept 없이
+   원본에 반영하지 않는다. 애매하면 review_flag=Y.
+3. **좌표·QID 추정 금지**: 확인된 출처(공공데이터, 직접 측정) 없이는 비워둔다.
+   틀린 링크가 빈 링크보다 나쁘다.
+4. **스크래핑 금지**: lib.gwanak.go.kr는 robots.txt로 자동 접근을 막음. 원천 데이터는
+   Hailey가 브라우저에서 직접 복사한 것만 사용.
+5. **자전거 접근성 프로젝트와 분리**: 데이터·좌표를 결합하지 말 것 (Hailey 결정, 2026-07-06).
 
-## 태깅 원칙 — 반드시 지킬 것
-LLM이 제목 문자열만 보고 주제를 초벌 태깅하는 건 괜찮지만, **Hailey의 검수 없이
-review_flag 없는 상태로 커밋하지 말 것.** 이 프로젝트의 논지 자체가 "무검수 외주
-목록화가 서지 데이터 품질을 떨어뜨린다"는 것이므로, 같은 실수를 파이프라인 안에서
-반복하면 연구 전체의 신뢰도가 깎임. 애매하면 `review_flag=Y`로 표시하고 다음 검수
-때 사람이 보게 할 것.
+## 표기 전거
+- 강감찬 영문: **Gang Gamchan** (출처: 향토문화전자대전 grandculture.net) —
+  Kang Kam-chan 등 이형은 v2에서 skos:altLabel 후보
 
-## 소장도서관(HOLDINGS) — 자전거 프로젝트와 별개
-소장도서관 인스턴스에 좌표를 넣거나, 다른 접근성 프로젝트와 데이터를 결합하지 말 것.
-Hailey가 두 프로젝트를 의도적으로 분리하기로 결정함 (2026-07-06).
+## 현재 상태 (2026-07-07)
+✅ 완료: 239건 전수 데이터화 / 어휘 71개(포화 확인) / RDF 2,586 트리플 /
+공개 사이트 배포 / 검수 플래그 39건 식별 / reconciliation 도구 3종 /
+방문자·연구자 문서 분리 / 도서관 게시판 피드백(참고목록 갱신 요청) 제출
 
-## 다음 작업 우선순위
-1. 도서목록 3페이지 이후 (20~239번) 계속 append
-2. Wikidata reconciliation 스크립트 작성 (wbsearchentities 호출 → vocab wikidata 컬럼 채우기, 검수용 후보만 제시)
-3. 논문목록(1,126건)은 도서목록 완료 후 별도 파이프라인으로 — 규모가 다르므로 샘플링 전략부터 논의
-4. ~~자동 주입 스크립트~~ → scripts/build_site.py 구현 완료 (2026-07-06). csv_to_ttl.py 실행 후 build_site.py 실행
-5. Neo4j 워크숍(7/14–16) 이후: neosemantics(n10s)로 books.ttl 임포트 실험
+## 다음 작업 (우선순위순)
+1. **Neo4j 워크숍 준비·실습** (7/14–16 국중도) — NEO4J.md 참조,
+   books.ttl+concepts.ttl을 n10s로 임포트
+2. **DH2026 (7/27) 데모** — 3분 데모 스크립트 (미작성)
+3. **답사** — 별 마커 5곳 사진 + 안국사 GPS 좌표 (Hailey, 일정 미정) → DEPLOY.md 3절대로 반영
+4. **Reconciliation 실행** — Wikidata(즉시 가능) + 정보나루(인증키 발급 후, 절차는
+   RECONCILIATION.md 참조). 2026-07-09: 정보나루 API가 XML 응답인 것을 공식 문서로
+   확인해 reconcile_nlk.py를 XML 파싱으로 수정함(이전엔 JSON 가정 — 실행했다면 오류
+   났을 것). Wikidata 스크립트는 여전히 문법 검증만 완료, 실 API 미검증 상태.
+5. **검수 플래그 39건 해소** — 원자료·국중도 대조 (Hailey, 급하지 않음)
+6. **논문목록 1,126건 확장 여부 결정** — 규모가 다르므로 샘플링 전략부터 논의
+7. **논문 집필** — NOTES.md의 발견들이 뼈대: 품질 유형학(중복 8쌍·동음이의·전거 불일치·
+   매체 오배치), 소장=강감찬 불변식, 2020년 정지 vs 실소장 진행, 어휘 포화 곡선,
+   일괄구축 가설(도서관 확인 필요)
 
-## Reconciliation 도구 (2026-07-07 구현 완료)
-- scripts/reconcile_wikidata.py — 개념→Q번호 후보 수집 (Wikidata API)
-- scripts/reconcile_nlk.py — 도서→ISBN 후보 수집 (정보나루 API, 인증키 필요)
-- scripts/apply_reconciliation.py — 검수(accept=Y)된 후보만 원본 반영
-- 상세: RECONCILIATION.md. **후보 자동 확정 금지 — Hailey 검수 필수** 원칙은
-  이 도구들에도 그대로 적용됨.
-
-## 배포 (2026-07-07)
-- site.html → index.html 개명 (GitHub Pages 진입점)
-- 배포 절차·사진 추가법: DEPLOY.md
+## 히스토리 요약
+2026-07-06: 파이프라인 구축, 239건 완료, 사이트 제작·개선(구민용 전환, 10리길,
+소장처 클릭, 사각형 노드). 07-07: 영문 전거 정정, 리포명 gang-gamchan 통일, 배포.
+자세한 발견·정정 기록은 NOTES.md.
