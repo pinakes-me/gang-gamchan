@@ -117,6 +117,7 @@ h1 .star-char{color:var(--mustard)}
 /* 지도 마커 */
 .star-marker{filter:drop-shadow(0 0 6px rgba(227,178,60,.75))}
 .lib-marker{filter:drop-shadow(0 0 5px rgba(127,181,165,.7))}
+.station-marker{filter:drop-shadow(0 0 5px rgba(127,181,165,.7))}
 .leaflet-popup-content-wrapper{background:var(--panel-2);color:var(--text);border-radius:6px;
   border:1px solid var(--line);font-family:var(--sans)}
 .leaflet-popup-tip{background:var(--panel-2)}
@@ -3627,6 +3628,13 @@ const libIcon = L.divIcon({className:'', iconSize:[24,24], iconAnchor:[12,12], h
   `<svg class="lib-marker" width="24" height="24" viewBox="0 0 24 24">
     <rect x="3" y="3" width="18" height="18" rx="3" fill="#7FB5A5" stroke="#0A1626" stroke-width="1"/>
     <path d="M8 7 v10 M12 7 v10 M16 9 l1.5 8" stroke="#0A1626" stroke-width="1.8" stroke-linecap="round"/></svg>`});
+
+const stationIcon = L.divIcon({className:'', iconSize:[22,22], iconAnchor:[11,11], html:
+  `<svg class="station-marker" width="22" height="22" viewBox="0 0 22 22">
+    <circle cx="11" cy="11" r="8" fill="#0A1626" stroke="#7FB5A5" stroke-width="3.5"/></svg>`});
+L.marker([37.477117, 126.963418], {icon: stationIcon, title:'낙성대역 4번 출구'})
+  .addTo(map)
+  .bindPopup(`<div class="popup-name">낙성대역 4번 출구</div><div class="popup-note">강감찬 10리길 출발점</div>`);
 
 const trail = [[37.477117,126.963418],[37.474902,126.9608737],[37.4750784,126.9610777],[37.4729903,126.9611085],[37.4711007,126.95999]];
 L.polyline(trail, {color:'#E3B23C', weight:4, dashArray:'6 6', opacity:.85})
