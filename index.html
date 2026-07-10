@@ -3564,16 +3564,16 @@ const BOOKS = [
 ];
 const PLACES = [
   {id:'p-park', name:'낙성대공원', lat:37.4711007, lng:126.95999, kind:'star',
-   photo:'images/nakseongdae-park.jpg',
+   photo:'images/nakseongdae-park.jpg', photoPos:'center 55%',
    note:'강감찬 장군의 영정을 모신 사당 안국사가 있는 공원 — 강감찬 10리길의 종점. 매년 10월 강감찬축제가 열리는 곳. (사진은 공원 입구 — 광장은 현재 물놀이장 조성으로 통제 중)', concepts:['gangamchan','nakseongdae']},
   {id:'p-birth', name:'강감찬 생가터', lat:37.474902, lng:126.9608737, kind:'star',
-   photo:'images/birthplace.jpg',
+   photo:'images/birthplace.jpg', photoPos:'center 65%',
    note:'서울특별시 기념물. 큰 별이 떨어져 강감찬이 태어났다는 전승의 자리.', concepts:['gangamchan','nakseongdae']},
   {id:'p-statue', name:'강감찬 장군 동상', lat:37.4713017, lng:126.9588365, kind:'star',
    photo:'images/statue.jpg',
    note:'귀주에서 거란 대군을 물리친 장군을 기리는 동상.', concepts:['gangamchan','goryeo_khitan_war']},
   {id:'p-exhibit', name:'강감찬전시관', lat:37.4729903, lng:126.9611085, kind:'star',
-   photo:'images/exhibit.jpg',
+   photo:'images/exhibit.jpg', photoPos:'center 75%',
    note:'강감찬 장군의 생애를 만나는 전시관 — 10리길 스탬프투어의 거점.', concepts:['gangamchan','gwiju_battle']},
   {id:'p-pagoda', name:'낙성대 삼층석탑', lat:37.471158, lng:126.9604853, kind:'star',
    note:'고려시대 석탑. 강감찬의 출생지를 기념해 세워진 것으로 전한다. 사진: 직접 찍어 올릴 예정.', concepts:['nakseongdae','goryeo']},
@@ -3646,7 +3646,7 @@ window.selectTrail = function(){
 PLACES.forEach(pl => {
   const m = L.marker([pl.lat, pl.lng], {icon: pl.kind==='star'? starIcon: libIcon, title: pl.name}).addTo(map);
   m.bindPopup(
-    `<div class="popup-name">${pl.name}</div>${pl.photo? `<img src="${pl.photo}" alt="${pl.name}" style="width:100%;border-radius:5px;margin:8px 0 2px">`:''}<div class="popup-note">${pl.note}</div>
+    `<div class="popup-name">${pl.name}</div>${pl.photo? `<img src="${pl.photo}" alt="${pl.name}" style="width:100%;max-height:160px;object-fit:cover;object-position:${pl.photoPos||'center'};border-radius:5px;margin:8px 0 2px">`:''}<div class="popup-note">${pl.note}</div>
      <button class="popup-btn" onclick="selectPlace('${pl.id}')">${pl.kind==='lib'? '이 도서관의 강감찬 책 보기 →':'연결된 자료 보기 →'}</button>`);
 });
 
