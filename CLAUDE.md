@@ -1,7 +1,7 @@
 # CLAUDE.md — 강감찬 탐험 지도 (gang-gamchan-lod)
 
 > Claude Code가 이 폴더를 열면 가장 먼저 읽는 파일.
-> 프로젝트의 맥락, 원칙, 현재 상태를 담고 있다. (최종 갱신: 2026-07-07)
+> 프로젝트의 맥락, 원칙, 현재 상태를 담고 있다. (최종 갱신: 2026-07-09)
 
 ## 프로젝트 정체
 관악구립도서관 강감찬자료실 도서목록 **전수 239건**을 SKOS 통제어휘(71개 개념) +
@@ -67,10 +67,14 @@ python3 scripts/apply_reconciliation.py    # accept=Y 만 원본 반영
    books.ttl+concepts.ttl을 n10s로 임포트
 2. **DH2026 (7/27) 데모** — 3분 데모 스크립트 (미작성)
 3. **답사** — 별 마커 5곳 사진 + 안국사 GPS 좌표 (Hailey, 일정 미정) → DEPLOY.md 3절대로 반영
-4. **Reconciliation 실행** — Wikidata(즉시 가능) + 정보나루(인증키 발급 후, 절차는
-   RECONCILIATION.md 참조). 2026-07-09: 정보나루 API가 XML 응답인 것을 공식 문서로
-   확인해 reconcile_nlk.py를 XML 파싱으로 수정함(이전엔 JSON 가정 — 실행했다면 오류
-   났을 것). Wikidata 스크립트는 여전히 문법 검증만 완료, 실 API 미검증 상태.
+4. **Reconciliation** — 2026-07-10 기준 상태:
+   - Wikidata: ✅ **검수·반영·재빌드 완료**. 73개 대상 중 57개 채택(78.1%),
+     vocab/concepts.csv에 QID 반영됨. 발견 기록은 NOTES.md 07-09/07-10 절
+     (상서성 제외 사례 등).
+   - 정보나루: keyword= 파라미터가 잡음(대출순 정렬)임을 발견, title= 기반으로 수정.
+     **현재 output/isbn_candidates.csv는 keyword 기반 1차 결과라 폐기 대상 — 검수 금지.**
+     일일 호출 한도(500회) 사유로 **재실행 필요** (아직 미실행). 상세는 NOTES.md 07-09 절.
+     재실행 → 검수 → apply_reconciliation.py → csv_to_ttl.py → build_site.py
 5. **검수 플래그 39건 해소** — 원자료·국중도 대조 (Hailey, 급하지 않음)
 6. **논문목록 1,126건 확장 여부 결정** — 규모가 다르므로 샘플링 전략부터 논의
 7. **논문 집필** — NOTES.md의 발견들이 뼈대: 품질 유형학(중복 8쌍·동음이의·전거 불일치·

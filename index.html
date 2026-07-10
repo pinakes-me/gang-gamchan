@@ -196,7 +196,7 @@ footer .sig b{font-family:var(--serif);color:var(--text);font-size:13px;font-wei
     <div class="stats" role="list">
       <div class="stat" role="listitem"><b id="st-books">239</b>자료 <span style="opacity:.6">— 전수 완료</span></div>
       <div class="stat" role="listitem"><b id="st-concepts">71</b>연결된 개념</div>
-      <div class="stat" role="listitem"><b id="st-triples">2586</b>RDF 트리플</div>
+      <div class="stat" role="listitem"><b id="st-triples">2643</b>RDF 트리플</div>
       <div class="stat" role="listitem"><b id="st-places">21</b>관악의 장소</div>
     </div>
   </div>
@@ -3564,13 +3564,17 @@ const BOOKS = [
 ];
 const PLACES = [
   {id:'p-park', name:'낙성대공원', lat:37.4711007, lng:126.95999, kind:'star',
-   note:'강감찬 장군의 영정을 모신 사당 안국사가 있는 공원 — 강감찬 10리길의 종점. 매년 10월 강감찬축제가 열리는 곳. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','nakseongdae']},
+   photo:'images/nakseongdae-park.jpg',
+   note:'강감찬 장군의 영정을 모신 사당 안국사가 있는 공원 — 강감찬 10리길의 종점. 매년 10월 강감찬축제가 열리는 곳. (사진은 공원 입구 — 광장은 현재 물놀이장 조성으로 통제 중)', concepts:['gangamchan','nakseongdae']},
   {id:'p-birth', name:'강감찬 생가터', lat:37.474902, lng:126.9608737, kind:'star',
-   note:'서울특별시 기념물. 큰 별이 떨어져 강감찬이 태어났다는 전승의 자리. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','nakseongdae']},
+   photo:'images/birthplace.jpg',
+   note:'서울특별시 기념물. 큰 별이 떨어져 강감찬이 태어났다는 전승의 자리.', concepts:['gangamchan','nakseongdae']},
   {id:'p-statue', name:'강감찬 장군 동상', lat:37.4713017, lng:126.9588365, kind:'star',
-   note:'귀주에서 거란 대군을 물리친 장군을 기리는 동상. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','goryeo_khitan_war']},
+   photo:'images/statue.jpg',
+   note:'귀주에서 거란 대군을 물리친 장군을 기리는 동상.', concepts:['gangamchan','goryeo_khitan_war']},
   {id:'p-exhibit', name:'강감찬전시관', lat:37.4729903, lng:126.9611085, kind:'star',
-   note:'강감찬 장군의 생애를 만나는 전시관 — 10리길 스탬프투어의 거점. 사진: 직접 찍어 올릴 예정.', concepts:['gangamchan','gwiju_battle']},
+   photo:'images/exhibit.jpg',
+   note:'강감찬 장군의 생애를 만나는 전시관 — 10리길 스탬프투어의 거점.', concepts:['gangamchan','gwiju_battle']},
   {id:'p-pagoda', name:'낙성대 삼층석탑', lat:37.471158, lng:126.9604853, kind:'star',
    note:'고려시대 석탑. 강감찬의 출생지를 기념해 세워진 것으로 전한다. 사진: 직접 찍어 올릴 예정.', concepts:['nakseongdae','goryeo']},
   {id:'p-lib', name:'관악중앙도서관', lat:37.4675185, lng:126.9448533, kind:'lib', lib:'관악중앙도서관',
