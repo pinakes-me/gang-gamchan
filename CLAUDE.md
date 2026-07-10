@@ -52,6 +52,9 @@ python3 scripts/apply_reconciliation.py    # accept=Y 만 원본 반영
 4. **스크래핑 금지**: lib.gwanak.go.kr는 robots.txt로 자동 접근을 막음. 원천 데이터는
    Hailey가 브라우저에서 직접 복사한 것만 사용.
 5. **자전거 접근성 프로젝트와 분리**: 데이터·좌표를 결합하지 말 것 (Hailey 결정, 2026-07-06).
+6. **연구노트 비공개**: NOTES.md·NEO4J.md는 공개 리포(gang-gamchan)에 올리지 않는다.
+   .gitignore로 제외되어 로컬에만 존재 — 방문자용 공개 리포와 연구자용 비공개 노트를
+   분리하는 의도된 정책 (Hailey 결정, 2026-07-10).
 
 ## 표기 전거
 - 강감찬 영문: **Gang Gamchan** (출처: 향토문화전자대전 grandculture.net) —
