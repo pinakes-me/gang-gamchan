@@ -102,6 +102,11 @@ h1 .star-char{color:var(--mustard)}
 .pane-label{position:absolute;top:12px;left:12px;z-index:500;font-family:var(--mono);
   font-size:11px;letter-spacing:.12em;color:var(--text);background:rgba(10,22,38,.85);
   border:1px solid var(--line);padding:5px 10px;border-radius:4px;backdrop-filter:blur(4px)}
+.view-toggle{display:flex;gap:4px}
+.view-toggle .vt-btn{font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--text);background:rgba(10,22,38,.85);border:1px solid var(--line);
+  padding:5px 10px;border-radius:4px;cursor:pointer;backdrop-filter:blur(4px)}
+.view-toggle .vt-btn.active{background:var(--mustard);color:#0A1626;border-color:var(--mustard);font-weight:700}
 #map{height:560px;background:var(--ink)}
 #graph-pane{height:560px}
 #graph{width:100%;height:100%;display:block;cursor:grab}
@@ -3645,8 +3650,26 @@ L.marker([37.477117, 126.963418], {icon: stationIcon, title:'낙성대역 4번 �
   .bindPopup(`<div class="popup-name">낙성대역 4번 출구</div><div class="popup-note">강감찬 10리길 출발점</div>`);
 
 const trail = [[37.477117,126.963418],[37.474902,126.9608737],[37.4750784,126.9610777],[37.4729903,126.9611085],[37.4711007,126.95999]];
-map.fitBounds(L.latLngBounds([...PLACES.map(pl => [pl.lat, pl.lng]), ...trail]), {padding:[30,30], animate:false});
-map.setZoom(map.getZoom() + 1, {animate:false});
+const boundsAll = L.latLngBounds([...PLACES.map(pl => [pl.lat, pl.lng]), ...trail]);
+const boundsTrail = L.latLngBounds([...PLACES.filter(pl => pl.kind==='star').map(pl => [pl.lat, pl.lng]), ...trail]);
+map.fitBounds(boundsAll, {padding:[30,30], animate:false});
+
+/* 전체 ↔ 10리길 뷰 전환 */
+const viewToggle = L.control({position:'topright'});
+viewToggle.onAdd = () => {
+  const div = L.DomUtil.create('div', 'view-toggle');
+  div.innerHTML = `<button class="vt-btn active" data-v="all">관악 전체</button><button class="vt-btn" data-v="trail">10리길</button>`;
+  L.DomEvent.disableClickPropagation(div);
+  div.querySelectorAll('button').forEach(b => {
+    b.onclick = () => {
+      div.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      map.flyToBounds(b.dataset.v==='all'? boundsAll : boundsTrail, {padding: b.dataset.v==='all'? [30,30]:[40,40]});
+    };
+  });
+  return div;
+};
+viewToggle.addTo(map);
 L.polyline(trail, {color:'#E3B23C', weight:4, dashArray:'6 6', opacity:.85})
   .addTo(map)
   .bindTooltip('강감찬 10리길 — 눌러서 걷기 전에 읽을 책 보기', {sticky:true})
